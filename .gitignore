@@ -1,0 +1,14 @@
+.build/
+.swiftpm/
+DerivedData/
+dist/
+*.xcuserdata/
+*.xcuserstate
+WeekendRain.xcodeproj/project.xcworkspace/xcuserdata/
+WeekendRain.xcodeproj/xcuserdata/
+tmp/
+firebase-debug.log
+.codex/
+.omx/
+.omc/
+
