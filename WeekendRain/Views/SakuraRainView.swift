@@ -92,6 +92,10 @@ private enum ParticleImage {
         draw(CGRect(origin: .zero, size: size))
         image.unlockFocus()
         var rect = CGRect(origin: .zero, size: size)
-        return image.cgImage(forProposedRect: &rect, context: nil, hints: nil)!
+        if let cg = image.cgImage(forProposedRect: &rect, context: nil, hints: nil) { return cg }
+        let ctx = CGContext(data: nil, width: 1, height: 1, bitsPerComponent: 8,
+                           bytesPerRow: 4, space: CGColorSpaceCreateDeviceRGB(),
+                           bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)!
+        return ctx.makeImage()!
     }
 }
