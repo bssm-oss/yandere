@@ -343,8 +343,8 @@ open class NovelSceneView: NSView {
             let btn = ChoiceButton(title: choice.text, choiceID: choice.id)
             btn.target = self
             btn.action = #selector(choicePressed(_:))
-            btn.widthAnchor.constraint(equalTo: choiceStack.widthAnchor).isActive = true
             choiceStack.addArrangedSubview(btn)
+            btn.widthAnchor.constraint(equalTo: choiceStack.widthAnchor).isActive = true
         }
     }
 
