@@ -3673,19 +3673,33 @@
       "music": "rain_theme",
       "effects": [],
       "unlock_cg": "cg_umbrella_gate",
-      "cg": "cg_umbrella_gate"
+      "cg": "cg_umbrella_gate",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_station_clock",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch00_shared_umbrella",
       "speaker": "세아",
       "text": "「들어와, 하루 군.」\n이름을 가르쳐 준 적이 없었다. 나는 발을 멈췄다. 세아는 우산 손잡이를 살짝 더 내 쪽으로 밀며 웃었다.\n「학생회 명부에 있잖아. 오래 읽었어.」\n우산 안쪽은 생각보다 좁았다. 그녀의 어깨가 내 팔에 스칠 만큼. 빗소리가 갑자기 멀어지고, 붉은 우산 천 너머로 도시가 흐릿해졌다.\n\n*'오래 읽었어'라는 말이 왜 이렇게 오래 귓속에 남는지 모르겠다.*",
       "choices": [],
-      "next_scene": "ch00b_water_tower",
+      "next_scene": "ch00g_sea_wall_mural",
       "background": "shoe_locker_surveillance",
       "character": "sea_orchid_umbrella_handle",
       "music": "bus_stop_rain",
       "effects": [],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_orchid_umbrella_handle",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch00b_water_tower",
@@ -3700,7 +3714,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_calm_sad",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch00c_letter_exchange",
@@ -3715,7 +3736,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_normal",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch00d_stationery_oracle",
@@ -3730,7 +3758,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_stationery",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch00e_clock_repair_shop",
@@ -3745,7 +3780,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_loop_clock_map"
+      "unlock_cg": "cg_loop_clock_map",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_clock_reflection",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch00ea_loop_clock_map",
@@ -3760,12 +3802,13 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_loop_clock_map"
+      "unlock_cg": "cg_loop_clock_map",
+      "visuals": []
     },
     {
       "id": "ch00f_rain_tram_terminal",
       "speaker": "하루",
-      "text": "비 오는 전차 터미널에는 승객이 없었다.\n매표기의 작은 화면에 내 이름과 세아의 이름이 나란히 떠 있었다.\n*언제부터였지? 이 이름이 내 옆에 항상 붙어 있는 게.*\n매표기 화면을 닫으려 했다. 터치가 되지 않았다. 화면은 꺼지지 않았다. 두 이름은 그대로 있었다.\n비 냄새가 터미널 안쪽까지 스며들었다. 젖은 철의 냄새와 섞였다.\n「하루 군, 저 터미널 카페에 잠깐 들를 거야. 기다려.」\n그녀의 목소리는 빗소리보다 낮았지만, 내 귀에는 또렷하게 들렸다.\n*카페 유리창 너머로 세아가 보였다. 음료를 고르지 않고 내 쪽을 보고 있었다. 처음부터.*",
+      "text": "비 오는 전차 터미널에는 승객이 없었다.\n매표기의 작은 화면에 내 이름과 세아의 이름이 나란히 떠 있었다.\n*언제부터였지? 이 이름이 내 옆에 항상 붙어 있는 게.*\n매표기 화면을 닫으려 했다. 터치가 되지 않았다. 단말은 꺼지지 않았다. 두 이름은 그대로 있었다.\n비 냄새가 터미널 안쪽까지 스며들었다. 젖은 철의 냄새와 섞였다.\n「하루 군, 저 터미널 카페에 잠깐 들를 거야. 기다려.」\n그녀의 목소리는 빗소리보다 낮았지만, 내 귀에는 또렷하게 들렸다.\n*카페 유리창 너머로 세아가 보였다. 음료를 고르지 않고 내 쪽을 보고 있었다. 처음부터.*",
       "choices": [],
       "next_scene": "ch00fa_loop_constellation",
       "background": "rain_tram_terminal",
@@ -3775,14 +3818,21 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_loop_constellation"
+      "unlock_cg": "cg_loop_constellation",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_tram_window",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch00fa_loop_constellation",
       "speaker": "하루",
       "text": "전차 터미널의 안내판이 별자리판처럼 깜박였다. 정보가 아니라 지도였다.\n승차권, 서버 로그, 병원 옥상, 지하 문서고, 저수지 수문. 각각의 점이 붉은 선으로 연결되어 있었다.\n선이 지나가는 자리마다 날짜가 적혀 있었다. 내가 그 장소들을 지나간 날짜들이었다.\n*나는 이 지도 위에 놓인 점이었다. 내가 어디로 갔는지 누군가가 먼저 알고 있었다.*\n선의 중심을 보았다. 학교 위였다. 세아가 있는 곳이었다.\n안내판이 다시 한번 깜박였다. 다음 목적지가 표시됐다. 내가 아직 가지 않은 곳이었는데, 선은 이미 그곳까지 이어져 있었다.",
       "choices": [],
-      "next_scene": "ch00g_sea_wall_mural",
+      "next_scene": "ch00z_a_monday_dissolve",
       "background": "rain_tram_terminal",
       "character": null,
       "cg": "cg_loop_constellation",
@@ -3790,7 +3840,84 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_loop_constellation"
+      "unlock_cg": "cg_loop_constellation",
+      "visuals": []
+    },
+    {
+      "id": "ch00z_a_monday_dissolve",
+      "speaker": "하루",
+      "text": "월요일이 왔다. 아니, 왔다는 것을 알았다.\nRainveil의 달력은 요일이 번지듯 바뀐다. 이번 주도 토요일은 길었다. 세아의 우산 아래에서 보낸 시간이 월요일 아침의 교실보다 실감났다.\n아이리가 칠판을 지웠다. 분필 소리가 빗소리처럼 들렸다. 「하루, 오늘 날짜 알아?」 아이리는 대답을 요구하지 않는 얼굴이었다.\n*알고 있다고 말하고 싶었다. 그런데 머릿속에는 토요일의 붉은 우산만 남아 있었다.*\n세아의 빈자리를 보았다. 곧 앉을 자리인데도 이미 누군가 기다리는 것처럼 보였다.",
+      "choices": [],
+      "next_scene": "ch00z_b_sea_desk_neighbor",
+      "background": "classroom_dusk",
+      "character": "airi_normal",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_normal",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch00z_b_sea_desk_neighbor",
+      "speaker": "하루",
+      "text": "세아의 자리는 내 오른쪽이었다. 한 학기 내내 같은 자리였는데, 오늘 처음으로 거리를 쟀다.\n팔꿈치가 닿지 않는 간격. 15센티미터 정도. 세아가 노트를 펼쳤다. 첫 줄에 오늘 날짜가 쓰여 있었다.\n「늦지 않았어, 하루 군.」 세아가 작게 말했다. 수업 시작 종보다 먼저 내 이름이 교실에 닿았다.\n*날짜가 맞았다. 토요일 이후로 이틀이 지났다는 게, 지금 처음으로 실감났다.*\n그 실감은 안도보다 불안에 가까웠다. 세아가 날짜를 적었기 때문에 맞는 것처럼 느껴져서였다.",
+      "choices": [],
+      "next_scene": "ch00z_c_rain_pattern_window",
+      "background": "classroom_dusk",
+      "character": "sea_name_card",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_name_card",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch00z_c_rain_pattern_window",
+      "speaker": "하루",
+      "text": "창문에 빗방울이 줄줄이 흘렀다. 세아는 수업 내내 창밖을 보지 않았다. 나는 세아를 보지 않으려 창밖을 봤다.\n빗방울의 궤적이 매번 같았다. 유리 흠집을 따라 정확히 내려왔다.\n「그 길로만 가면 편하잖아.」 세아가 공책 가장자리에 선을 긋듯 말했다. 나를 향한 말인지, 비를 향한 말인지 알 수 없었다.\n*Rainveil의 비는 매번 같은 경로를 흐른다. 사람도 그런가.*\n수업이 끝나면 나는 자리에서 일어날 것이다. 세아는 반 박자 늦게 따라올 것이다. 그 예감이 너무 정확했다.",
+      "choices": [],
+      "next_scene": "ch00z_d_after_class_name",
+      "background": "classroom_dusk",
+      "character": "sea_calm_sad",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_calm_sad",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch00z_d_after_class_name",
+      "speaker": "세아",
+      "text": "「하루 군, 오늘은 이름을 틀리지 않았네.」\n세아가 내 공책 위에 손끝을 얹었다. 내가 쓴 날짜 옆에 빗방울 자국이 하나 번졌다. 분명 창문은 닫혀 있었는데.\n나는 손을 빼야 한다고 생각했다. 하지만 세아의 손등이 닿은 부분만 이상하게 따뜻했다.\n「괜찮아. 틀려도 내가 다시 적어 줄게.」 그녀는 다정하게 말했다. 다정한데, 이미 정해진 일을 말하는 사람처럼 흔들림이 없었다.\n*내 이름을 누가 대신 적는다는 말이 이렇게 조용히 무서울 수 있다는 걸 몰랐다.*\n그때 세아의 노트가 내 쪽으로 조금 열렸다.",
+      "choices": [],
+      "next_scene": "ch01_notebook",
+      "background": "classroom_dusk",
+      "character": "sea_tender_close",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_breakdown",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch00g_sea_wall_mural",
@@ -3850,49 +3977,77 @@
         "decision_moment"
       ],
       "unlock_cg": null,
-      "decision_title": "붉은 우산의 안과 밖"
+      "decision_title": "붉은 우산의 안과 밖",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_mural_reflection",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "prologue_accept_aftermath",
       "speaker": "하루",
       "text": "세아는 대답 대신 우산 손잡이를 내 손에 쥐어 주었다. 그 손이 아주 잠깐 내 손가락을 감쌌다.\n따뜻했다. 우산 손잡이가 아니라 그 손이 따뜻했다.\n빗소리가 다른 모든 것을 흐리게 만들었다. 나는 그것이 다정함이라고 생각했다.\n*우산을 건네받은 순간, 붉은 천이 내 머리 위로 기울었다. 그 각도가 정확히 내 어깨 너비에 맞았다.*\n하지만 집으로 돌아오는 길에 깨달았다. 선택은 내가 한 게 아니었다.\n우산이 기울었을 때, 나는 이미 안으로 들어가 있었다. 걸음을 멈추지도 않고. 생각하지도 않고.\n세아의 손이 닿은 손등 부분이, 집까지 오는 내내 따뜻했다.",
       "choices": [],
-      "next_scene": "ch01_notebook",
+      "next_scene": "ch00b_water_tower",
       "background": "sea_wall_mural",
       "character": "sea_mural_reflection",
       "music": "sea_wall_salt_rain",
       "effects": [
         "event_cg"
       ],
-      "cg": "cg_sea_wall_mural"
+      "cg": "cg_sea_wall_mural",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_mural_reflection",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "prologue_refuse_aftermath",
       "speaker": "하루",
       "text": "세아의 표정은 무너지지 않았다. 그게 더 이상했다. 실망한 사람은 뭔가 무너지는 게 있어야 한다.\n그녀는 오히려 더 단정하게 웃었다. 「그래.」 딱 한 마디.\n우산이 거두어지고 빗속에 서자, 세아의 붉은 우산이 점점 멀어졌다. 아이리의 전화를 받으며 발걸음을 옮겼지만, 시선이 저절로 돌아갔다. 세아는 이미 나를 보지 않고 있었다.\n\n*거절을 이렇게 조용히 받아들이는 사람은 처음이었다.*\n*아니면 처음부터 거절을 예상하고 있었거나.*",
       "choices": [],
-      "next_scene": "ch01_notebook",
+      "next_scene": "ch00b_water_tower",
       "background": "sea_wall_mural",
       "character": "sea_mural_reflection",
       "music": "sea_wall_salt_rain",
       "effects": [
         "event_cg"
       ],
-      "cg": "cg_sea_wall_mural"
+      "cg": "cg_sea_wall_mural",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_mural_reflection",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "prologue_message_airi_aftermath",
       "speaker": "하루",
       "text": "위치 전송 완료.\n화면을 내리자 세아의 눈동자가 아주 잠깐 내 손 쪽을 따라왔다. 나는 아무것도 보지 못한 척했다. 그게 더 나은 선택인지 확신하지 못한 채로.\n*세아는 내 화면을 보았다. 아이리의 이름을 보았을 것이다. 그런데도 아무 말을 하지 않았다.*\n세아는 천천히 우산을 접었다. 「아이리가 기다리겠다.」 악의가 없는 목소리였다.\n악의가 없다는 게 ─ 그래서 더 오래 귓속에 남았다.\n세아는 우산을 접은 채로 빗속으로 걸어 들어갔다. 혼자. 우산을 펴지 않았다.\n*나는 그 뒷모습을 아이리가 도착할 때까지 보았다. 세아는 한 번도 돌아보지 않았다.*",
       "choices": [],
-      "next_scene": "ch01_notebook",
+      "next_scene": "ch00b_water_tower",
       "background": "sea_wall_mural",
       "character": "sea_mural_reflection",
       "music": "sea_wall_salt_rain",
       "effects": [
         "event_cg"
       ],
-      "cg": "cg_sea_wall_mural"
+      "cg": "cg_sea_wall_mural",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_mural_reflection",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch01_notebook",
@@ -3951,7 +4106,14 @@
       ],
       "unlock_cg": "cg_notebook_names",
       "cg": "cg_notebook_names",
-      "decision_title": "노트의 이름들"
+      "decision_title": "노트의 이름들",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_charm_camera",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "notebook_ask_aftermath",
@@ -3963,7 +4125,14 @@
       "character": "sea_charm_camera",
       "music": "dusk_static",
       "effects": [],
-      "cg": "cg_notebook_names"
+      "cg": "cg_notebook_names",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_charm_camera",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "notebook_close_gently_aftermath",
@@ -3975,7 +4144,14 @@
       "character": "sea_charm_camera",
       "music": "dusk_static",
       "effects": [],
-      "cg": "cg_notebook_names"
+      "cg": "cg_notebook_names",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_charm_camera",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "notebook_run_aftermath",
@@ -3987,7 +4163,14 @@
       "character": "sea_charm_camera",
       "music": "dusk_static",
       "effects": [],
-      "cg": "cg_notebook_names"
+      "cg": "cg_notebook_names",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_charm_camera",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch01b_arcade_invitation",
@@ -4002,7 +4185,14 @@
         "event_cg"
       ],
       "unlock_cg": "cg_arcade_rain",
-      "cg": "cg_arcade_rain"
+      "cg": "cg_arcade_rain",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_letter_smile",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch01c_ai_kiosk",
@@ -4017,7 +4207,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "clinic_nurse_ai",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch01d_rain_radio",
@@ -4032,7 +4229,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "rain_ai_terminal",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch01e_lost_umbrella_room",
@@ -4047,7 +4251,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "umbrella_keeper_ai",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch01f_cassette_market",
@@ -4062,7 +4273,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "umbrella_keeper_ai",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch01g_school_server_room",
@@ -4077,14 +4295,21 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_server",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch01h_maintenance_elevator",
       "speaker": "유카",
       "text": "정비용 엘리베이터의 층수 버튼 패널에는 B4가 있었다. 이 학교에 지하 4층은 없다.\n유카는 패널 커버를 드라이버로 열고 내부 배선을 촬영했다. 「B4는 세아의 전학 서류에도 나와.」\n*배선 사진을 보았다. 다른 층 버튼들과 달리 B4 연결선만 새것이었다. 최근에 설치된 것이었다.*\n엘리베이터가 혼자 움직이기 시작했다. 아래로. 버튼을 아무도 누르지 않았는데.\n아래에서 소리가 들렸다. 물 흐르는 소리와 무언가 금속이 닿는 소리가 번갈아 났다.\n규칙적이었다. 규칙적이라는 게 더 이상했다.\n유카가 비상 정지 버튼을 눌렀다. 엘리베이터가 멈췄다. 유카는 촬영을 멈추지 않았다.\n「B4에 뭐가 있는지 세아한테 물어봐.」 유카가 말했다. 「표정 보려고.」",
       "choices": [],
-      "next_scene": "ch02_airi_warning",
+      "next_scene": "ch01z_a_locker_room_morning",
       "background": "maintenance_elevator",
       "character": "yuka_elevator_panel",
       "cg": "cg_maintenance_elevator",
@@ -4092,7 +4317,109 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_glasses_off",
+          "position": "right"
+        }
+      ]
+    },
+    {
+      "id": "ch01z_a_locker_room_morning",
+      "speaker": "하루",
+      "text": "아침 신발장 복도는 항상 조용했다. 오늘은 더 조용했다. 내 신발장 번호가 종이에 적혀 있었다. 누가 쓴 건지 모르는 필체로.\n같은 번호를 세 번 확인했다. 맞았다. 그래서 더 불안했다.\n「잃어버리지 말라고 적어 둔 거야.」 뒤에서 세아의 목소리가 들린 것 같았다. 돌아보면 아무도 없었다.\n*신발장 번호까지 누군가 대신 기억해 준다면, 나는 어디까지 내 것이라고 말할 수 있을까.*\n비가 강해졌다. 현관 앞 우산꽂이에 붉은 우산이 하나 더 늘어 있었다.",
+      "choices": [],
+      "next_scene": "ch01z_b_sea_walks_close",
+      "background": "locker_corridor",
+      "character": "sea_orchid_umbrella_handle",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_orchid_umbrella_handle",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch01z_b_sea_walks_close",
+      "speaker": "세아",
+      "text": "세아는 언제나 내 뒤에서 반 박자 늦게 걷는다. 그것을 눈치채게 된 게 언제였는지 모른다.\n오늘은 그 간격이 없었다. 내 옆에서, 팔이 스칠 만큼 가까웠다.\n「오늘 점심 같이 먹을래?」 세아는 처음 들려주는 말처럼 말했다. 어제도 같은 말을 했다는 사실을 알면서도, 나는 바로 대답하지 못했다.\n*어제도 같은 말을 했다. 모레도 할 것이다. 그런데 오늘의 목소리는 오늘 것처럼 따뜻했다.*\n복도 끝에서 아이리가 우리를 보고 있었다. 세아는 보지 않는 척했지만, 손끝이 내 소매를 조금 더 잡았다.",
+      "choices": [],
+      "next_scene": "ch01z_c_airi_stares",
+      "background": "classroom_dusk",
+      "character": "sea_tender_close",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_tender_close",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch01z_c_airi_stares",
+      "speaker": "하루",
+      "text": "아이리가 복도 저쪽 끝에서 나를 봤다. 세아와 나 사이의 간격을 봤다. 손에 뭔가를 들고 있었다. 봉투였다. 사진인지 서류인지.\n아이리는 말을 걸지 않았다. 말을 걸려다 멈췄다. 세아가 옆에 있어서.\n「하루, 나중에 봐.」 아이리는 짧게 말했다. 평소보다 낮은 목소리였다.\n*나중에. 그 한 단어가 구조 요청처럼 들렸는데, 나는 세아의 손이 소매를 놓지 않는다는 이유로 고개만 끄덕였다.*\n세아는 웃지 않았다. 웃지 않았는데도 내 옆 공기가 부드럽게 좁아졌다.",
+      "choices": [],
+      "next_scene": "ch01z_d_umbrella_rain_walk",
+      "background": "locker_corridor",
+      "character": "airi_wet_envelope",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_wet_envelope",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch01z_d_umbrella_rain_walk",
+      "speaker": "하루",
+      "text": "하굣길 빗속에서 세아가 우산을 나눠 들었다.\n「오늘도 비네.」 당연한 말을 당연하게 했다. Rainveil에서 당연한 것은 비뿐이라는 것을, 이제 안다.\n우산 아래에서 보면 도시가 달라 보인다. 좁고, 붉고, 세아의 팔 온도가 느껴진다.\n「반대쪽으로 가면 젖어.」 세아가 말했다. 내 집 방향은 반대쪽이었다.\n*돌아가야 할 방향이 반대였는데, 세아 쪽으로 걸었다. 내가 선택했다고 믿기에는 발걸음이 너무 조용했다.*\n빗물 사이로 아이리의 봉투가 떠올랐다. 젖기 전에 열어야 할 것 같았다.",
+      "choices": [],
+      "next_scene": "ch01z_e_airi_waits_under_eaves",
+      "background": "rain_street",
+      "character": "sea_orchid_umbrella_handle",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_orchid_umbrella_handle",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch01z_e_airi_waits_under_eaves",
+      "speaker": "아이리",
+      "text": "「하루, 여기.」\n아이리는 처마 밑에서 기다리고 있었다. 어깨가 젖어 있었고, 봉투는 품 안쪽에 넣어 젖지 않게 막고 있었다. 세아는 한 걸음 뒤에서 멈췄다.\n아이리는 세아를 보지 않았다. 대신 내 손에 봉투를 밀어 넣었다.\n「지금 읽지 마. 먼저 빠져나와.」 말은 짧았다. 설명은 없었다. 그래서 더 사실처럼 들렸다.\n*아이리가 무언가를 겁낼 때는 겁난다고 말하지 않는다. 대신 내가 움직여야 하는 방향만 남긴다.*\n세아의 우산 끝에서 빗물이 규칙적으로 떨어졌다. 셋을 세자 아이리가 입을 열었다.",
+      "choices": [],
+      "next_scene": "ch02_airi_warning",
+      "background": "locker_corridor",
+      "character": "airi_resolve",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_normal",
+          "position": "left"
+        }
+      ]
     },
     {
       "id": "ch02_airi_warning",
@@ -4115,7 +4442,7 @@
         },
         {
           "id": "airi_defend_sea",
-          "text": "\"세아는 그런 애가 아니야\" 라고 말한다",
+          "text": "세아를 감싼다",
           "delta": {
             "love": 14,
             "yandere": 14,
@@ -4151,43 +4478,71 @@
       ],
       "unlock_cg": "cg_airi_warning",
       "cg": "cg_airi_warning",
-      "decision_title": "아이리의 젖은 손목"
+      "decision_title": "아이리의 젖은 손목",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_locker_evidence",
+          "position": "left"
+        }
+      ]
     },
     {
       "id": "airi_diary_detail_aftermath",
       "speaker": "하루",
       "text": "아이리는 말하는 동안 한 번도 감정적으로 흔들리지 않았다. 그게 더 무서웠다.\n사진, 날짜, 기록. 세아가 내 주변 인물들을 얼마나 오래 관찰했는지.\n「믿을 수 없어.」 나는 말했다. 아이리는 고개를 끄덕였다. 「나도 처음엔 그랬어.」\n아이리는 사진 한 장을 더 꺼냈다. 세아가 내 집 앞에 서 있는 사진이었다. 비 오는 날 밤.\n\n「이날 너 집에 있었어?」 아이리가 물었다.\n나는 대답하기 전에 날짜를 확인했다. 있었다. 아무것도 몰랐던 채로, 같은 지붕 아래 잠들어 있었다.",
       "choices": [],
-      "next_scene": "ch02aa_shoe_locker_surveillance",
+      "next_scene": "ch02ab_counseling_recording_room",
       "background": "student_council_interrogation_room",
       "character": "airi_locker_evidence",
       "music": "airi_theme",
       "effects": [],
-      "cg": "cg_airi_warning"
+      "cg": "cg_airi_warning",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_locker_evidence",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "airi_defend_sea_aftermath",
       "speaker": "하루",
       "text": "「세아는 그런 애가 아니야.」 내 목소리가 생각보다 컸다. 교실 창문이 빗소리로 울렸다.\n아이리는 잠시 나를 보다가 사진들을 천천히 덮었다. 「그래.」 더 설득하지 않았다. 반박도 없었다. 그 짧은 대답이 오히려 불편했다. 포기한 것 같지 않았다. 기다리는 것 같았다.\n아이리는 사진 묶음 위에 빈 봉투를 올려놓았다. 봉투에는 아무것도 적혀 있지 않았다.\n「나중에 필요하면 가져가.」\n집으로 돌아오는 길, 세아의 메시지가 와 있었다. '아이리가 뭐라고 했어? 괜찮아?' 창문에 비가 굵게 내렸다. *세아가 어떻게 알았는지 물어보지 못했다. 묻지 않는 것이 더 편했기 때문이었다. 그 편함이 이미 이상하다는 것을, 나는 알고 있었다.*",
       "choices": [],
-      "next_scene": "ch02aa_shoe_locker_surveillance",
+      "next_scene": "ch02ab_counseling_recording_room",
       "background": "student_council_interrogation_room",
       "character": "airi_locker_evidence",
       "music": "airi_theme",
       "effects": [],
-      "cg": "cg_airi_warning"
+      "cg": "cg_airi_warning",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_locker_evidence",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "airi_stay_aftermath",
       "speaker": "하루",
       "text": "아이리 옆에 남는다는 것이 어떤 의미인지 나도 몰랐다. 그냥 나갈 수 없었다.\n아이리는 한참 창문을 보다가 말했다. 「고마워.」 그 말이 고맙다는 건지 미안하다는 건지 구분되지 않았다. 나도 아무 말도 하지 않았다. 우리가 말하지 않은 것들이 교실 안에 쌓여 있는 것 같았다. 아이리가 증거를 왜 모았는지. 내가 왜 남았는지. 세아에게 이것을 말해야 하는지.\n복도 끝에서 세아가 교실 쪽으로 걸어오는 발소리가 들렸다. 아이리가 전등을 껐다. 우리는 어둠 속에서 서로의 숨소리를 들으며 그 발소리가 멀어지기를 기다렸다. *세아가 문 앞에서 멈췄다가 지나갔다. 그 2초가 가장 길었다.*",
       "choices": [],
-      "next_scene": "ch02aa_shoe_locker_surveillance",
+      "next_scene": "ch02ab_counseling_recording_room",
       "background": "student_council_interrogation_room",
       "character": "airi_wet_envelope",
       "music": "airi_theme",
       "effects": [],
-      "cg": "cg_airi_warning"
+      "cg": "cg_airi_warning",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_wet_envelope",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch02aa_shoe_locker_surveillance",
@@ -4202,7 +4557,14 @@
         "event_cg"
       ],
       "unlock_cg": "cg_locker_charm_camera",
-      "choices": []
+      "choices": [],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_locker_evidence",
+          "position": "left"
+        }
+      ]
     },
     {
       "id": "ch02ab_counseling_recording_room",
@@ -4217,7 +4579,14 @@
         "event_cg"
       ],
       "unlock_cg": "cg_counseling_cassette_thread",
-      "choices": []
+      "choices": [],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_charm_camera",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch02ac_rooftop_antenna_shrine",
@@ -4232,7 +4601,14 @@
         "event_cg"
       ],
       "unlock_cg": "cg_antenna_signal_charm",
-      "choices": []
+      "choices": [],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_normal",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch02b_after_school_call",
@@ -4244,7 +4620,14 @@
       "character": "haru_reflection",
       "music": "phone_rain",
       "effects": [],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_midnight",
+          "position": "left"
+        }
+      ]
     },
     {
       "id": "ch02c_mineral_aquarium",
@@ -4259,7 +4642,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_tender_close",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch02d_school_infirmary",
@@ -4274,7 +4664,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "clinic_nurse_ai",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch02e_midnight_laundromat",
@@ -4289,7 +4686,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_midnight",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch02f_pedestrian_skybridge",
@@ -4304,7 +4708,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_skybridge",
+          "position": "left"
+        }
+      ]
     },
     {
       "id": "ch02g_hospital_rooftop",
@@ -4319,7 +4730,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_hospital_roof",
+          "position": "left"
+        }
+      ]
     },
     {
       "id": "ch02h_rain_clinic_records",
@@ -4334,7 +4752,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_clinic_vial",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch02i_clinical_observation_ward",
@@ -4349,7 +4774,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_emotion_waveform_chart"
+      "unlock_cg": "cg_emotion_waveform_chart",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_clinic_consent",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch02j_rain_sample_vault",
@@ -4364,14 +4796,21 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_rain_sample_vials"
+      "unlock_cg": "cg_rain_sample_vials",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_clinic_vial",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch02k_interrogation_room",
       "speaker": "유카",
       "text": "학생회 조사실의 형광등은 비가 세질수록 어두워졌다. 유카는 테이블에 증거를 하나씩 놓았다. 사진, 로그, 녹음 파일.\n마지막으로 유카가 놓은 것은 영수증 크기의 종이 한 장이었다. 구겨진 것을 펴서 코팅한 것이었다. 나는 가까이 보았다. 내 서명이었다. 내 글씨가 아니었지만 내 이름이었다. 날짜는 세아가 전학 오기 전이었다.\n「이게 마지막이야.」 유카는 자리에 앉지 않았다. 「이 서명이 어디서 나왔는지, 누가 썼는지, 왜 이게 세아의 파일에 있는지 — 나도 아직 몰라.」\n「하루, 이게 전부야.」 유카는 의자를 내 쪽으로 당겼다. 「앉아.」 창밖의 비가 굵어졌다. 형광등이 한 번 깜박였다.",
       "choices": [],
-      "next_scene": "ch03_yuka_investigation",
+      "next_scene": "ch02z_a_cafe_rain_window",
       "background": "student_council_interrogation_room",
       "character": "yuka_postmark_scanner",
       "cg": "cg_interrogation_table_ribbon",
@@ -4379,7 +4818,109 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_interrogation_table_ribbon"
+      "unlock_cg": "cg_interrogation_table_ribbon",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_lab_coat",
+          "position": "right"
+        }
+      ]
+    },
+    {
+      "id": "ch02z_a_cafe_rain_window",
+      "speaker": "하루",
+      "text": "학교 앞 카페 창가에 앉았다. 비가 유리를 타고 내렸다. 아이리의 사진들이 머릿속에서 지워지지 않았다.\n카페 단말이 주문을 물었다. 대답하지 못했다. 옆 테이블에 붉은 우산이 놓여 있었다. 주인은 없었다.\n「주문을 다시 말씀해 주세요.」 단말의 목소리가 너무 밝았다.\n*그 우산을 보지 않으려 했지만, 계속 시선이 갔다. 비어 있는 자리에도 세아의 체온이 남아 있는 것 같았다.*\n창밖 사람들은 모두 같은 속도로 지나갔다. 이 도시에서는 우연도 줄을 맞춰 걷는 것 같았다.",
+      "choices": [],
+      "next_scene": "ch02z_b_sea_text_comes",
+      "background": "rain_street",
+      "character": "sea_red_ticket",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_red_ticket",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch02z_b_sea_text_comes",
+      "speaker": "하루",
+      "text": "핸드폰이 진동했다. 세아였다.\n「지금 어디야?」\n창밖 우산 수가 늘었다. 전부 붉었다. 위치를 보내면 5분 안에 나타날 것이다. 그것을 이미 알고 있다.\n답장하지 않기로 했다. 창문의 빗물을 손가락으로 따라갔다.\n*답하지 않는 것도 대답이다. 하지만 세아에게 침묵은 길을 잃은 신호가 아니라, 찾아오라는 표시처럼 읽힐 것 같았다.*\n10분 후 카페 문이 열렸다. 빗방울이 바닥에 작은 문장처럼 찍혔다.",
+      "choices": [],
+      "next_scene": "ch02z_c_yuka_passes_window",
+      "background": "rain_street",
+      "character": "sea_phone_booth",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_phone_booth",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch02z_c_yuka_passes_window",
+      "speaker": "유카",
+      "text": "세아가 아니었다. 유카였다. 유카는 나를 보고도 놀라지 않았다. 여기 있을 것을 알았다는 눈이었다.\n맞은편에 앉으면서 봉투를 꺼냈다. 두꺼운 것이었다.\n「아이리가 보여 준 것보다 많아.」 유카는 컵을 치우고 봉투를 테이블 중앙에 맞췄다. 실험 도구를 놓는 손놀림이었다.\n*그 한 마디로 아이리가 유카와 이미 연결되어 있다는 걸 알았다. 나는 혼자 빠져나온 게 아니었다.*\n유카의 안경에 창밖의 붉은 우산들이 작게 비쳤다. 숫자를 세는 것처럼 눈동자가 움직였다.",
+      "choices": [],
+      "next_scene": "ch02z_d_evidence_weight",
+      "background": "rain_street",
+      "character": "yuka_normal",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_glasses_off",
+          "position": "right"
+        }
+      ]
+    },
+    {
+      "id": "ch02z_d_evidence_weight",
+      "speaker": "유카",
+      "text": "유카는 봉투를 테이블 위에 밀지 않았다. 그냥 거기 있었다.\n「지금 당장 열 필요는 없어. 하지만 이 무게가 뭔지는 알아야 해.」\n봉투를 집었다. 무거웠다. 사진인지 서류인지, 아직 모른다. 유카는 내 손목의 떨림을 보고도 아무 말도 하지 않았다.\n*열기 전에 내가 알고 있는 세아의 얼굴을 한 번 더 생각했다. 웃는 얼굴, 비를 막아 주던 얼굴, 내 이름을 정확히 부르던 얼굴.*\n봉투 가장자리에서 약한 약품 냄새가 났다. 학교와 병원 사이의 냄새였다.",
+      "choices": [],
+      "next_scene": "ch02z_e_cafe_back_exit",
+      "background": "rain_street",
+      "character": "yuka_lab_coat",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_normal",
+          "position": "right"
+        }
+      ]
+    },
+    {
+      "id": "ch02z_e_cafe_back_exit",
+      "speaker": "하루",
+      "text": "유카는 정문으로 나가지 않았다. 카페 뒤편의 좁은 문을 열었다. 비상구라기보다 누군가 오래 숨겨 둔 통로처럼 보였다.\n「밖에 세아가 있어.」 유카는 확인한 사실처럼 말했다. 감정이 없어서 거짓말처럼 들리지 않았다.\n문틈으로 빗소리가 들어왔다. 정문 쪽에서는 붉은 우산이 천천히 가까워지고 있었다.\n*세아가 나를 찾는다는 사실은 달콤했다. 세아가 반드시 찾는다는 사실은 무서웠다.*\n나는 봉투를 품 안에 넣고 유카를 따라나갔다. 이제 확인하지 않으면, 확인당할 뿐이었다.",
+      "choices": [],
+      "next_scene": "ch03_yuka_investigation",
+      "background": "rain_street",
+      "character": "yuka_glasses_off",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_glasses_off",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch03_yuka_investigation",
@@ -4439,7 +4980,14 @@
       ],
       "unlock_cg": "cg_yuka_archive",
       "cg": "cg_yuka_archive",
-      "decision_title": "사건 파일을 열 것인가"
+      "decision_title": "사건 파일을 열 것인가",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_lab_coat",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "yuka_tell_airi_aftermath",
@@ -4451,7 +4999,14 @@
       "character": "yuka_normal",
       "music": "archive_pulse",
       "effects": [],
-      "cg": "cg_yuka_archive"
+      "cg": "cg_yuka_archive",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_normal",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "yuka_hide_aftermath",
@@ -4463,7 +5018,14 @@
       "character": "yuka_normal",
       "music": "archive_pulse",
       "effects": [],
-      "cg": "cg_yuka_archive"
+      "cg": "cg_yuka_archive",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_normal",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "yuka_cooperate_aftermath",
@@ -4475,7 +5037,14 @@
       "character": "yuka_normal",
       "music": "archive_pulse",
       "effects": [],
-      "cg": "cg_yuka_archive"
+      "cg": "cg_yuka_archive",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_normal",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch03b_shadow_underpass",
@@ -4512,7 +5081,7 @@
         },
         {
           "id": "shadow_ask_how_to_keep",
-          "text": "\"둘만 남는 법이 있어?\" 라고 묻는다",
+          "text": "둘만 남는 법을 묻는다",
           "delta": {
             "love": 8,
             "yandere": 25,
@@ -4563,7 +5132,14 @@
       ],
       "unlock_cg": "cg_shadow_underpass",
       "cg": "cg_shadow_underpass",
-      "decision_title": "검은 우산의 거래"
+      "decision_title": "검은 우산의 거래",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "shadow_kurogasa",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "shadow_listen_recorder_aftermath",
@@ -4575,7 +5151,14 @@
       "character": "shadow_kurogasa",
       "music": "underpass_recorder",
       "effects": [],
-      "cg": "cg_shadow_underpass"
+      "cg": "cg_shadow_underpass",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "shadow_kurogasa",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "shadow_reject_aftermath",
@@ -4587,7 +5170,14 @@
       "character": "shadow_kurogasa",
       "music": "underpass_recorder",
       "effects": [],
-      "cg": "cg_shadow_underpass"
+      "cg": "cg_shadow_underpass",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "shadow_kurogasa",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "shadow_ask_how_to_keep_aftermath",
@@ -4599,7 +5189,14 @@
       "character": "shadow_kurogasa",
       "music": "underpass_recorder",
       "effects": [],
-      "cg": "cg_shadow_underpass"
+      "cg": "cg_shadow_underpass",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "shadow_kurogasa",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "shadow_report_yuka_aftermath",
@@ -4611,7 +5208,14 @@
       "character": "shadow_kurogasa",
       "music": "underpass_recorder",
       "effects": [],
-      "cg": "cg_shadow_underpass"
+      "cg": "cg_shadow_underpass",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "shadow_kurogasa",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "shadow_leave_airi_signal_aftermath",
@@ -4623,7 +5227,14 @@
       "character": "shadow_kurogasa",
       "music": "underpass_recorder",
       "effects": [],
-      "cg": "cg_shadow_underpass"
+      "cg": "cg_shadow_underpass",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "shadow_kurogasa",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch03ba_black_umbrella_tollbooth",
@@ -4638,7 +5249,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_black_umbrella_receipt"
+      "unlock_cg": "cg_black_umbrella_receipt",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "shadow_receipt_ledger",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch03bb_forgotten_name_registry",
@@ -4653,7 +5271,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_forgotten_name_card"
+      "unlock_cg": "cg_forgotten_name_card",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_name_card",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch03bc_rain_pawnshop_counter",
@@ -4668,7 +5293,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_pawnshop_red_key"
+      "unlock_cg": "cg_pawnshop_red_key",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "shadow_kurogasa",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch03c_library_margins",
@@ -4683,12 +5315,19 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "shadow_recorder_close",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch03d_memory_hallway",
       "speaker": "세아",
-      "text": "지하 통로 벽에는 장면들이 재생됐다. 빗물처럼 흘러내렸다. 내가 겪지 않은 장면들이었다.\n세아가 내 앞을 걸으며 말했다. \"이 통로가 좋아. 다음에 무슨 일이 일어날지 알 수 있거든.\" 나는 벽을 만졌다. 차가웠다. 벽 속의 장면에서 세아가 울고 있었다. 지금의 세아는 웃고 있었다.\n그 다음 장면이 멈췄다. 나와 세아가 이 통로에 서 있었다. 지금 이 순간 그대로였다. 하지만 그 장면 속의 나는 뒤를 돌아보았다. 지금의 나는 아직 돌아보지 않았다. *일어나지 않은 일이 벽에 이미 새겨져 있었다.*",
+      "text": "지하 통로 벽에는 장면들이 재생됐다. 빗물처럼 흘러내렸다. 내가 겪지 않은 장면들이었다.\n세아가 내 앞을 걸으며 말했다. \"이 통로가 좋아. 다음에 무슨 일이 일어날지 알 수 있거든.\" 나는 벽을 만졌다. 차가웠다. 벽 속의 장면에서 세아가 울고 있었다. 지금의 세아는 웃고 있었다.\n그 다음 기억이 멈췄다. 나와 세아가 이 통로에 서 있었다. 지금 이 순간 그대로였다. 하지만 그 장면 속의 나는 뒤를 돌아보았다. 지금의 나는 아직 돌아보지 않았다. *일어나지 않은 일이 벽에 이미 새겨져 있었다.*",
       "choices": [],
       "next_scene": "ch03e_observation_deck",
       "background": "memory_hallway",
@@ -4698,7 +5337,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_normal",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch03e_observation_deck",
@@ -4713,7 +5359,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_rainveil_evidence_map"
+      "unlock_cg": "cg_rainveil_evidence_map",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_weather_terminal",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch03ea_rainveil_evidence_map",
@@ -4728,7 +5381,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_rainveil_evidence_map"
+      "unlock_cg": "cg_rainveil_evidence_map",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_normal",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch03f_rain_history_museum",
@@ -4743,7 +5403,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_museum",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch03g_archive_basement",
@@ -4758,7 +5425,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_archive_lantern",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch03h_weather_control_room",
@@ -4774,7 +5448,14 @@
         "event_cg",
         "screen_shake"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_weather_terminal",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch03ha_emotion_weather_bureau",
@@ -4789,7 +5470,14 @@
         "event_cg"
       ],
       "unlock_cg": "cg_emotion_barometer",
-      "choices": []
+      "choices": [],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "rain_ai_terminal",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch03hb_umbrella_wash_laundromat",
@@ -4804,7 +5492,14 @@
         "event_cg"
       ],
       "unlock_cg": "cg_umbrella_wash_residue",
-      "choices": []
+      "choices": [],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_cablecar_token",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch03hc_aerial_cablecar_transfer",
@@ -4819,7 +5514,14 @@
         "event_cg"
       ],
       "unlock_cg": "cg_cablecar_token_thread",
-      "choices": []
+      "choices": [],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_cablecar_token",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch03i_kimono_repair_atelier",
@@ -4834,7 +5536,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_red_thread_spool"
+      "unlock_cg": "cg_red_thread_spool",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "clinic_nurse_ai",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch03j_neon_koi_market",
@@ -4849,7 +5558,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_mineral_koi_scale"
+      "unlock_cg": "cg_mineral_koi_scale",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_letter_smile",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch03k_rain_mineral_mint",
@@ -4864,14 +5580,21 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_watermark_letter"
+      "unlock_cg": "cg_watermark_letter",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_lab_coat",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch03l_roof_access_stairwell",
       "speaker": "하루",
       "text": "옥상 계단참 난간에 붉은 실이 한 바퀴씩 감겨 있었다. 계단마다. 올라갈수록 빗소리가 가까워졌다.\n휴대폰에 세아의 메시지가 쌓였다. '지금 어디야', '올라가고 있어?', '기다리고 있어.' 실이 감긴 난간을 잡고 계단을 오르면서, 나는 이 실이 언제부터 여기 있었을지 생각했다.\n5층 계단참에서 진동이 왔다. 세아가 아니었다. 아이리였다. '옥상 가지 마. 지금 바로 내려와.' 짧고 단호한 메시지였다. 나는 두 메시지를 번갈아 보았다. 위에서 세아의 목소리가 들렸다. \"하루 군, 거기 있어?\" 난간의 붉은 실이 손바닥에 닿았다.",
       "choices": [],
-      "next_scene": "ch04_rooftop_confession",
+      "next_scene": "ch03z_a_rain_alley_approach",
       "background": "roof_access_stairwell",
       "character": "sea_rooftop_thread",
       "cg": "cg_rooftop_red_thread",
@@ -4879,7 +5602,90 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_rooftop_thread",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch03z_a_rain_alley_approach",
+      "speaker": "하루",
+      "text": "계단참을 올라갈수록 빗소리가 가까워졌다. 8층. 9층. 옥상 문. 잠겨 있어야 할 문이 열려 있었다.\n세아가 있을 것이다. 올라가면, 무언가가 달라질 것이다.\n「돌아가도 돼.」 아래층에서 아이리의 목소리가 들린 것 같았다. 실제로는 아무도 없었다.\n*돌아간다는 말은 언제나 늦게 도착한다. 이미 발은 위를 향하고, 손은 난간을 잡고 있었다.*\n한 층 아래 계단에서 발이 멈췄다. 잠시 서 있었다. 빗소리만 들렸다.",
+      "choices": [],
+      "next_scene": "ch03z_b_sea_calls_from_above",
+      "background": "school_rooftop",
+      "character": "sea_rooftop_thread",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_rooftop_thread",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch03z_b_sea_calls_from_above",
+      "speaker": "세아",
+      "text": "「하루 군.」\n위에서 세아의 목소리가 들렸다. 부른 게 아니었다. 그냥 이름을 말했다. 혼자서. 하지만 내가 들었다. 그 사실을 세아가 알고 있었다.\n문고리에 손을 얹자, 빗물이 손등을 타고 흘렀다.\n「왔네.」 세아는 확인하듯 말했다. 기다림 끝에 받은 대답이 아니라, 이미 적어 둔 문장을 읽는 사람 같았다.\n*내 이름이 문 너머에서 먼저 기다리고 있었다. 나는 그 이름을 따라가고 있었다.*\n문을 열었다. 빗속에 세아가 서 있었다. 우산 없이.",
+      "choices": [],
+      "next_scene": "ch03z_c_rooftop_before_choice",
+      "background": "school_rooftop",
+      "character": "sea_rooftop_thread",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_normal",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch03z_c_rooftop_before_choice",
+      "speaker": "세아",
+      "text": "세아는 난간에 기대지 않았다. 문 쪽을 보고 있었다. 처음부터 나를 기다리고 있었다. 교복이 젖어 있었다. 언제부터 있었는지.\n「내가 무서운 게 많아.」 세아가 말했다. 「근데 하루 군은 안 무서워.」\n말끝이 비에 젖어 부드러워졌다. 그래서 더 위험했다. 세아의 손목에는 붉은 실이 감겨 있었다.\n*'무섭지 않다'는 말이 이렇게 무겁게 들린 건 처음이었다. 무섭지 않다는 건, 끝까지 다가올 수 있다는 뜻이었다.*\n비에 젖은 붉은 실이 더 선명해졌다. 세아는 내 대답보다 내 침묵을 먼저 믿고 있었다.",
+      "choices": [],
+      "next_scene": "ch03z_d_rooftop_last_step",
+      "background": "school_rooftop",
+      "character": "sea_rooftop_thread",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_breakdown",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch03z_d_rooftop_last_step",
+      "speaker": "하루",
+      "text": "옥상 바닥의 물웅덩이에 세아와 내가 함께 비쳤다. 바람이 불 때마다 두 사람의 윤곽이 겹쳤다가 떨어졌다.\n「한 걸음만 더 오면 돼.」 세아가 말했다. 명령처럼 들리지 않았다. 부탁처럼 들리지도 않았다.\n나는 한 걸음을 재었다. 그 정도 거리라면 도망칠 수도 있고, 손을 잡을 수도 있었다.\n*도망칠 수 있다는 가능성이 남아 있는데도, 나는 손을 잡는 쪽을 먼저 상상했다.*\n세아가 웃었다. 아주 살짝. 그 웃음이 말보다 먼저 내 앞에 놓였다.",
+      "choices": [],
+      "next_scene": "ch04_rooftop_confession",
+      "background": "school_rooftop",
+      "character": "sea_rooftop_thread",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_rooftop_thread",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch04_rooftop_confession",
@@ -4930,7 +5736,7 @@
         },
         {
           "id": "rooftop_ask_shadow",
-          "text": "\"세아는 어디서 왔어?\" 라고 묻는다",
+          "text": "세아의 기원을 묻는다",
           "delta": {
             "love": 0,
             "yandere": 3,
@@ -4953,7 +5759,14 @@
       ],
       "unlock_cg": "cg_rooftop_red_thread",
       "cg": "cg_rooftop_red_thread",
-      "decision_title": "손을 잡을 것인가, 선을 그을 것인가"
+      "decision_title": "손을 잡을 것인가, 선을 그을 것인가",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_rooftop_thread",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "rooftop_boundary_aftermath",
@@ -4965,7 +5778,14 @@
       "character": "sea_rooftop_thread",
       "music": "rooftop_rain",
       "effects": [],
-      "cg": "cg_rooftop_red_thread"
+      "cg": "cg_rooftop_red_thread",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_rooftop_thread",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "rooftop_hold_hand_aftermath",
@@ -4977,7 +5797,14 @@
       "character": "sea_rooftop_thread",
       "music": "rooftop_rain",
       "effects": [],
-      "cg": "cg_rooftop_red_thread"
+      "cg": "cg_rooftop_red_thread",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_rooftop_thread",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "rooftop_airi_call_aftermath",
@@ -4989,7 +5816,14 @@
       "character": "sea_rooftop_thread",
       "music": "rooftop_rain",
       "effects": [],
-      "cg": "cg_rooftop_red_thread"
+      "cg": "cg_rooftop_red_thread",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_rooftop_thread",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "rooftop_ask_shadow_aftermath",
@@ -5001,7 +5835,14 @@
       "character": "sea_rooftop_thread",
       "music": "rooftop_rain",
       "effects": [],
-      "cg": "cg_rooftop_red_thread"
+      "cg": "cg_rooftop_red_thread",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_rooftop_thread",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch04aa_rooftop_rain_gauge_deck",
@@ -5016,7 +5857,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_rooftop_rain_gauge"
+      "unlock_cg": "cg_rooftop_rain_gauge",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_rain_gauge_vial",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch04ab_abandoned_indoor_pool",
@@ -5031,7 +5879,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_pool_red_whistle"
+      "unlock_cg": "cg_pool_red_whistle",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_normal",
+          "position": "left"
+        }
+      ]
     },
     {
       "id": "ch04ac_home_ec_tatami_room",
@@ -5046,7 +5901,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_tatami_red_stitch"
+      "unlock_cg": "cg_tatami_red_stitch",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_normal",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch04b_letter_locker",
@@ -5061,7 +5923,14 @@
         "event_cg"
       ],
       "unlock_cg": "cg_letter_locker",
-      "cg": "cg_letter_locker"
+      "cg": "cg_letter_locker",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_shadow_smile",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch04ba_letterpress_archive",
@@ -5076,7 +5945,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_red_envelope_scanner"
+      "unlock_cg": "cg_red_envelope_scanner",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_postmark_scanner",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch04bb_rain_scent_stationery_lab",
@@ -5091,7 +5967,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_postmark_route_map"
+      "unlock_cg": "cg_postmark_route_map",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_resolve",
+          "position": "left"
+        }
+      ]
     },
     {
       "id": "ch04bc_shrine_knot_printshop",
@@ -5106,7 +5989,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_shrine_knot_fibers"
+      "unlock_cg": "cg_shrine_knot_fibers",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_rooftop_thread",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch04c_rain_shrine",
@@ -5121,7 +6011,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_rooftop_thread",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch04d_analog_photo_booth",
@@ -5136,7 +6033,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_letter_smile",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch04da_photo_booth_darkroom",
@@ -5151,12 +6055,19 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_red_fourth_photo"
+      "unlock_cg": "cg_red_fourth_photo",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "shadow_recorder_close",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch04db_negative_sorting_arcade",
       "speaker": "하루",
-      "text": "네거티브 분류 오락실의 낡은 모니터에 숫자들이 떠 있었다. 가능한 미래의 점수였다.\n세아 곁에 남는 선택지 쪽에서 숫자가 조용히 올라갔다. 아이리에게 달려가는 쪽에서는 경고음이 반복됐다. 게임이 아니었다. 하지만 동전을 넣어야만 다음 화면이 보였다. 나는 주머니에 손을 넣었다.\n가장 낮은 점수의 선택지는 '아무것도 하지 않는다'였다. 0점이었다. 하지만 경고음이 없었다. 다른 선택지들이 모두 어떤 결과를 향해 수렴할 때, 그 선택지만 화면 밖으로 이어졌다. 동전을 넣지 않아도 보였다. *0점이 가장 자유로운 수였다.*",
+      "text": "네거티브 분류 오락실의 낡은 모니터에 숫자들이 떠 있었다. 가능한 미래의 점수였다.\n세아 곁에 남는 길에서 숫자가 아주 천천히 조용히 올라갔다. 아이리에게 달려가는 쪽에서는 경고음이 반복됐다. 게임이 아니었다. 하지만 동전을 넣어야만 다음 화면이 보였다. 나는 주머니에 손을 넣었다.\n가장 낮은 점수의 길은 '아무것도 하지 않는다'였다. 0점이었다. 하지만 경고음이 없었다. 다른 모든 길들이 모두 어떤 결과를 향해 수렴할 때, 그 길만 화면 밖으로 이어졌다. 동전을 넣지 않아도 보였다. *0점이 가장 자유로운 수였다.*",
       "choices": [],
       "next_scene": "ch04dc_teacup_display_corridor",
       "background": "negative_sorting_arcade",
@@ -5166,7 +6077,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_negative_route_grid"
+      "unlock_cg": "cg_negative_route_grid",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_torn_photo",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch04dc_teacup_display_corridor",
@@ -5181,7 +6099,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_teacup_missing_frame"
+      "unlock_cg": "cg_teacup_missing_frame",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_calm_sad",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch04e_old_teahouse",
@@ -5196,7 +6121,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_teahouse",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch04f_phone_booth_alley",
@@ -5211,7 +6143,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_normal",
+          "position": "left"
+        }
+      ]
     },
     {
       "id": "ch04g_mirror_bridge",
@@ -5226,7 +6165,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_normal",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch04h_ferry_pier",
@@ -5241,12 +6187,19 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_ferry_pier",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch04i_confession_booth",
       "speaker": "세아",
-      "text": "고해 부스 골목에서 세아가 카세트를 내밀었다. 낡은 테이프였다.\n\"들어도 돼. 아니면 안 들어도 돼.\" 케이스에 글씨가 쓰여 있었다. 세아의 필체. '내가 나쁜 애면 버려도 돼.' 나는 카세트를 받았다. 세아는 뒤돌아섰다. 어깨가 조금 긴장되어 있었다.\n나는 골목 끝의 낡은 카세트 플레이어를 찾아 테이프를 넣었다. 재생 버튼에 손을 올렸다. 눌렀다. 세아의 목소리가 나왔다. 노래가 아니었다. 그냥 말이었다. 아주 조용하게. \"나 무서워?\" 그것만 반복됐다. 30초 간격으로. 테이프가 끝날 때까지. *나는 끝까지 들었다. 그리고 세아에게 돌아갔다.*",
+      "text": "고해 부스 골목에서 세아가 카세트를 내밀었다. 낡은 테이프였다.\n\"들어도 돼. 아니면 안 들어도 돼.\" 케이스에 글씨가 쓰여 있었다. 세아의 필체. '내가 나쁜 애면 버려도 돼.' 나는 카세트를 받았다. 세아는 뒤돌아섰다. 어깨가 조금 긴장되어 있었다.\n나는 골목 끝의 낡은 작은 카세트 재생기를 찾아 테이프를 넣었다. 재생 버튼에 손을 올렸다. 눌렀다. 세아의 목소리가 나왔다. 노래가 아니었다. 그냥 말이었다. 아주 조용하게. \"나 무서워?\" 그것만 반복됐다. 30초 간격으로. 테이프가 끝날 때까지. *나는 끝까지 들었다. 그리고 세아에게 돌아갔다.*",
       "choices": [],
       "next_scene": "ch04j_submerged_cinema",
       "background": "confession_booth_alley",
@@ -5256,7 +6209,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_confession_cassette"
+      "unlock_cg": "cg_confession_cassette",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_confession_cassette",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch04j_submerged_cinema",
@@ -5271,7 +6231,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_submerged_cinema_memory"
+      "unlock_cg": "cg_submerged_cinema_memory",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_confession_note",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch04k_dead_letter_sorting_room",
@@ -5286,12 +6253,19 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_dead_letter_bundle"
+      "unlock_cg": "cg_dead_letter_bundle",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_archive_lantern",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch04l_microfilm_reservoir_archive",
       "speaker": "유카",
-      "text": "저수지 마이크로필름 기록에 실험 보고서가 있었다. 실험체 S.\n유카는 필름을 넘겼다. '감정 고착 증상. 반복 주기 발생. 비가 많은 주말마다 특정 대상을 반복 탐색.' 유카가 멈췄다. \"세아가 피해자일 수도 있어.\" 내가 먼저 하려던 말이었다.\n실험 S는 '감정 기상 연동 프로토콜'의 일환이었다. 보고서 후반부에 주석이 있었다. '실험체 S는 대상 특정 후 반복 접근 시도. 대상 이탈 시 강수량 급증. 실험체 S의 감정이 도시 기상에 직접 연동됨을 확인. 실험 목적 달성.' 유카가 손으로 그 줄을 가렸다. \"이건 내가 먼저 읽었어야 했어.\"",
+      "text": "저수지 마이크로필름 기록에 실험 보고서가 있었다. 실험체 S.\n유카는 필름을 넘겼다. '감정 고착 증상. 반복 주기 발생. 비가 많은 주말마다 특정 대상을 반복 탐색.' 유카가 멈췄다. \"세아가 피해자일 수도 있어.\" 내가 먼저 하려던 말이었다.\n실험 S는 '감정 기상 연동 프로토콜'의 일환이었다. 보고서 젖은 뒤쪽에 주석이 있었다. '실험체 S는 대상 특정 후 반복 접근 시도. 대상 이탈 시 강수량 급증. 실험체 S의 감정이 도시 기상에 직접 연동됨을 확인. 실험 목적 달성.' 유카가 손으로 그 줄을 가렸다. \"이건 내가 먼저 읽었어야 했어.\"",
       "choices": [],
       "next_scene": "ch04m_rain_switchboard_exchange",
       "background": "microfilm_reservoir_archive",
@@ -5301,7 +6275,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_microfilm_rain_records"
+      "unlock_cg": "cg_microfilm_rain_records",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_rain_orchid_lab",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch04m_rain_switchboard_exchange",
@@ -5316,14 +6297,21 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_switchboard_red_cable"
+      "unlock_cg": "cg_switchboard_red_cable",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_switchboard_receiver",
+          "position": "left"
+        }
+      ]
     },
     {
       "id": "ch04n_automaton_doll_repair",
       "speaker": "그림자",
       "text": "자동인형 수리소에서 그림자는 도자기 손가락을 만지작거렸다. 인형들이 줄지어 서 있었다.\n\"세아는 인형이 아니야.\" 그림자가 먼저 말했다. 내가 물으려던 것을 알고 있었다. \"실험이 그 애를 그렇게 만들려고 했지만.\" 손가락이 부러졌다. 그림자는 개의치 않았다.\n\"차이가 뭔데.\" 내가 물었다. 그림자는 부러진 손가락을 내려다보았다. \"인형은 원래부터 움직이도록 만들어진 거야. 세아는 스스로 움직이기로 선택했어. 그 선택이 어떤 방향인지와는 별개로.\" 그림자는 손가락 조각을 조심스럽게 책상 위에 놓았다. \"그게 더 무서운 이유이기도 해.\"",
       "choices": [],
-      "next_scene": "ch05_rain_archive",
+      "next_scene": "ch04z_a_night_before_archive",
       "background": "automaton_doll_repair_studio",
       "character": "shadow_doll_thread",
       "cg": "cg_doll_hand_red_thread",
@@ -5331,7 +6319,109 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_doll_hand_red_thread"
+      "unlock_cg": "cg_doll_hand_red_thread",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "shadow_doll_thread",
+          "position": "right"
+        }
+      ]
+    },
+    {
+      "id": "ch04z_a_night_before_archive",
+      "speaker": "하루",
+      "text": "다음 날 아침이 왔다는 것을 비로 알았다. 전날 밤 무엇을 했는지 기억이 선명하지 않았다.\n세아와 시간을 보냈다. 그것만 남아 있었다. 언제 헤어졌는지, 어떻게 집에 왔는지.\n「괜찮아?」 아이리의 메시지가 화면 위에 떠 있었다. 같은 문장이 일곱 번이었다. 유카에게서는 하나.\n*걱정받고 있다는 사실보다, 걱정을 확인할 수 없는 시간이 있었다는 사실이 더 무서웠다.*\n창문 밖은 여전히 토요일처럼 어두웠다. 월요일인지 화요일인지, 비는 알려 주지 않았다.",
+      "choices": [],
+      "next_scene": "ch04z_b_yuka_call",
+      "background": "rain_street",
+      "character": "airi_midnight",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_midnight",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch04z_b_yuka_call",
+      "speaker": "유카",
+      "text": "유카의 메시지는 짧았다. '지하 3층. 기록 보관소. 혼자 와.'\n아이리에게는 보이지 않는 곳. 세아에게는 더더욱. 학교 지하 3층이 있다는 것을 오늘 처음 알았다.\n「엘리베이터를 타. B3.」 통화가 연결되자 유카는 설명보다 절차를 먼저 말했다.\n*있었는지 없었는지가 아니라, 내가 알게 된 것이 오늘이라는 것. Rainveil은 모르는 동안에도 계속 아래로 내려가고 있었다.*\n엘리베이터 B3 버튼을 눌렀다. 버튼은 이미 눌려 있었다. 누군가 먼저 내려간 흔적처럼 불이 켜져 있었다.",
+      "choices": [],
+      "next_scene": "ch04z_c_underground_corridor",
+      "background": "classroom_dusk",
+      "character": "yuka_elevator_panel",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_lab_coat",
+          "position": "right"
+        }
+      ]
+    },
+    {
+      "id": "ch04z_c_underground_corridor",
+      "speaker": "유카",
+      "text": "지하 3층 복도는 빗소리가 들리지 않았다. 처음으로 비가 없는 공간이었다. 그것이 더 이상했다. Rainveil에서 비가 없는 곳은 없어야 한다.\n형광등이 깜박였다. 유카의 뒷모습이 앞에 있었다.\n「다 왔어. 여기서부터는 네가 결정해야 해.」 유카는 문 앞에서 멈췄다. 손잡이에는 먼지가 없었다.\n*비가 들리지 않는 곳에서는 내 숨소리가 너무 크게 들렸다. 내가 살아 있다는 증거가 들키는 것 같았다.*\n문 너머에서 종이가 넘어가는 소리가 났다. 누가 먼저 기록을 읽고 있었다.",
+      "choices": [],
+      "next_scene": "ch04z_d_envelope_choice_approach",
+      "background": "letter_room",
+      "character": "yuka_archive_lantern",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_lab_coat",
+          "position": "right"
+        }
+      ]
+    },
+    {
+      "id": "ch04z_d_envelope_choice_approach",
+      "speaker": "하루",
+      "text": "봉투가 네 개 놓여 있었다. 유카는 뒤에서 봤다. 선택을 강요하지 않았다.\n첫 번째 봉투에는 세아의 이름, 두 번째에는 병원 이름. 세 번째에는 날짜만. 네 번째는 백지였다.\n「백지는 비어 있는 게 아니야. 아직 인쇄되지 않았을 뿐이야.」 유카가 말했다.\n*백지 봉투가 가장 무거웠다. 왜인지 모른다. 내가 아직 모르는 미래가 들어 있다면, 열기 전부터 무거울 수밖에 없었다.*\n손끝이 백지 봉투에 닿았다. 종이가 차갑게 떨렸다. 아니, 떤 것은 내 손이었다.",
+      "choices": [],
+      "next_scene": "ch04z_e_archive_door_breath",
+      "background": "letter_room",
+      "character": "yuka_archive_lantern",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_archive_lantern",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch04z_e_archive_door_breath",
+      "speaker": "하루",
+      "text": "기록 보관소 문에는 작은 유리창이 있었다. 안쪽은 어두웠고, 유리에는 내 얼굴보다 세아의 붉은 리본이 먼저 비쳤다.\n뒤를 돌아보면 아무도 없을 것이다. 그런데 돌아보지 못했다.\n「열어.」 유카가 말했다. 짧고 낮았다. 그 한 단어가 열쇠보다 분명했다.\n*세아를 믿고 싶은 마음과 세아를 확인해야 한다는 마음이 같은 손으로 문을 밀었다. 어느 쪽이 더 나쁜지 알 수 없었다.*\n문이 열리자 비 냄새 대신 오래 젖은 종이 냄새가 흘러나왔다. 기록들은 이미 나를 알고 있었다.",
+      "choices": [],
+      "next_scene": "ch05_rain_archive",
+      "background": "letter_room",
+      "character": "sea_confession_cassette",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_confession_cassette",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch05_rain_archive",
@@ -5404,51 +6494,86 @@
         "decision_moment"
       ],
       "unlock_cg": null,
-      "decision_title": "마지막 봉투"
+      "decision_title": "마지막 봉투",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_archive_lantern",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "archive_compare_letter_fibers_aftermath",
       "speaker": "하루",
       "text": "현미경 슬라이드 위에서 섬유 샘플이 겹쳤다. 편지지와 세아 교복의 안감이 같은 것이었다.\n\n*유카는 기록을 저장했다. 나는 샘플 케이스를 닫았다. 둘 다 말하지 않았다. 그 침묵이 합의처럼 느껴졌다. 이것이 무엇을 의미하는지 이미 알고 있다는 합의. 말하지 않아도 된다는 합의. 말하는 순간 이 증거가 세아를 향한 선고가 되기 때문에.*\n\n유카가 폴더를 닫았다. 내가 아니라 유카가. 그것이 기억에 남았다. 왜 내가 먼저 닫지 않았는지. 기다리고 있었던 것이다. 누군가 대신 해 주기를.",
       "choices": [],
-      "next_scene": "ch05c_old_apartment",
+      "next_scene": "ch05b_abandoned_platform",
       "background": "student_council_room",
       "character": "yuka_glasses_off",
       "music": "archive_pulse",
-      "effects": []
+      "effects": [],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_glasses_off",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "archive_meet_sea_aftermath",
       "speaker": "하루",
       "text": "기록을 덮자 방 안의 형광등이 편해졌다. 하지만 편해진 건 나뿐이었다.\n*마지막 페이지에 적혀 있었다. 날짜 없이, 단 한 줄. '하루가 모르는 게 하루를 지키는 거야.' 세아의 필체였다. 나는 그 줄을 두 번 읽고 덮었다.*\n세아에게 가는 길, 빗소리가 따라왔다. 만날 때 어떤 말을 할지 생각하지 못한 채 발걸음을 옮겼다. 물어볼 수 있을까. 아니, 물어보면 안 되는 걸까.\n문을 두드리자 세아의 발소리가 들렸다. 조심스럽고 빠른.\n문이 열렸다. 세아는 웃고 있었다. 놀란 표정이 아니었다. 기다린 사람의 얼굴이었다.\n나는 아무 말도 하지 못했다.",
       "choices": [],
-      "next_scene": "ch05c_old_apartment",
+      "next_scene": "ch05b_abandoned_platform",
       "background": "student_council_room",
       "character": "yuka_glasses_off",
       "music": "archive_pulse",
-      "effects": []
+      "effects": [],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_glasses_off",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "archive_airi_escape_aftermath",
       "speaker": "하루",
       "text": "아이리는 망설이지 않았다.\n먼저 내 손목을 잡았다. 말보다 손이 빨랐다. 「출구는 내가 볼게.」\n아이리의 눈에 처음으로 안도가 보였다. 나는 그것이 나를 걱정한 건지, 드디어 판단이 섰다는 안도인지 구분하지 못했다.\n아이리는 위험하다는 말을 끝내 하지 않았다. 말하지 않아도 알고 있다고 생각한 것인지, 말하면 내가 멈출 것 같아서 참은 것인지.\n*아이리를 이 일에 끌어들인 건 나였다. 그 사실이 손목을 잡힌 것보다 무거웠다.*\n창밖에 비가 내렸다. 세아는 아직 모를 것이다. 하지만 세아가 알게 되는 건 시간문제였다. 그때 세아가 먼저 볼 얼굴은 내가 아니라 아이리일 것이다.",
       "choices": [],
-      "next_scene": "ch05c_old_apartment",
+      "next_scene": "ch05b_abandoned_platform",
       "background": "student_council_room",
       "character": "yuka_glasses_off",
       "music": "archive_pulse",
-      "effects": []
+      "effects": [],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_glasses_off",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "archive_shadow_file_aftermath",
       "speaker": "하루",
       "text": "그림자의 흔적 파일은 세 페이지였다. 첫 페이지는 비어 있었다.\n\n*두 번째 페이지부터 내용이 있었다. 이름, 날짜, 장소. 그림자가 이 루프를 통과한 기록이었다. 매 루프마다 그림자는 달랐다. 나이, 직업, 접근 방식이 바뀌었다. 바뀌지 않은 것은 하나였다. 세아가 닫아 둔 것을 열려고 했다는 것. 세아의 과거를 무기로 누군가를 흔들었다는 것. 그렇다면 그림자가 원하는 것은 세아를 무너뜨리는 게 아니었다. 세아가 닫아 둔 방 안에 있는 것이었다.*\n\n파일을 덮었다. 무엇인지 알고 싶지 않았다. 알면 나도 그림자가 되는 것 같아서.",
       "choices": [],
-      "next_scene": "ch05c_old_apartment",
+      "next_scene": "ch05b_abandoned_platform",
       "background": "student_council_room",
       "character": "yuka_glasses_off",
       "music": "archive_pulse",
-      "effects": []
+      "effects": [],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_glasses_off",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch05c_old_apartment",
@@ -5463,7 +6588,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_childlike",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch05b_abandoned_platform",
@@ -5476,7 +6608,14 @@
       "music": "platform_blue",
       "effects": [],
       "unlock_cg": "cg_platform_three",
-      "cg": "cg_platform_three"
+      "cg": "cg_platform_three",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_calm_sad",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch05d_water_lab",
@@ -5491,7 +6630,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_rain_orchid_lab",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch05e_rooftop_greenhouse",
@@ -5506,7 +6652,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_normal",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch05ea_rain_seed_vault",
@@ -5521,7 +6674,14 @@
         "event_cg"
       ],
       "unlock_cg": "cg_rain_orchid_seed",
-      "choices": []
+      "choices": [],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_rain_orchid_lab",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch05eb_observation_aquarium",
@@ -5536,12 +6696,19 @@
         "event_cg"
       ],
       "unlock_cg": "cg_underwater_umbrella_fragment",
-      "choices": []
+      "choices": [],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_lab_coat",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch05ec_moss_generator_room",
       "speaker": "그림자",
-      "text": "이끼 발전실 안에서 그림자가 스위치를 올렸다.\n창밖에서 빗소리가 즉시 굵어졌다.\n\n*우연이 아니었다. 이 건물이 Rainveil City의 강수량과 연결되어 있었다. 스위치 하나로 비의 세기를 조절할 수 있었다. 그림자는 그것을 알고 있었다. 아니 ─ 처음부터 이것을 위해 여기 온 것이었다. 비가 강해지면 도시 전체의 감정 증폭 수치가 올라간다. 세아의 집착도 함께.*\n\n그림자는 뒤도 돌아보지 않고 문을 나갔다. 빗소리가 계속 커졌다. 나는 스위치를 내리지 못했다.",
+      "text": "이끼 발전실 안에서 그림자가 스위치를 올렸다.\n창밖에서 빗소리가 즉시 굵어졌다.\n\n*우연이 아니었다. 이 건물이 Rainveil City의 강수량과 연결되어 있었다. 스위치 하나로 비의 세기를 조절할 수 있었다. 그림자는 그것을 알고 있었다. 아니 ─ 처음부터 이것을 위해 여기 온 것이었다. 비가 강해지면 도시 전체의 감정 증폭 수치가 올라간다. 세아의 소유욕도 함께.*\n\n그림자는 뒤도 돌아보지 않고 문을 나갔다. 빗소리가 계속 커졌다. 나는 스위치를 내리지 못했다.",
       "next_scene": "ch05f_drainage_tunnel",
       "background": "moss_generator_room",
       "character": "shadow_mineral_key",
@@ -5551,7 +6718,14 @@
         "event_cg"
       ],
       "unlock_cg": "cg_generator_red_ribbon",
-      "choices": []
+      "choices": [],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "shadow_mineral_key",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch05f_drainage_tunnel",
@@ -5566,7 +6740,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "shadow_reflection",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch05g_purification_cathedral",
@@ -5579,7 +6760,14 @@
       "cg": "cg_purification_cathedral",
       "music": "purification_cathedral",
       "effects": [],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_breakdown",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch05h_reservoir_gate",
@@ -5595,7 +6783,14 @@
         "event_cg",
         "screen_shake"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_normal",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch05i_flood_siren_tower",
@@ -5610,7 +6805,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_normal",
+          "position": "left"
+        }
+      ]
     },
     {
       "id": "ch05j_weather_server_nave",
@@ -5625,7 +6827,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_rainveil_evidence_desk"
+      "unlock_cg": "cg_rainveil_evidence_desk",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "rain_ai_terminal",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch05k_umbrella_memorial",
@@ -5640,7 +6849,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_umbrella_memorial"
+      "unlock_cg": "cg_umbrella_memorial",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_calm_sad",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch05l_railway_signal_box",
@@ -5655,7 +6871,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_signal_red_thread"
+      "unlock_cg": "cg_signal_red_thread",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_normal",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch05m_tide_lock_gate",
@@ -5670,7 +6893,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_tide_lock_key"
+      "unlock_cg": "cg_tide_lock_key",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "shadow_mineral_key",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch05n_flood_post_office",
@@ -5685,14 +6915,21 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_pneumatic_love_letters"
+      "unlock_cg": "cg_pneumatic_love_letters",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_archive_lantern",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch05o_vending_chapel_underpass",
       "speaker": "세아",
       "text": "지하보도 자판기 예배당 안에서 세아의 붉은 부적이 매달려 있었다.\n\n*다른 부적들과 달랐다. 동전이 들어간 자리에 동전이 없었다. 자판기 투입구에는 무언가 다른 것이 들어가 있었다. 작은 쪽지였다. 꺼내 읽었다. 세아의 글씨였다. '동전 대신 이걸 넣었어. 소원은 자판기보다 이게 더 잘 들어줄 것 같아서.' 쪽지 안에는 아무것도 없었다. 접힌 종이만 있었다. 빈 소원이었다. 빈 소원을 넣은 것이 소원 자체였던 것처럼.*\n\n부적이 흔들렸다. 바람이 없었는데.",
       "choices": [],
-      "next_scene": "ch05p_sleeping_carriage_depot",
+      "next_scene": "ch05z_a_final_corridor",
       "background": "vending_chapel_underpass",
       "character": "sea_red_ticket",
       "cg": "cg_vending_chapel_offering",
@@ -5700,7 +6937,90 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_vending_chapel_offering"
+      "unlock_cg": "cg_vending_chapel_offering",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_breakdown",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch05z_a_final_corridor",
+      "speaker": "하루",
+      "text": "세아의 방 앞 복도는 다른 복도와 달랐다. 빗소리가 안쪽에서 들렸다. 창문이 없는 건물 안인데.\n문 앞에서 발이 멈췄다. 이 문을 열면 돌아오지 못한다는 것을, 세아가 말하기 전부터 알고 있었다.\n핸드폰을 꺼냈다. 아이리의 마지막 메시지. '거기 가지 마.'\n「아직 늦지 않았어.」 화면 속 글자가 아이리 목소리로 읽혔다.\n*늦지 않았다는 말은 언제나 늦은 사람에게 온다. 나는 이미 문 앞에 서 있었다.*\n안쪽 빗소리가 한 번 작아졌다. 누군가 귀를 기울인 것처럼.",
+      "choices": [],
+      "next_scene": "ch05z_b_sea_door_sound",
+      "background": "locked_room",
+      "character": "airi_resolve",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_resolve",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch05z_b_sea_door_sound",
+      "speaker": "세아",
+      "text": "문 너머에서 세아의 소리가 났다. 말하는 것도, 우는 것도 아니었다. 노래였다. 오르골 멜로디를 따라 흥얼거리는 것.\n이 노래를 안다. 학교 방송실 테이프에 있던 것.\n「들어와, 하루 군.」 세아의 목소리가 노래 끝에 놓였다. 너무 가까웠다. 문 한 장이 아니라 내 귓가에 있는 것처럼.\n*세아는 문을 열어 달라고 하지 않았다. 이미 내가 열 것이라고 알고 있었다.*\n손잡이에 손을 얹었다. 차가웠다. 세아의 노래가 멈추었다. 복도 전체가 내 대답을 기다렸다.",
+      "choices": [],
+      "next_scene": "ch05z_c_decision_moment",
+      "background": "locked_room",
+      "character": "sea_threshold",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_normal",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch05z_c_decision_moment",
+      "speaker": "하루",
+      "text": "손잡이를 돌렸다. 문이 열리는 소리가 복도 끝까지 울렸다. 방 안에서 빗소리가 났다. 창문은 없었다.\n세아가 소파에 앉아 나를 보고 있었다. 기다렸다는 눈이었다.\n「많이 늦었네. 그래도 왔어.」 세아는 책망하지 않았다. 책망하지 않아서 더 빠져나갈 말이 없었다.\n*얼마나 기다렸는지 묻지 못했다. 물어보면 답이 너무 길 것 같아서. 어쩌면 토요일보다 길 것 같아서.*\n문이 등 뒤에서 천천히 닫혔다. 닫히는 소리가 비보다 부드러웠다.",
+      "choices": [],
+      "next_scene": "ch05z_d_room_before_lock",
+      "background": "locked_room",
+      "character": "sea_threshold",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_threshold",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch05z_d_room_before_lock",
+      "speaker": "세아",
+      "text": "「젖었네. 닦아 줄게.」\n세아가 수건을 들고 일어섰다. 방 안은 따뜻했다. 너무 따뜻해서 복도에서 가져온 냉기가 죄처럼 느껴졌다.\n그녀의 손이 내 앞머리에 닿았다. 물기를 닦는 힘은 조심스러웠다. 하지만 문 쪽으로는 한 번도 시선을 주지 않았다.\n「여기는 비가 안 들이쳐. 내가 닫아 뒀어.」 세아는 평온하게 말했다.\n*안전하다는 말과 갇혔다는 말이 같은 온도를 가질 수 있다는 걸, 그 방에서 처음 알았다.*\n나는 소파 앞에 앉았다. 대답은 이미 방 안에 놓여 있었다.",
+      "choices": [],
+      "next_scene": "ch06_locked_room",
+      "background": "locked_room",
+      "character": "sea_tender_close",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_anxious",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch05p_sleeping_carriage_depot",
@@ -5715,7 +7035,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_sleeping_carriage_route_map"
+      "unlock_cg": "cg_sleeping_carriage_route_map",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_red_ticket",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch06_locked_room",
@@ -5789,55 +7116,90 @@
       ],
       "unlock_cg": null,
       "cg": "cg_locked_wall",
-      "decision_title": "닫힌 방의 온도"
+      "decision_title": "닫힌 방의 온도",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_threshold",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "room_soothe_aftermath",
       "speaker": "하루",
       "text": "「기다릴게.」\n\n내 목소리가 방 안에서 울렸다. 세아는 즉시 반응하지 않았다.\n\n*세아는 천천히 고개를 들었다. 처음에는 믿지 않는 눈이었다. 이 말을 너무 원했기 때문에 들린 것인지 확인하는 눈이었다. 나는 다시 말하지 않았다. 반복하면 설득처럼 들릴 것 같아서. 세아는 그 침묵 안에서 내 말이 진짜인지를 혼자서 천천히 결정했다. 결정하는 동안 손이 무릎에서 풀렸다. 그것이 세아가 믿기 시작했다는 신호였다.*\n\n세아가 숨을 내쉬었다. 길게. 오래 참아 온 것처럼.",
       "choices": [],
-      "next_scene": "ch06aa_blanket_chain_inventory",
+      "next_scene": "ch06b_threshold_choice",
       "background": "locked_room",
       "character": "sea_childlike",
       "music": "locked_room",
       "effects": [],
-      "cg": "cg_locked_wall"
+      "cg": "cg_locked_wall",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_childlike",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "room_accept_aftermath",
       "speaker": "하루",
       "text": "「여기 있을게.」\n\n세아의 표정이 완전히 달라졌다. 행복이었다. 그런데 그 행복이 너무 완전했다.\n\n*완전하다는 것이 두려움이었다. 기쁨에는 보통 여백이 있다. 더 원하거나, 걱정하거나, 믿지 못하는 여백. 그런데 세아의 표정에는 그것이 없었다. 빈틈이 없었다. 이 말 한마디로 세아의 세계가 완성된 것처럼. 완성된 것은 더 이상 바뀌지 않는다. 나는 그 행복이 기쁘면서도, 그 행복의 무게가 두렵다는 것을 동시에 느꼈다.*\n\n세아가 내 손을 잡았다. 차갑지 않았다. 처음으로.",
       "choices": [],
-      "next_scene": "ch06aa_blanket_chain_inventory",
+      "next_scene": "ch06b_threshold_choice",
       "background": "locked_room",
       "character": "sea_childlike",
       "music": "locked_room",
       "effects": [],
-      "cg": "cg_locked_wall"
+      "cg": "cg_locked_wall",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_childlike",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "room_call_airi_aftermath",
       "speaker": "하루",
       "text": "짧은 신호를 보냈다. 아이리에게.\n\n세아가 내 손을 보았다. 스마트폰을 보았다. 그리고 아무 말도 하지 않았다.\n\n*그 침묵이 무서웠다. 화를 낼 거라고 생각했다. 울 거라고 생각했다. 그런데 세아는 그냥 고개를 돌렸다. 창밖을 보았다. 빗소리가 들렸다. 세아의 옆얼굴에서 아무것도 읽을 수 없었다. 아무것도 읽을 수 없는 것이 가장 많은 것을 담고 있었다. 세아는 알고 있었다. 내가 무엇을 한 것인지. 그리고 그래도 여기 있다는 것이 무엇인지도.*\n\n빗소리가 두 사람 사이에서 울었다.",
       "choices": [],
-      "next_scene": "ch06aa_blanket_chain_inventory",
+      "next_scene": "ch06b_threshold_choice",
       "background": "locked_room",
       "character": "sea_childlike",
       "music": "locked_room",
       "effects": [],
-      "cg": "cg_locked_wall"
+      "cg": "cg_locked_wall",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_childlike",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "room_escape_aftermath",
       "speaker": "하루",
       "text": "창문에 손을 대자 차가운 물기가 손바닥에 묻었다. 지도는 맞았다.\n세아가 등 뒤에서 말했다. 「가면 다시 오지 않을 거야.」 막는 게 아니었다. 그냥 말하는 것처럼.\n나는 돌아보지 않았다. 창틀을 짚고 바깥 빗소리에 귀를 기울였다.\n*다시 오지 않을 거야. 협박이 아니라 예언이었다. 세아는 내가 떠난 뒤의 일을 이미 알고 있는 것처럼 말했다.*\n빗소리가 커졌다. 창밖 불빛이 비 때문에 흔들렸다. 나는 한 발을 창틀에 올렸다가, 잠깐 멈췄다.\n세아의 숨소리가 들렸다. 빠르지도 느리지도 않았다. 그냥 기다리는 숨소리.\n*그녀는 내가 어떤 선택을 해도 이미 알고 있다. 그리고 그 모든 결과를 오래전에 받아들였다.*\n그게 제일 무서웠다.",
       "choices": [],
-      "next_scene": "ch06aa_blanket_chain_inventory",
+      "next_scene": "ch06c_red_umbrella_return",
       "background": "locked_room",
       "character": "sea_childlike",
       "music": "locked_room",
       "effects": [],
-      "cg": "cg_locked_wall"
+      "cg": "cg_locked_wall",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_childlike",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch06aa_blanket_chain_inventory",
@@ -5850,12 +7212,19 @@
       "cg": "cg_blanket_chain_knot",
       "music": "locked_room",
       "effects": [],
-      "unlock_cg": "cg_blanket_chain_knot"
+      "unlock_cg": "cg_blanket_chain_knot",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_blanket_thread",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch06ab_condensation_window_map",
       "speaker": "유카",
-      "text": "유리창에 손가락으로 그린 지도가 있었다. 결로가 잉크처럼 흘렀다.\n유카는 태블릿 카메라를 들어 사진을 찍었다. 셔터 소리가 낮았다.\n\n*나는 지도를 보았다. 정확했다. 주요 도로의 각도, 수탑과 학교 사이의 거리 비율, 역 분기점의 곡선까지. 세아는 이것을 얼마나 오래 외우고 있었을까. 아니 ─ 외운 것이 아닐 수도 있었다. 이 도시를 이 정도로 알고 있다는 것은 발로 걷고 눈으로 재고 되풀이한 결과였다.*\n\n유카는 사진을 저장하면서 눈을 들지 않았다. 나도 지도에서 눈을 떼지 않았다. 세아가 이 창가에 서 있었을 시간들이 손가락 선 안에 남아 있었다.",
+      "text": "유리창에 손가락으로 그린 지도가 있었다. 결로가 잉크처럼 흘렀다.\n유카는 태블릿 카메라를 들어 사진을 찍었다. 셔터 소리가 낮았다.\n\n*나는 지도를 보았다. 정확했다. 주요 도로의 각도, 수탑과 학교 사이의 거리 비율, 역 갈림점의 곡선까지. 세아는 이것을 얼마나 오래 외우고 있었을까. 아니 ─ 외운 것이 아닐 수도 있었다. 이 도시를 이 정도로 알고 있다는 것은 발로 걷고 눈으로 재고 되풀이한 결과였다.*\n\n유카는 사진을 저장하면서 눈을 들지 않았다. 나도 지도에서 눈을 떼지 않았다. 세아가 이 창가에 서 있었을 시간들이 손가락 선 안에 남아 있었다.",
       "choices": [],
       "next_scene": "ch06ac_broken_music_box_altar",
       "background": "condensation_window_map",
@@ -5865,7 +7234,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_condensation_window_map"
+      "unlock_cg": "cg_condensation_window_map",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_normal",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch06ac_broken_music_box_altar",
@@ -5878,7 +7254,14 @@
       "cg": "cg_music_box_red_key",
       "music": "music_box_broken",
       "effects": [],
-      "unlock_cg": "cg_music_box_red_key"
+      "unlock_cg": "cg_music_box_red_key",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_breakdown",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch06b_threshold_choice",
@@ -5966,67 +7349,109 @@
         "decision_moment"
       ],
       "unlock_cg": null,
-      "decision_title": "문턱 위의 이름"
+      "decision_title": "문턱 위의 이름",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_threshold",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "threshold_name_sea_present_aftermath",
       "speaker": "하루",
       "text": "「세아.」\n이름을 부른 순간 세아의 눈에 물이 찼다. 천천히. 소리 없이.\n\n*세아가 자기 이름에 운다는 것이 이상했다. 아니, 이상하지 않았다. 이름을 불려 본 적이 없었던 것이다. 이 이름으로. 이 목소리로. 세아를 둘러싼 모든 것이 그녀를 가두는 것들이었지 ─ 그녀를 부르는 것은 없었다.*\n\n눈물이 뺨을 타고 내렸다. 세아는 닦지 않았다. 닦으면 없어질까 봐 놔두는 것 같았다. 내가 불러준 이름이 사라지지 않도록.",
       "choices": [],
-      "next_scene": "ch06c_red_umbrella_return",
+      "next_scene": "ch06f_weekend_station_clock",
       "background": "threshold_door",
       "character": "sea_threshold",
       "music": "threshold_rain",
       "effects": [],
-      "cg": "cg_threshold_door"
+      "cg": "cg_threshold_door",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_threshold",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "threshold_step_inside_aftermath",
       "speaker": "하루",
       "text": "문 안쪽은 생각보다 따뜻했다. 그래서 더 위험했다.\n세아는 뒤에서 문을 닫았다. 잠그지는 않았다. 아직은.\n「편하지?」 세아가 물었다. 나는 고개를 끄덕이면서, 편하다는 게 맞는 말인지 생각했다.\n*따뜻함은 정직하다. 몸이 먼저 안다. 그리고 그 정직함이 가장 먼저 나를 배신한다.*\n세아의 방에는 내가 좋아하는 냄새가 났다. 내가 언제 그것을 좋아하게 됐는지는 기억나지 않았다.\n「아직은」이라는 말이 공기 안에 남아 있었다. 잠그지 않았다는 말이, 아직은 잠그지 않았다는 말이라는 것을.\n나는 알면서도 더 안으로 들어갔다.",
       "choices": [],
-      "next_scene": "ch06c_red_umbrella_return",
+      "next_scene": "ch06f_weekend_station_clock",
       "background": "threshold_door",
       "character": "sea_threshold",
       "music": "threshold_rain",
       "effects": [],
-      "cg": "cg_threshold_door"
+      "cg": "cg_threshold_door",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_threshold",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "threshold_leave_mark_airi_aftermath",
       "speaker": "하루",
       "text": "표식을 남기는 손끝이 떨렸다.\n*벽면은 빗물을 머금어 차가웠다. 손가락이 콘크리트 위에 닿는 순간, 표면이 살짝 파이는 느낌이 났다. 젖어서 물렁해진 것이었다.*\n나는 'ㅇ' 안에 짧은 선 하나를 그었다. 아이리만 아는 표시였다.\n안쪽에서 세아의 목소리가 들렸다.\n「하루 군, 다 됐어.」\n부드럽고 평온한 목소리였다. 들킨 게 아니었다. 아니면 세아는 처음부터 알면서도 말하지 않은 것이었다.\n*나는 어느 쪽인지 묻지 않았다. 물어볼 수 없었다.*\n벽에 쓴 글자는 이미 빗물에 번지고 있었다. 윤곽만 남기고 흐릿해지고 있었다.\n그래도 아이리는 알아볼 것이다. 그렇게 믿었다.",
       "choices": [],
-      "next_scene": "ch06c_red_umbrella_return",
+      "next_scene": "ch06f_weekend_station_clock",
       "background": "threshold_door",
       "character": "sea_threshold",
       "music": "threshold_rain",
       "effects": [],
-      "cg": "cg_threshold_door"
+      "cg": "cg_threshold_door",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_threshold",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "threshold_leave_recording_yuka_aftermath",
       "speaker": "하루",
       "text": "유카의 기기에 파형이 남았다. 세아의 호흡 소리였다. 고르지 않고 얕고 느렸다.\n\n*증거라고 부를 수 없었다. 증거는 사건을 설명하는 것이다. 이것은 사건이 아니었다. 누군가가 숨을 쉬고 있다는, 그것뿐이었다. 살아 있다는 증거라면 증거였다. 하지만 나는 그 파형을 보면서 다른 이름을 붙이고 싶었다. 이름이 떠오르지 않았다. 기록이라고도, 흔적이라고도 부르기가 싫었다. 그냥 그녀가 여기 있었다는 것. 그것으로 충분하다고 생각했다.*\n\n유카는 파일을 저장했다. 나는 그 이름이 무엇으로 붙여질지 묻지 않았다.",
       "choices": [],
-      "next_scene": "ch06c_red_umbrella_return",
+      "next_scene": "ch06f_weekend_station_clock",
       "background": "threshold_door",
       "character": "sea_threshold",
       "music": "threshold_rain",
       "effects": [],
-      "cg": "cg_threshold_door"
+      "cg": "cg_threshold_door",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_threshold",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "threshold_answer_with_sea_aftermath",
       "speaker": "하루",
       "text": "나는 세아가 하는 것처럼 말했다. 「들어와.」\n놀랍도록 자연스러웠다. 그게 무서웠다.\n\n*세아의 말투는 흉내 낸 것이 아니었다. 입에 밴 것이었다. 언제부터였는지 알 수 없었다. 세아의 억양, 세아의 끊음, 세아가 특정 단어 앞에서 숨을 한 번 더 쉬는 버릇까지. 나는 그것을 다 기억하고 있었다. 그리고 자연스럽게 썼다. 두려움은 닮았다는 사실이 아니었다. 닮은 것을 인식하지 못하고 있었다는 사실이었다.*\n\n빗소리가 창 너머에서 났다. 세아가 나를 보았다. 내 목소리에서 자기를 들은 것처럼 표정이 부드러워졌다.",
       "choices": [],
-      "next_scene": "ch06c_red_umbrella_return",
+      "next_scene": "ch06f_weekend_station_clock",
       "background": "threshold_door",
       "character": "sea_threshold",
       "music": "threshold_rain",
       "effects": [],
-      "cg": "cg_threshold_door"
+      "cg": "cg_threshold_door",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_threshold",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch06c_red_umbrella_return",
@@ -6039,7 +7464,14 @@
       "cg": "cg_red_umbrella_return",
       "music": "umbrella_return_dawn",
       "effects": [],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "haru_umbrella_reflection",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch06d_final_crosswalk",
@@ -6052,14 +7484,21 @@
       "cg": "cg_final_crosswalk",
       "music": "final_signal_rain",
       "effects": [],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_normal",
+          "position": "left"
+        }
+      ]
     },
     {
       "id": "ch06e_dawn_bus_loop",
       "speaker": "하루",
       "text": "새벽 버스가 같은 정류장을 세 번째 지나쳤다.\n운전석이 비어 있었다.\n\n*처음엔 무인 운행이라고 생각했다. 노선이 자동화된 거라고. 그런데 세 번째 정류장을 지날 때 버스 안 행선지 표시판이 바뀌지 않았다. 같은 정류장 이름이 계속 떠 있었다. 버스는 도착하고, 문을 열고, 닫고, 출발했다. 누구도 타지 않았다. 버스가 이 루프를 알고 있는 것처럼 보였다. 아니면 루프가 버스를 통해 도시에 새겨진 것처럼.*\n\n나는 다음 정류장에서 내리지 않았다. 버스가 어디서 끝나는지 알고 싶었다. 버스는 멈추지 않았다.",
       "choices": [],
-      "next_scene": "ch06f_weekend_station_clock",
+      "next_scene": "ch06b_threshold_choice",
       "background": "dawn_bus_loop",
       "character": "sea_bus_loop",
       "cg": "cg_dawn_bus_loop",
@@ -6067,7 +7506,71 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_bus_loop",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch06z_a_station_underpass",
+      "speaker": "하루",
+      "text": "새벽 버스가 마지막 정류장을 지나자 역 지하도가 보였다. 계단 아래에서 빗물이 거꾸로 흐르는 것처럼 반짝였다.\n세아는 내 옆에 앉아 있었고, 손은 내 손목을 놓지 않았다. 아프지 않았다. 그래서 더 풀기 어려웠다.\n「곧 도착해.」 세아가 말했다. 마치 오래전부터 같은 문장을 연습해 온 사람처럼 정확했다.\n*도착한다는 말이 끝난다는 뜻인지, 다시 시작한다는 뜻인지 알 수 없었다.*\n버스 문이 열렸다. 빗소리가 안으로 밀려왔다. 역 시계는 아직 토요일에 멈춰 있었다.",
+      "choices": [],
+      "next_scene": "ch06z_b_ticket_gate_breath",
+      "background": "dawn_bus_loop",
+      "character": "sea_station_clock",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_station_clock",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch06z_b_ticket_gate_breath",
+      "speaker": "세아",
+      "text": "「표는 하나면 돼.」\n세아가 개찰구 앞에서 붉은 표를 들어 보였다. 내 이름이 표 뒷면에 작게 적혀 있었다. 언제 적었는지 묻지 않았다.\n개찰구는 닫혀 있었지만, 세아가 다가가자 불이 켜졌다. 통과를 허락하는 초록빛이 아니라, 오래 기다렸다는 붉은빛이었다.\n「같이 지나가면 돼. 떨어지지 않으면 돼.」 세아는 부드럽게 말했다.\n*같이라는 말은 따뜻한데, 떨어지지 않는다는 말은 잠금장치처럼 들렸다.*\n나는 표보다 세아의 손을 보았다. 놓는 방법을 잊은 것처럼 손가락이 얽혀 있었다.",
+      "choices": [],
+      "next_scene": "ch06z_c_clock_before_choice",
+      "background": "weekend_station_clock",
+      "character": "sea_station_clock",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_tender_close",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch06z_c_clock_before_choice",
+      "speaker": "하루",
+      "text": "플랫폼 위의 역 시계는 초침만 움직였다. 분침은 움직이지 않았다. 토요일의 끝에서 초만 계속 쌓이고 있었다.\n아이리의 쪽지, 유카의 기록, 그림자의 말, 세아의 손. 전부 같은 시계 아래에 도착했다.\n「하루 군.」 세아가 내 이름을 불렀다. 질문은 없었다. 대답만 기다렸다.\n*나는 마지막 대답이 거창한 문장일 거라고 생각했다. 그런데 남은 것은 손을 놓을지, 잡을지, 누구에게 시간을 보낼지뿐이었다.*\n전광판에 행선지가 떴다. 월요일. 주말. 붕괴. 유령. 심연. 비는 어느 쪽도 지우지 않았다.",
+      "choices": [],
+      "next_scene": "ch06f_weekend_station_clock",
+      "background": "weekend_station_clock",
+      "character": "sea_clock_reflection",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_clock_reflection",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch06f_weekend_station_clock",
@@ -6156,77 +7659,119 @@
         "decision_moment"
       ],
       "unlock_cg": "cg_all_routes_montage",
-      "decision_title": "월요일로 갈 시간"
+      "decision_title": "월요일로 갈 시간",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_station_clock",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "station_clock_start_monday_aftermath",
       "speaker": "하루",
       "text": "월요일이 왔다. 시계 바늘이 자정을 넘어섰다.\n\n*세아가 무너질 거라고 생각했다. 그런데 세아는 숨을 들이켰다. 크게, 한 번. 마치 잠수하기 전처럼. 그리고 눈을 감았다. 눈물이 나오지 않았다. 이미 다 소진된 것처럼. 아니면 ─ 이미 알고 있었던 것처럼. 월요일이 온다는 것을. 주말이 끝난다는 것을. 그래도 이 순간은 존재했다는 것을.*\n\n세아의 숨이 고르게 돌아왔다. 그것이 체념인지 각오인지 나는 알 수 없었다.",
       "choices": [],
-      "next_scene": "ch06g_all_routes_montage",
+      "next_scene": "pre_ending_true",
       "background": "weekend_station_clock",
       "character": "sea_station_clock",
       "music": "weekend_station_clock",
       "effects": [
         "screen_shake"
       ],
-      "cg": "cg_weekend_station_clock"
+      "cg": "cg_weekend_station_clock",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_station_clock",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "station_clock_keep_weekend_aftermath",
       "speaker": "하루",
       "text": "시계가 멈췄다. 분침이 더 이상 움직이지 않았다.\n\n*Rainveil City 전체에서 무언가가 조용해지는 것 같았다. 버스 배차 신호가 꺼졌다. 역 플랫폼의 안내 방송이 중간에 끊겼다. 도시의 시간 시스템과 연결된 무언가가 이 역 시계를 따라 멈춘 것이었다. 세아는 그것을 알고 있었다. 알면서 내 손을 잡았다. 잡으면 내가 여기 있는 시간도 멈출 거라고 믿는 것처럼.*\n\n빗소리만 계속됐다. 비는 시계가 없었다.",
       "choices": [],
-      "next_scene": "ch06g_all_routes_montage",
+      "next_scene": "ending_box",
       "background": "weekend_station_clock",
       "character": "sea_station_clock",
       "music": "weekend_station_clock",
       "effects": [
         "screen_shake"
       ],
-      "cg": "cg_weekend_station_clock"
+      "cg": "cg_weekend_station_clock",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_station_clock",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "station_clock_drop_airi_note_aftermath",
       "speaker": "하루",
       "text": "쪽지는 빗물에 젖기 전에 바닥을 미끄러졌다.\n세아는 보았다. 쪽지를 줍지 않았다. 줍지 않는다는 선택을 했다.\n\n*아이리라면 주울 것이다. 그렇게 믿었다. 그렇게 믿어야 했다.*\n\n세아는 창문 쪽으로 고개를 돌렸다. 표정이 없었다. 표정을 없애고 있었다.\n나는 미끄러진 쪽지를 보았다. 빗물이 잉크를 번지게 하기 전에 주울 수 있었다. 하지만 줍지 않았다. 세아가 보고 있었다.",
       "choices": [],
-      "next_scene": "ch06g_all_routes_montage",
+      "next_scene": "pre_ending_collapse",
       "background": "weekend_station_clock",
       "character": "sea_station_clock",
       "music": "weekend_station_clock",
       "effects": [
         "screen_shake"
       ],
-      "cg": "cg_weekend_station_clock"
+      "cg": "cg_weekend_station_clock",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_station_clock",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "station_clock_send_yuka_time_aftermath",
       "speaker": "하루",
       "text": "로그를 전송했다. 유카의 기기로. 시각 스탬프와 함께.\n\n*전송 완료 알림이 떴다. 변한 것은 없었다. 역 시계는 그대로였다. 세아는 내 손에서 손을 빼지 않았다. 유카가 그 데이터로 무엇을 할지 나는 알지 못했다. 어쩌면 아무것도 달라지지 않을 수도 있었다. 어쩌면 모든 것이 달라질 수도 있었다. 그 간격에서 나는 그냥 서 있었다. 선택한 사람처럼, 아직 결과를 모르는 사람처럼.*\n\n세아는 나를 보지 않았다. 시계를 보았다. 분침이 움직이기를 기다리는 것처럼.",
       "choices": [],
-      "next_scene": "ch06g_all_routes_montage",
+      "next_scene": "ending_ghost",
       "background": "weekend_station_clock",
       "character": "sea_station_clock",
       "music": "weekend_station_clock",
       "effects": [
         "screen_shake"
       ],
-      "cg": "cg_weekend_station_clock"
+      "cg": "cg_weekend_station_clock",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_station_clock",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "station_clock_forget_weekday_aftermath",
       "speaker": "하루",
       "text": "월요일이 무슨 요일인지 잊었다.\n화요일도. 수요일도.\n\n*머릿속의 달력에서 평일이 지워졌다. 남은 것은 토요일과 일요일뿐이었다. 세아의 달력이었다. 아침에 눈을 뜨면 오늘이 주말인지 아닌지만 확인했다. 주말이면 세아가 연락할 것이었다. 주말이면 비가 올 것이었다. 주말이면 이 도시가 우리 둘만의 것처럼 작아졌다. 그 감각이 좋았다. 그게 무서웠다. 좋다는 것이.*\n\n나는 평일을 배우는 것을 멈춘 것이 아니었다. 세아의 시간 안에서만 살기 시작한 것이었다.",
       "choices": [],
-      "next_scene": "ch06g_all_routes_montage",
+      "next_scene": "ending_abyss",
       "background": "weekend_station_clock",
       "character": "sea_station_clock",
       "music": "weekend_station_clock",
       "effects": [
         "screen_shake"
       ],
-      "cg": "cg_weekend_station_clock"
+      "cg": "cg_weekend_station_clock",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_station_clock",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch06g_all_routes_montage",
@@ -6241,7 +7786,8 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_all_routes_montage"
+      "unlock_cg": "cg_all_routes_montage",
+      "visuals": []
     },
     {
       "id": "ch06h_final_evidence_board",
@@ -6256,7 +7802,14 @@
       "effects": [
         "event_cg"
       ],
-      "unlock_cg": "cg_rainveil_final_evidence"
+      "unlock_cg": "cg_rainveil_final_evidence",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_normal",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "final_weekend_rain",
@@ -6271,7 +7824,103 @@
         "ending_judge"
       ],
       "unlock_cg": "cg_rainveil_final_evidence",
-      "cg": "cg_final_puddle"
+      "cg": "cg_final_puddle",
+      "visuals": []
+    },
+    {
+      "id": "pre_ending_true",
+      "speaker": "하루",
+      "text": "역 플랫폼에서 세아의 손이 내 손을 꽉 쥐었다. 전차가 왔다. 문이 열렸다.\n「탈 거야?」 세아가 물었다. 대답 대신 문을 보았다. 문이 닫히려 했다. 손이 풀리지 않았다.\n내가 놓지 않은 것인지, 세아가 놓지 않은 것인지.\n「월요일로 가면, 나를 잊을 수도 있어.」 세아의 목소리는 떨리지 않았다. 그래서 거짓말이 아니었다.\n*잊는다는 말이 구원처럼 들렸다가, 배신처럼 들렸다. 둘 다 내 마음이었다.*\n전차가 출발했다. 우리는 플랫폼에 남아 있었다. 하지만 시계의 분침이 아주 조금 움직였다.",
+      "choices": [],
+      "next_scene": "ending_true",
+      "background": "abandoned_platform",
+      "character": "sea_station_clock",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_station_clock",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "pre_ending_box",
+      "speaker": "세아",
+      "text": "「여기 있으면 비가 안 아파.」\n세아는 방 한가운데 작은 상자를 열었다. 안에는 젖지 않은 편지, 마른 리본, 내가 잃어버렸다고 믿었던 물건들이 가지런히 들어 있었다.\n상자의 빈칸 하나가 내 손목 크기만큼 남아 있었다. 세아는 그 빈칸을 보며 조용히 웃었다.\n「하루 군 자리는 처음부터 비워 뒀어.」\n*나를 위해 남겨 둔 자리라는 말이 달콤했다. 그런데 들어가는 순간 닫힐 것이라는 사실도 너무 분명했다.*\n세아가 뚜껑을 잡았다. 선택은 이미 끝났다는 듯 천천히 내려왔다.",
+      "choices": [],
+      "next_scene": "ending_box",
+      "background": "locked_room",
+      "character": "sea_threshold",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_letter_smile",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "pre_ending_collapse",
+      "speaker": "하루",
+      "text": "아이리의 쪽지가 바닥에 있었다. 세아는 그것을 밟지 않고 돌아갔다. 발이 움직이지 않았다.\n주워야 한다. 그리고 읽어야 한다. 그리고 선택해야 한다.\n「읽으면 아파져.」 세아가 문 너머에서 말했다. 다정한 경고였다. 아이리의 글씨는 빗물에 번져 있었지만, 첫 문장은 아직 보였다.\n*나는 도망치기 위해 쪽지를 주운 건지, 세아에게 돌아가기 위해 확인한 건지 알 수 없었다.*\n빗소리가 갑자기 커졌다. 쪽지를 집었을 때, 세아는 이미 문 너머에 있었다. 그리고 문은 잠기지 않았는데도 열리지 않았다.",
+      "choices": [],
+      "next_scene": "ending_collapse",
+      "background": "locked_room",
+      "character": "airi_torn_photo",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_torn_photo",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "pre_ending_ghost",
+      "speaker": "유카",
+      "text": "유카가 보낸 시간이 화면에 떴다. 초 단위까지 기록된 파일이었다. 내가 세아와 만난 순간들, 사라진 순간들, 기억하지 못한 순간들.\n「이건 과학이야.」 유카는 창문 밖을 보며 말했다. 「그리고 과학도 가끔 유령을 남겨.」\n플랫폼의 전광판이 꺼졌다 켜졌다. 세아의 모습이 유리창에 비쳤다가 사라졌다.\n*진실을 알면 세아에게서 멀어질 줄 알았다. 그런데 진실은 세아가 어디에나 있었다는 증거만 늘렸다.*\n유카는 손전등을 켰다. 빛은 내 뒤가 아니라, 내가 서 있던 자리를 비추었다.",
+      "choices": [],
+      "next_scene": "ending_ghost",
+      "background": "classroom_dusk",
+      "character": "yuka_window_flashlight",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_lab_coat",
+          "position": "right"
+        }
+      ]
+    },
+    {
+      "id": "pre_ending_abyss",
+      "speaker": "하루",
+      "text": "요일을 잊기로 하자 도시가 편해졌다. 월요일도, 약속도, 돌아가야 할 집도 빗물처럼 지워졌다.\n세아는 울지 않았다. 웃지도 않았다. 그저 내 손을 잡고 역 시계 아래에 섰다.\n「이제 안 떨어져.」 세아가 말했다. 너무 부드러워서, 나는 그 말이 끝났다는 사실을 늦게 알았다.\n*무서움이 사라진 게 아니었다. 무서워하는 나를 놓아 버린 것이다. 그 빈자리에 세아의 목소리가 들어왔다.*\n초침이 멈췄다. 비가 위에서 아래로 내리지 않았다. 사방에서 천천히 우리를 향해 모여들었다.",
+      "choices": [],
+      "next_scene": "ending_abyss",
+      "background": "rain_street",
+      "character": "sea_breakdown",
+      "music": "rain_theme",
+      "effects": [],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_breakdown",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ending_true",
@@ -6288,7 +7937,14 @@
         "event_cg"
       ],
       "unlock_cg": "cg_true_rainbow",
-      "cg": "cg_true_rainbow"
+      "cg": "cg_true_rainbow",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_breakdown",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ending_box",
@@ -6305,7 +7961,14 @@
         "event_cg"
       ],
       "unlock_cg": "cg_box",
-      "cg": "cg_box"
+      "cg": "cg_box",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_calm_sad",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ending_collapse",
@@ -6322,7 +7985,14 @@
         "event_cg"
       ],
       "unlock_cg": "cg_collapse",
-      "cg": "cg_collapse"
+      "cg": "cg_collapse",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_resolve",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ending_ghost",
@@ -6339,7 +8009,14 @@
         "event_cg"
       ],
       "unlock_cg": "cg_ghost",
-      "cg": "cg_ghost"
+      "cg": "cg_ghost",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_window_flashlight",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ending_abyss",
@@ -6356,14 +8033,21 @@
         "event_cg"
       ],
       "unlock_cg": "cg_abyss",
-      "cg": "cg_abyss"
+      "cg": "cg_abyss",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_breakdown",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ending_default",
       "speaker": "하루",
       "text": "비는 그치지 않았다.\n나는 우산 없이 역 플랫폼에 섰다. 주말이 끝나고 있었다. 아이리에게도, 유카에게도, 세아에게도 연락하지 않았다.\n어느 쪽도 선택하지 않은 채로 전차가 왔다. 문이 열렸다. 빗물이 발목을 적셨다.\n전차 안에서 창문 너머를 보았다. 플랫폼에는 아무도 없었다. Rainveil City는 다음 주말에도 비가 올 것이다.\n\n*그리고 다음 주말에도 나는 이 플랫폼에 서게 될 것이다.*\n*어느 쪽도 선택하지 않은 채로, 같은 빗소리를 들으면서.*\n\n전차 문이 닫혔다. 나는 창가 자리에 앉았다.",
       "choices": [],
-      "next_scene": null,
+      "next_scene": "prologue_rain_gate",
       "background": "rain_street",
       "character": null,
       "music": "gray_rain",
@@ -6371,7 +8055,8 @@
         "soft_black",
         "event_cg"
       ],
-      "unlock_cg": null
+      "unlock_cg": null,
+      "visuals": []
     }
   ]
 }
