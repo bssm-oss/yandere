@@ -29,6 +29,7 @@ enum TestSupport {
         manager.load(package: package)
 
         for choiceID in choices {
+            advanceUntilChoice(manager)
             guard manager.availableChoices().contains(where: { $0.id == choiceID }) else {
                 throw NSError(domain: "WeekendRainTests", code: 1, userInfo: [
                     NSLocalizedDescriptionKey: "Choice \(choiceID) is not available at \(manager.currentScene?.id ?? "nil")"
@@ -38,5 +39,14 @@ enum TestSupport {
         }
 
         return manager.evaluateEnding()?.id ?? ""
+    }
+
+    static func advanceUntilChoice(_ manager: GameStateManager) {
+        while manager.availableChoices().isEmpty,
+              let scene = manager.currentScene,
+              !scene.isEndingScene,
+              scene.nextScene != nil {
+            manager.advanceToNextScene()
+        }
     }
 }

@@ -2,9 +2,9 @@ import AppKit
 import WeekendRainCore
 
 final class MainWindowController: NSWindowController, GameStateManagerDelegate {
-    private static let preferredContentSize = NSSize(width: 1280, height: 720)
-    private static let minimumContentSize = NSSize(width: 960, height: 540)
-    private static let maximumContentSize = NSSize(width: 9999, height: 9999)
+    private static let preferredContentSize = NSSize(width: 960, height: 540)
+    private static let minimumContentSize = NSSize(width: 720, height: 405)
+    private static let maximumContentSize = NSSize(width: 1280, height: 720)
 
     private let titleView = TitleView()
     private let sceneView = NovelSceneView()
@@ -72,13 +72,22 @@ final class MainWindowController: NSWindowController, GameStateManagerDelegate {
     }
 
     private func wireGameActions() {
-        sceneView.onLineFinished = { [weak self] in self?.gameState.finishPresentingLine() }
+        sceneView.onLineFinished = { [weak self] in self?.finishCurrentLine() }
         sceneView.onChoiceSelected = { [weak self] id in self?.gameState.choose(choiceID: id) }
         sceneView.onAdvanceRequested = { [weak self] in self?.gameState.advanceToNextScene() }
         sceneView.onBacklogRequested = { [weak self] in self?.presentBacklog() }
         sceneView.onGalleryRequested = { [weak self] in self?.presentGallery() }
         sceneView.onSaveRequested = { [weak self] in self?.saveGame() }
         sceneView.onLoadRequested = { [weak self] in self?.loadSave() }
+    }
+
+    private func finishCurrentLine() {
+        let shouldAdvanceDirectly = gameState.availableChoices().isEmpty
+            && gameState.currentScene?.isEndingScene == false
+        gameState.finishPresentingLine()
+        if shouldAdvanceDirectly, gameState.phase == .transitioning {
+            gameState.advanceToNextScene()
+        }
     }
 
     // MARK: - Game Start Flow

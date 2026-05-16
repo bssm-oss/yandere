@@ -1,8 +1,77 @@
 import AppKit
 
 private final class SceneImageView: NSImageView {
+    var usesAspectFill = false { didSet { needsDisplay = true } }
+    var usesSpritePlacement = false { didSet { needsDisplay = true } }
+    var spriteHeightMultiplier: CGFloat = 0.72 { didSet { needsDisplay = true } }
+    var spriteCenterXMultiplier: CGFloat = 0.60 { didSet { needsDisplay = true } }
+    var spriteBottomMultiplier: CGFloat = 0.03 { didSet { needsDisplay = true } }
+    var spriteMaxWidthMultiplier: CGFloat = 0.58 { didSet { needsDisplay = true } }
+
     override var intrinsicContentSize: NSSize {
         NSSize(width: NSView.noIntrinsicMetric, height: NSView.noIntrinsicMetric)
+    }
+
+    override func draw(_ dirtyRect: NSRect) {
+        if usesSpritePlacement, let image, image.size.width > 0, image.size.height > 0 {
+            drawSprite(image)
+            return
+        }
+
+        guard usesAspectFill, let image, image.size.width > 0, image.size.height > 0 else {
+            super.draw(dirtyRect)
+            return
+        }
+
+        NSGraphicsContext.current?.imageInterpolation = .high
+        let scale = max(bounds.width / image.size.width, bounds.height / image.size.height)
+        let drawSize = NSSize(width: image.size.width * scale, height: image.size.height * scale)
+        let drawRect = NSRect(
+            x: bounds.midX - drawSize.width / 2,
+            y: bounds.midY - drawSize.height / 2,
+            width: drawSize.width,
+            height: drawSize.height
+        )
+        image.draw(
+            in: drawRect,
+            from: NSRect(origin: .zero, size: image.size),
+            operation: .sourceOver,
+            fraction: 1.0,
+            respectFlipped: true,
+            hints: [.interpolation: NSImageInterpolation.high]
+        )
+    }
+
+    private func drawSprite(_ image: NSImage) {
+        NSGraphicsContext.current?.imageInterpolation = .high
+        let targetHeight = bounds.height * spriteHeightMultiplier
+        let maxWidth = bounds.width * spriteMaxWidthMultiplier
+        var scale = targetHeight / image.size.height
+        if image.size.width * scale > maxWidth {
+            scale = maxWidth / image.size.width
+        }
+
+        let drawSize = NSSize(width: image.size.width * scale, height: image.size.height * scale)
+        let requestedX = bounds.width * spriteCenterXMultiplier - drawSize.width / 2
+        let horizontalInset = bounds.width * 0.03
+        let minX = horizontalInset
+        let maxX = bounds.width - drawSize.width - horizontalInset
+        let clampedX = maxX > minX ? min(max(requestedX, minX), maxX) : requestedX
+
+        let drawRect = NSRect(
+            x: clampedX,
+            y: bounds.height * spriteBottomMultiplier,
+            width: drawSize.width,
+            height: drawSize.height
+        )
+        image.draw(
+            in: drawRect,
+            from: NSRect(origin: .zero, size: image.size),
+            operation: .sourceOver,
+            fraction: 1.0,
+            respectFlipped: true,
+            hints: [.interpolation: NSImageInterpolation.high]
+        )
     }
 }
 
@@ -39,13 +108,25 @@ open class NovelSceneView: NSView {
 
     // Choice overlay — full-screen, shown over scene when choices available
     private let choiceOverlay = NSView()
+    private let choicePanel = NSVisualEffectView()
+    private let choiceHeaderLabel = NSTextField(labelWithString: "")
+    private let choiceMoodLabel = NSTextField(labelWithString: "")
+    private let choiceContentStack = NSStackView()
     private let choiceStack = NSStackView()
 
     private let conversationEngine = ConversationEngine()
     private var currentScene: SceneNode?
     private var currentPhase: GameStatePhase = .loading
+    private var currentChoiceCount = 0
+    private var dialoguePages: [String] = []
+    private var dialoguePageIndex = 0
     private var isTyping = false
     private var blinkTimer: Timer?
+    private var visibleChoiceButtons: [ChoiceButton] = []
+    private var baseSpriteHeightMultiplier: CGFloat = 0.72
+    private var baseSpriteCenterXMultiplier: CGFloat = 0.60
+    private var baseSpriteBottomMultiplier: CGFloat = 0.03
+    private var baseSpriteMaxWidthMultiplier: CGFloat = 0.58
 
     open override var acceptsFirstResponder: Bool { true }
 
@@ -69,23 +150,27 @@ open class NovelSceneView: NSView {
     ) {
         currentScene = scene
         currentPhase = phase
+        currentChoiceCount = choices.count
         speakerLabel.stringValue = scene.speaker
-        statLabel.stringValue = "♥ \(stats.love)   ⚠ \(stats.yandere)   ◆ \(stats.sanity)"
+        statLabel.stringValue = ""
         applyVisuals(for: scene, stats: stats, assets: assets, contentBaseURL: contentBaseURL)
         YandereLevelController.shared.update(stats: stats, sceneView: self, rainView: rainView)
 
         switch phase {
         case .presentingLine:
-            isTyping = true
+            dialoguePages = Self.paginateDialogue(scene.text)
+            dialoguePageIndex = 0
             stopAdvancePulse()
             showChoiceOverlay(false, animated: false)
-            conversationEngine.start(text: scene.text)
+            startCurrentDialoguePage()
 
         case .awaitingChoice:
             isTyping = false
             conversationEngine.stop()
-            dialogueLabel.stringValue = scene.text
+            dialogueLabel.stringValue = dialoguePages.last ?? scene.text
             stopAdvancePulse()
+            choiceHeaderLabel.stringValue = scene.decisionTitle ?? "결정의 순간"
+            choiceMoodLabel.stringValue = "빗소리가 낮아진다. 지금 대답해야 한다."
             populateChoices(choices)
             showChoiceOverlay(true, animated: true)
 
@@ -119,8 +204,12 @@ open class NovelSceneView: NSView {
         backgroundLayerView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(backgroundLayerView)
 
+        backgroundImageView.usesAspectFill = true
+        cgImageView.usesAspectFill = true
+        characterImageView.usesSpritePlacement = true
+
         for iv in [backgroundImageView, cgImageView] as [SceneImageView] {
-            iv.imageScaling = .scaleAxesIndependently
+            iv.imageScaling = .scaleNone
             iv.animates = true
             iv.setContentHuggingPriority(.defaultLow, for: .horizontal)
             iv.setContentHuggingPriority(.defaultLow, for: .vertical)
@@ -132,7 +221,7 @@ open class NovelSceneView: NSView {
         cgImageView.alphaValue = 0
         addSubview(cgImageView)
 
-        characterImageView.imageScaling = .scaleProportionallyUpOrDown
+        characterImageView.imageScaling = .scaleNone
         characterImageView.animates = true
         characterImageView.setContentHuggingPriority(.defaultLow, for: .horizontal)
         characterImageView.setContentHuggingPriority(.defaultLow, for: .vertical)
@@ -154,6 +243,7 @@ open class NovelSceneView: NSView {
         statLabel.font = NSFont.monospacedSystemFont(ofSize: 11, weight: .regular)
         statLabel.textColor = NSColor.white.withAlphaComponent(0.38)
         statLabel.lineBreakMode = .byTruncatingTail
+        statLabel.isHidden = true
         statLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(statLabel)
 
@@ -201,13 +291,13 @@ open class NovelSceneView: NSView {
         dialogueLabel.font = NSFont.systemFont(ofSize: 17, weight: .light)
         dialogueLabel.textColor = NSColor.white.withAlphaComponent(0.94)
         dialogueLabel.lineBreakMode = .byWordWrapping
-        dialogueLabel.maximumNumberOfLines = 0
+        dialogueLabel.maximumNumberOfLines = 3
         dialogueLabel.translatesAutoresizingMaskIntoConstraints = false
 
         dialogueScrollView.translatesAutoresizingMaskIntoConstraints = false
         dialogueScrollView.drawsBackground = false
         dialogueScrollView.borderType = .noBorder
-        dialogueScrollView.hasVerticalScroller = true
+        dialogueScrollView.hasVerticalScroller = false
         dialogueScrollView.autohidesScrollers = true
         dialogueEffect.addSubview(dialogueScrollView)
 
@@ -228,28 +318,67 @@ open class NovelSceneView: NSView {
             self?.dialogueLabel.stringValue = text
         }
         conversationEngine.onFinished = { [weak self] in
-            self?.isTyping = false
-            self?.onLineFinished?()
+            guard let self else { return }
+            self.isTyping = false
+            if self.currentPhase == .presentingLine {
+                self.startAdvancePulse()
+            }
         }
 
         // ── Choice overlay ───────────────────────────────────────────
         choiceOverlay.wantsLayer = true
-        choiceOverlay.layer?.backgroundColor = NSColor.black.withAlphaComponent(0.55).cgColor
+        choiceOverlay.layer?.backgroundColor = NSColor.black.withAlphaComponent(0.22).cgColor
         choiceOverlay.alphaValue = 0
         choiceOverlay.isHidden = true
         choiceOverlay.translatesAutoresizingMaskIntoConstraints = false
         addSubview(choiceOverlay)
 
+        choicePanel.blendingMode = .withinWindow
+        choicePanel.state = .active
+        choicePanel.material = .hudWindow
+        choicePanel.wantsLayer = true
+        choicePanel.layer?.cornerRadius = 12
+        choicePanel.layer?.masksToBounds = true
+        choicePanel.layer?.borderWidth = 1
+        choicePanel.layer?.borderColor = NSColor.white.withAlphaComponent(0.14).cgColor
+        choicePanel.translatesAutoresizingMaskIntoConstraints = false
+        choiceOverlay.addSubview(choicePanel)
+
+        choiceHeaderLabel.font = NSFont.systemFont(ofSize: 15, weight: .semibold)
+        choiceHeaderLabel.textColor = NSColor.white.withAlphaComponent(0.92)
+        choiceHeaderLabel.alignment = .center
+        choiceHeaderLabel.lineBreakMode = .byWordWrapping
+        choiceHeaderLabel.maximumNumberOfLines = 2
+        choiceHeaderLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        choiceMoodLabel.font = NSFont.systemFont(ofSize: 12, weight: .regular)
+        choiceMoodLabel.textColor = NSColor.white.withAlphaComponent(0.50)
+        choiceMoodLabel.alignment = .center
+        choiceMoodLabel.lineBreakMode = .byWordWrapping
+        choiceMoodLabel.maximumNumberOfLines = 2
+        choiceMoodLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        choiceContentStack.orientation = .vertical
+        choiceContentStack.spacing = 10
+        choiceContentStack.alignment = .centerX
+        choiceContentStack.translatesAutoresizingMaskIntoConstraints = false
+        choicePanel.addSubview(choiceContentStack)
+        choiceContentStack.addArrangedSubview(choiceHeaderLabel)
+        choiceContentStack.addArrangedSubview(choiceMoodLabel)
+
         choiceStack.orientation = .vertical
-        choiceStack.spacing = 10
+        choiceStack.spacing = 8
         choiceStack.alignment = .centerX
         choiceStack.translatesAutoresizingMaskIntoConstraints = false
-        choiceOverlay.addSubview(choiceStack)
+        choiceContentStack.addArrangedSubview(choiceStack)
 
         setupConstraints()
     }
 
     private func setupConstraints() {
+        let choicePanelWidth = choicePanel.widthAnchor.constraint(equalTo: choiceOverlay.widthAnchor, multiplier: 0.46)
+        choicePanelWidth.priority = .defaultHigh
+
         NSLayoutConstraint.activate([
             // Background
             backgroundLayerView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -267,11 +396,11 @@ open class NovelSceneView: NSView {
             cgImageView.topAnchor.constraint(equalTo: topAnchor),
             cgImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-            // Character: center + slight right, 65% height
-            characterImageView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 24),
-            characterImageView.bottomAnchor.constraint(equalTo: dialogueEffect.topAnchor, constant: -8),
-            characterImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.65),
-            characterImageView.widthAnchor.constraint(equalTo: characterImageView.heightAnchor, multiplier: 0.52),
+            // Character stage: full-scene canvas so sprites keep natural visual scale.
+            characterImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            characterImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            characterImageView.topAnchor.constraint(equalTo: topAnchor),
+            characterImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             rainView.leadingAnchor.constraint(equalTo: leadingAnchor),
             rainView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -289,11 +418,11 @@ open class NovelSceneView: NSView {
             controlStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             controlStack.topAnchor.constraint(equalTo: topAnchor, constant: 16),
 
-            // Dialogue panel: bottom 30%
+            // Dialogue panel: compact VN box, not a document reader.
             dialogueEffect.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             dialogueEffect.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             dialogueEffect.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
-            dialogueEffect.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.30),
+            dialogueEffect.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.25),
 
             speakerAccentBar.leadingAnchor.constraint(equalTo: dialogueEffect.leadingAnchor, constant: 20),
             speakerAccentBar.topAnchor.constraint(equalTo: dialogueEffect.topAnchor, constant: 16),
@@ -325,10 +454,20 @@ open class NovelSceneView: NSView {
             choiceOverlay.topAnchor.constraint(equalTo: topAnchor),
             choiceOverlay.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-            // Choice stack: center of overlay, 62% wide
-            choiceStack.centerXAnchor.constraint(equalTo: choiceOverlay.centerXAnchor),
-            choiceStack.centerYAnchor.constraint(equalTo: choiceOverlay.centerYAnchor),
-            choiceStack.widthAnchor.constraint(equalTo: choiceOverlay.widthAnchor, multiplier: 0.62),
+            choicePanel.centerYAnchor.constraint(equalTo: choiceOverlay.centerYAnchor, constant: 24),
+            choicePanel.leadingAnchor.constraint(greaterThanOrEqualTo: choiceOverlay.leadingAnchor, constant: 20),
+            choicePanel.trailingAnchor.constraint(equalTo: choiceOverlay.trailingAnchor, constant: -34),
+            choicePanel.widthAnchor.constraint(lessThanOrEqualToConstant: 520),
+            choicePanelWidth,
+
+            choiceContentStack.leadingAnchor.constraint(equalTo: choicePanel.leadingAnchor, constant: 18),
+            choiceContentStack.trailingAnchor.constraint(equalTo: choicePanel.trailingAnchor, constant: -18),
+            choiceContentStack.topAnchor.constraint(equalTo: choicePanel.topAnchor, constant: 16),
+            choiceContentStack.bottomAnchor.constraint(equalTo: choicePanel.bottomAnchor, constant: -16),
+
+            choiceHeaderLabel.widthAnchor.constraint(equalTo: choiceContentStack.widthAnchor),
+            choiceMoodLabel.widthAnchor.constraint(equalTo: choiceContentStack.widthAnchor),
+            choiceStack.widthAnchor.constraint(equalTo: choiceContentStack.widthAnchor),
         ])
     }
 
@@ -339,39 +478,138 @@ open class NovelSceneView: NSView {
             choiceStack.removeArrangedSubview($0)
             $0.removeFromSuperview()
         }
-        for choice in choices {
-            let btn = ChoiceButton(title: choice.text, choiceID: choice.id)
+        visibleChoiceButtons = []
+        for (index, choice) in choices.enumerated() {
+            let btn = ChoiceButton(title: String(format: "%02d  %@", index + 1, choice.text), choiceID: choice.id)
             btn.target = self
             btn.action = #selector(choicePressed(_:))
             choiceStack.addArrangedSubview(btn)
+            visibleChoiceButtons.append(btn)
             btn.widthAnchor.constraint(equalTo: choiceStack.widthAnchor).isActive = true
         }
     }
 
     private func showChoiceOverlay(_ show: Bool, animated: Bool) {
+        updateCharacterPlacement(forChoiceOverlay: show)
         if show {
             choiceOverlay.isHidden = false
             if animated {
+                layoutSubtreeIfNeeded()
                 NSAnimationContext.runAnimationGroup { ctx in
                     ctx.duration = 0.28
                     choiceOverlay.animator().alphaValue = 1.0
+                    dialogueEffect.animator().alphaValue = 0.0
+                    animator().layoutSubtreeIfNeeded()
                 }
             } else {
                 choiceOverlay.alphaValue = 1.0
+                dialogueEffect.alphaValue = 0.0
+                layoutSubtreeIfNeeded()
             }
         } else {
             if animated {
+                layoutSubtreeIfNeeded()
                 NSAnimationContext.runAnimationGroup({ ctx in
                     ctx.duration = 0.20
                     choiceOverlay.animator().alphaValue = 0
+                    dialogueEffect.animator().alphaValue = 1.0
+                    animator().layoutSubtreeIfNeeded()
                 }) { [weak self] in
                     self?.choiceOverlay.isHidden = true
                 }
             } else {
                 choiceOverlay.alphaValue = 0
                 choiceOverlay.isHidden = true
+                dialogueEffect.alphaValue = 1.0
+                layoutSubtreeIfNeeded()
             }
         }
+    }
+
+    private func updateCharacterPlacement(forChoiceOverlay show: Bool) {
+        if show {
+            characterImageView.spriteHeightMultiplier = min(baseSpriteHeightMultiplier, 0.72)
+            characterImageView.spriteCenterXMultiplier = 0.28
+            characterImageView.spriteBottomMultiplier = max(baseSpriteBottomMultiplier, -0.04)
+            characterImageView.spriteMaxWidthMultiplier = min(baseSpriteMaxWidthMultiplier, 0.46)
+        } else {
+            characterImageView.spriteHeightMultiplier = baseSpriteHeightMultiplier
+            characterImageView.spriteCenterXMultiplier = baseSpriteCenterXMultiplier
+            characterImageView.spriteBottomMultiplier = baseSpriteBottomMultiplier
+            characterImageView.spriteMaxWidthMultiplier = baseSpriteMaxWidthMultiplier
+        }
+    }
+
+    // MARK: - Dialogue paging
+
+    private static func paginateDialogue(_ text: String, softLimit: Int = 86) -> [String] {
+        let normalized = text
+            .replacingOccurrences(of: "\n", with: " ")
+            .replacingOccurrences(of: "  ", with: " ")
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !normalized.isEmpty else { return [""] }
+
+        var units: [String] = []
+        var current = ""
+        for character in normalized {
+            current.append(character)
+            if ".!?。".contains(character) {
+                let unit = current.trimmingCharacters(in: .whitespacesAndNewlines)
+                if !unit.isEmpty { units.append(unit) }
+                current = ""
+            }
+        }
+        let tail = current.trimmingCharacters(in: .whitespacesAndNewlines)
+        if !tail.isEmpty { units.append(tail) }
+
+        var pages: [String] = []
+        var page = ""
+        for unit in units {
+            let candidate = page.isEmpty ? unit : "\(page) \(unit)"
+            if candidate.count <= softLimit {
+                page = candidate
+                continue
+            }
+            if !page.isEmpty {
+                pages.append(page)
+                page = ""
+            }
+            pages.append(contentsOf: wrapLongUnit(unit, limit: softLimit))
+        }
+        if !page.isEmpty { pages.append(page) }
+        return pages.isEmpty ? [normalized] : pages
+    }
+
+    private static func wrapLongUnit(_ unit: String, limit: Int) -> [String] {
+        var remaining = unit.trimmingCharacters(in: .whitespacesAndNewlines)
+        var pages: [String] = []
+
+        while remaining.count > limit {
+            let limitIndex = remaining.index(remaining.startIndex, offsetBy: limit)
+            let prefix = remaining[..<limitIndex]
+            let splitIndex = prefix.lastIndex(of: " ") ?? limitIndex
+            let chunk = String(remaining[..<splitIndex]).trimmingCharacters(in: .whitespacesAndNewlines)
+            if !chunk.isEmpty { pages.append(chunk) }
+            remaining = String(remaining[splitIndex...]).trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+
+        if !remaining.isEmpty { pages.append(remaining) }
+        return pages
+    }
+
+    private func startCurrentDialoguePage() {
+        let page = dialoguePages.indices.contains(dialoguePageIndex) ? dialoguePages[dialoguePageIndex] : ""
+        isTyping = true
+        dialogueLabel.stringValue = ""
+        conversationEngine.start(text: page)
+    }
+
+    private func advanceDialoguePageIfNeeded() -> Bool {
+        guard dialoguePageIndex + 1 < dialoguePages.count else { return false }
+        dialoguePageIndex += 1
+        stopAdvancePulse()
+        startCurrentDialoguePage()
+        return true
     }
 
     // MARK: - Advance indicator
@@ -448,13 +686,90 @@ open class NovelSceneView: NSView {
         }
 
         if !showEventCG, let charID = scene.character, let charAsset = assets?.characters[charID] {
-            characterImageView.image = VisualAssetRenderer.image(for: charAsset, baseURL: contentBaseURL, role: .character)
+            let characterImage = VisualAssetRenderer.image(for: charAsset, baseURL: contentBaseURL, role: .character)
+            let placement = spritePlacement(for: charID, scene: scene, image: characterImage)
+            baseSpriteHeightMultiplier = placement.height
+            baseSpriteCenterXMultiplier = placement.centerX
+            baseSpriteBottomMultiplier = placement.bottom
+            baseSpriteMaxWidthMultiplier = placement.maxWidth
+            updateCharacterPlacement(forChoiceOverlay: currentPhase == .awaitingChoice)
+            characterImageView.image = characterImage
             characterImageView.alphaValue = charID == "haru_reflection" ? 0.52 : 0.96
             characterImageView.isHidden = false
         } else {
             characterImageView.image = nil
             characterImageView.isHidden = true
         }
+    }
+
+    private func spritePlacement(
+        for characterID: String,
+        scene: SceneNode,
+        image: NSImage
+    ) -> (height: CGFloat, centerX: CGFloat, bottom: CGFloat, maxWidth: CGFloat) {
+        let aspect = image.size.height > 0 ? image.size.width / image.size.height : 0.66
+        var height: CGFloat
+        var bottom: CGFloat
+        var maxWidth: CGFloat
+
+        switch aspect {
+        case 1.05...:
+            height = 0.58
+            bottom = 0.08
+            maxWidth = 0.48
+        case ..<0.56:
+            height = 0.86
+            bottom = -0.10
+            maxWidth = 0.54
+        case ..<0.70:
+            height = 0.82
+            bottom = -0.06
+            maxWidth = 0.54
+        default:
+            height = 0.80
+            bottom = -0.04
+            maxWidth = 0.54
+        }
+
+        var centerX: CGFloat = 0.60
+        if characterID.contains("shadow") {
+            centerX = 0.61
+            height -= 0.02
+            bottom -= 0.01
+        }
+        if characterID.contains("yuka") {
+            centerX = 0.58
+            height -= 0.02
+        }
+        if characterID.contains("airi") {
+            centerX = 0.52
+            height -= 0.01
+        }
+        if characterID == "haru_reflection" {
+            return (min(height, 0.58), 0.50, max(bottom, 0.08), min(maxWidth, 0.44))
+        }
+        if scene.effects.contains("decision_moment") {
+            centerX = characterID.contains("airi") ? 0.48 : 0.62
+            height += 0.03
+            bottom -= 0.02
+        }
+        if characterID.contains("tender") || characterID.contains("close") {
+            centerX += 0.02
+            height += 0.03
+            bottom -= 0.02
+        }
+        if characterID.contains("breakdown") || characterID.contains("childlike") {
+            centerX += 0.02
+            height += 0.04
+            bottom -= 0.03
+        }
+
+        return (
+            max(0.46, min(height, 0.88)),
+            max(0.44, min(centerX, 0.66)),
+            max(-0.12, min(bottom, 0.16)),
+            max(0.38, min(maxWidth, 0.58))
+        )
     }
 
     // MARK: - Input
@@ -470,6 +785,14 @@ open class NovelSceneView: NSView {
     }
 
     open override func keyDown(with event: NSEvent) {
+        if currentPhase == .awaitingChoice,
+           let key = event.charactersIgnoringModifiers,
+           let choiceNumber = Int(key),
+           (1...visibleChoiceButtons.count).contains(choiceNumber) {
+            choicePressed(visibleChoiceButtons[choiceNumber - 1])
+            return
+        }
+
         switch event.charactersIgnoringModifiers {
         case " ", "\r", "\u{3}":
             requestAdvanceOrSkip()
@@ -481,6 +804,10 @@ open class NovelSceneView: NSView {
     private func requestAdvanceOrSkip() {
         if isTyping {
             conversationEngine.skip()
+        } else if currentPhase == .presentingLine {
+            if advanceDialoguePageIfNeeded() { return }
+            stopAdvancePulse()
+            onLineFinished?()
         } else if currentPhase == .transitioning {
             onAdvanceRequested?()
         }
