@@ -35,7 +35,7 @@ open class ChoiceButton: NSButton {
             with: NSSize(width: availableWidth, height: .greatestFiniteMagnitude),
             options: [.usesLineFragmentOrigin, .usesFontLeading]
         )
-        return NSSize(width: NSView.noIntrinsicMetric, height: max(62, ceil(rect.height) + 28))
+        return NSSize(width: NSView.noIntrinsicMetric, height: max(46, ceil(rect.height) + 18))
     }
 
     open override func layout() {
@@ -82,11 +82,14 @@ open class ChoiceButton: NSButton {
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = .left
         paragraph.lineBreakMode = .byWordWrapping
+        paragraph.firstLineHeadIndent = 50
+        paragraph.headIndent = 50
+        paragraph.tailIndent = -22
 
         attributedTitle = NSAttributedString(
             string: title,
             attributes: [
-                .font: NSFont.systemFont(ofSize: 15, weight: .regular),
+                .font: NSFont.systemFont(ofSize: 14, weight: .medium),
                 .foregroundColor: NSColor.white.withAlphaComponent(hovering ? 1.0 : 0.88),
                 .paragraphStyle: paragraph,
             ]
@@ -143,12 +146,12 @@ open class ChoiceButton: NSButton {
         let isActive = hovering || (window?.firstResponder === self)
 
         let bgColor: CGColor = isActive
-            ? NSColor(calibratedRed: 0.55, green: 0.07, blue: 0.10, alpha: 0.72).cgColor
-            : NSColor(calibratedRed: 0.05, green: 0.05, blue: 0.08, alpha: 0.78).cgColor
+            ? NSColor(calibratedRed: 0.52, green: 0.05, blue: 0.08, alpha: 0.78).cgColor
+            : NSColor(calibratedRed: 0.03, green: 0.03, blue: 0.045, alpha: 0.82).cgColor
 
         let borderColor: CGColor = isActive
             ? NSColor.systemRed.withAlphaComponent(0.75).cgColor
-            : NSColor.white.withAlphaComponent(0.14).cgColor
+            : NSColor.white.withAlphaComponent(0.18).cgColor
 
         let accentAlpha: CGFloat = isActive ? 1.0 : 0.55
         let glowOpacity: Float = isActive ? 0.40 : 0
@@ -176,9 +179,9 @@ open class ChoiceButton: NSButton {
         layer.masksToBounds = false
         layer.borderWidth = 1
         layer.shadowColor = NSColor.black.cgColor
-        layer.shadowOpacity = 0.30
-        layer.shadowRadius = 10
-        layer.shadowOffset = CGSize(width: 0, height: -2)
+        layer.shadowOpacity = 0.34
+        layer.shadowRadius = 12
+        layer.shadowOffset = CGSize(width: 0, height: 4)
 
         updateLayerFrames()
 

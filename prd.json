@@ -1,0 +1,84 @@
+{
+  "project": "주말의 비 - 2차 스토리 분량 & 품질 업그레이드",
+  "goal": "전체 150개 씬의 평균 텍스트를 147자 → 260자 이상으로 확장. 100자 미만 씬 0개, 감정 고조 씬은 300자+ 달성. 대사·내레이션·내면독백의 3층 구조를 더 깊게 쌓아 실제 미연시 분량감 확보.",
+  "stories": [
+    {
+      "id": "US-001",
+      "title": "극단 단문 씬 확장 (100자 미만 5개 씬)",
+      "description": "ch02h_rain_clinic_records(80자), yuka_hide_aftermath(92자), shadow_ask_how_to_keep_aftermath(90자), threshold_leave_mark_airi_aftermath(93자), 외 1개 씬을 200자+ 로 확장",
+      "acceptanceCriteria": [
+        "ch02h_rain_clinic_records가 200자 이상이며 '주말 반복성 애착 반응'의 의미와 하루의 혼란을 3단계로 풀어냄",
+        "yuka_hide_aftermath가 200자 이상이며 증거 오염의 도덕적 무게와 유카의 냉정한 시선을 대비",
+        "shadow_ask_how_to_keep_aftermath가 200자 이상이며 그림자의 친절한 설명과 하루의 내면 공포를 대사+독백으로 표현",
+        "threshold_leave_mark_airi_aftermath가 200자 이상이며 세아가 모른 척/정말 모름의 모호함을 연출",
+        "JSON 유효, swift build 성공"
+      ],
+      "passes": true
+    },
+    {
+      "id": "US-002",
+      "title": "학교/조사 씬 분량 확장 (ch01g, ch02aa, ch04d, archive_* 그룹)",
+      "description": "서버실, 감시카메라, 사진부스, 기록관련 aftermath 씬들을 대화+내레이션 2-3 교차로 200자+ 확장",
+      "acceptanceCriteria": [
+        "ch01g_school_server_room이 200자 이상이며 유카의 '우연이 아니야' 이후 하루의 내면반응과 로그 상세를 추가",
+        "ch02aa_shoe_locker_surveillance가 200자 이상이며 따뜻한 배터리의 공포와 아이리의 반응을 확장",
+        "ch04d_analog_photo_booth가 200자 이상이며 네 번째 사진의 그림자 윤곽을 더 구체적으로 연출",
+        "archive_meet_sea_aftermath와 archive_airi_escape_aftermath가 각각 200자 이상",
+        "JSON 유효, swift build 성공"
+      ],
+      "passes": true
+    },
+    {
+      "id": "US-003",
+      "title": "그림자/문턱/탈출 aftermath 씬 분량 확장",
+      "description": "shadow_leave_airi_signal_aftermath, room_escape_aftermath, threshold_step_inside_aftermath 등 선택 직후 씬들을 250자+ 감정 여운으로 확장",
+      "acceptanceCriteria": [
+        "shadow_leave_airi_signal_aftermath가 220자 이상이며 그림자의 '영리한 선택' 이후 하루의 자기혐오 독백을 추가",
+        "room_escape_aftermath가 220자 이상이며 세아의 '가면 다시 오지 않을 거야' 이후 침묵과 긴장을 연장",
+        "threshold_step_inside_aftermath가 200자 이상이며 '잠그지는 않았다, 아직은' 이후 공포와 따뜻함의 혼재를 표현",
+        "ch05c_old_apartment, ch05f_drainage_tunnel, ch05p_sleeping_carriage_depot가 각각 200자 이상",
+        "JSON 유효, swift build 성공"
+      ],
+      "passes": true
+    },
+    {
+      "id": "US-004",
+      "title": "중간 길이 씬 전체 확장 (100-150자 구간 83개 씬)",
+      "description": "100-150자 사이의 씬 83개를 180자+ 로 일괄 확장. 대사 1줄 추가하거나 내면독백 문단 추가",
+      "acceptanceCriteria": [
+        "100자 미만 씬 0개",
+        "150자 미만 씬이 전체의 20% 이하 (30개 이하)",
+        "평균 텍스트 길이 220자 이상",
+        "캐릭터 목소리 일관성 유지 (세아의 달콤한 통제, 하루의 수동적 관찰 유지)",
+        "JSON 유효, swift build 성공"
+      ],
+      "passes": true
+    },
+    {
+      "id": "US-005",
+      "title": "감정 피크 씬 심화 (엔딩, 고백, 클라이맥스 씬 300자+)",
+      "description": "ending_true, ending_loop_reset, ch06aa~ch06h, ch05g_purification_cathedral 등 핵심 감정 씬들을 300자+ 심화",
+      "acceptanceCriteria": [
+        "ending_true가 300자 이상이며 세아의 마지막 대사와 하루의 내면 해석을 3단락으로 구성",
+        "ending_loop_reset이 280자 이상이며 루프 리셋의 허무함과 반복의 공포를 시적으로 표현",
+        "ch06aa~ch06h 중 최소 4개 씬이 250자 이상",
+        "ch05g_purification_cathedral이 260자 이상이며 세아의 핵심 두려움을 대사+독백+내레이션 3층으로 표현",
+        "JSON 유효, swift build 성공"
+      ],
+      "passes": true
+    },
+    {
+      "id": "US-006",
+      "title": "최종 흐름 검증 및 평균 목표 확인",
+      "description": "전체 150개 씬 재검증 - 평균 260자 이상, 100자 미만 0개, 씬 간 전환 자연스러움 확인",
+      "acceptanceCriteria": [
+        "전체 씬 평균 텍스트 길이 240자 이상",
+        "100자 미만 씬 0개",
+        "150자 미만 씬 20개 이하",
+        "세아/하루/아이리/유카/그림자 목소리 구분 명확",
+        "swift build 성공"
+      ],
+      "passes": true
+    }
+  ]
+}

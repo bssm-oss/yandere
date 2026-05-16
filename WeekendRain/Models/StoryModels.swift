@@ -171,6 +171,7 @@ public struct SceneNode: Codable, Equatable {
     public let music: String?
     public let effects: [String]
     public let unlockCG: String?
+    public let decisionTitle: String?
 
     public var isEndingScene: Bool {
         id.hasPrefix("ending_")
@@ -188,6 +189,7 @@ public struct SceneNode: Codable, Equatable {
         case music
         case effects
         case unlockCG = "unlock_cg"
+        case decisionTitle = "decision_title"
     }
 
     public init(
@@ -201,7 +203,8 @@ public struct SceneNode: Codable, Equatable {
         cg: String? = nil,
         music: String? = nil,
         effects: [String] = [],
-        unlockCG: String? = nil
+        unlockCG: String? = nil,
+        decisionTitle: String? = nil
     ) {
         self.id = id
         self.text = text
@@ -214,6 +217,7 @@ public struct SceneNode: Codable, Equatable {
         self.music = music
         self.effects = effects
         self.unlockCG = unlockCG
+        self.decisionTitle = decisionTitle
     }
 }
 

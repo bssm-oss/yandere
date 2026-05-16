@@ -32,6 +32,7 @@ func endingID(for choices: [String], package: StoryPackage) throws -> String {
     manager.load(package: package)
 
     for choiceID in choices {
+        advanceUntilChoice(manager)
         guard manager.availableChoices().contains(where: { $0.id == choiceID }) else {
             let sceneID = manager.currentScene?.id ?? "nil"
             throw ValidationFailure.failed("Choice \(choiceID) is not available at \(sceneID)")
@@ -43,6 +44,15 @@ func endingID(for choices: [String], package: StoryPackage) throws -> String {
         throw ValidationFailure.failed("No ending resolved for route")
     }
     return endingID
+}
+
+func advanceUntilChoice(_ manager: GameStateManager) {
+    while manager.availableChoices().isEmpty,
+          let scene = manager.currentScene,
+          !scene.isEndingScene,
+          scene.nextScene != nil {
+        manager.advanceToNextScene()
+    }
 }
 
 func checkImageAsset(_ asset: VisualAsset, role: VisualAssetRenderer.Role, baseURL: URL) throws {
@@ -105,6 +115,118 @@ func runValidation() throws {
     try check(package.assets.backgrounds.count >= 96, "Expected expanded background set")
     try check(package.assets.characters.count >= 74, "Expected expanded character image set")
     try check(package.assets.cg.count >= 106, "Expected expanded CG image set")
+
+    let sceneTextLengths = package.scenes.map { $0.text.count }
+    let averageSceneTextLength = Double(sceneTextLengths.reduce(0, +)) / Double(max(sceneTextLengths.count, 1))
+    try check((sceneTextLengths.min() ?? 0) >= 200, "Scene text is too short for VN pacing (min 200 chars required)")
+    try check(averageSceneTextLength >= 240, "Average scene text is too short for VN pacing (240 chars required)")
+    let choiceTextLengths = package.scenes.flatMap { $0.choices.map { $0.text.count } }
+    try check((choiceTextLengths.max() ?? 0) <= 18, "Choice labels should be short action verbs")
+
+    let forbiddenSceneTerms = [
+        "플레이어", "미연시", "선택지", "루트", "분기", "CG", "갤러리",
+        "데이트 보상", "호감도", "집착도", "엔딩 조건", "트루",
+        "Love", "Yandere", "Sanity", "비가시 태그", "판정 장면",
+        "저장/로드", "중반부", "후반부", "클라이맥스", "이 구간", "이 장",
+        "같은 컷", "다음 장면", "악역", "정답지", "화면은", "암전"
+    ]
+    for scene in package.scenes {
+        let hits = forbiddenSceneTerms.filter { scene.text.contains($0) }
+        let hitList = hits.joined(separator: ", ")
+        try check(hits.isEmpty, "Scene \(scene.id) contains non-diegetic terms: \(hitList)")
+        try check(
+            scene.text.filter { $0 == "“" }.count == scene.text.filter { $0 == "”" }.count,
+            "Scene \(scene.id) has unbalanced dialogue quotes"
+        )
+        try check(
+            scene.text.filter { $0 == "‘" }.count == scene.text.filter { $0 == "’" }.count,
+            "Scene \(scene.id) has unbalanced emphasis quotes"
+        )
+        if !scene.choices.isEmpty {
+            try check(scene.decisionTitle?.isEmpty == false, "Choice scene \(scene.id) is missing decision_title")
+            try check(scene.effects.contains("decision_moment"), "Choice scene \(scene.id) missing decision_moment effect")
+        }
+    }
+
+    func checkAssetPath(_ asset: VisualAsset?, id: String, expectedPath: String) throws {
+        try check(asset?.path == expectedPath, "Visual asset \(id) should use \(expectedPath), got \(asset?.path ?? "nil")")
+    }
+
+    try checkAssetPath(
+        package.assets.backgrounds["rain_street"],
+        id: "rain_street",
+        expectedPath: "Assets/BG/confession_booth_alley.png"
+    )
+    try checkAssetPath(
+        package.assets.backgrounds["bus_stop_evening"],
+        id: "bus_stop_evening",
+        expectedPath: "Assets/BG/shoe_locker_surveillance.png"
+    )
+    try checkAssetPath(
+        package.assets.backgrounds["retro_arcade"],
+        id: "retro_arcade",
+        expectedPath: "Assets/BG/negative_sorting_arcade.png"
+    )
+    try checkAssetPath(
+        package.assets.backgrounds["water_tower"],
+        id: "water_tower",
+        expectedPath: "Assets/BG/flood_siren_tower.png"
+    )
+    try checkAssetPath(
+        package.assets.cg["cg_umbrella_gate"],
+        id: "cg_umbrella_gate",
+        expectedPath: "Assets/CG/cg_umbrella_memorial.png"
+    )
+    try checkAssetPath(
+        package.assets.cg["cg_notebook_names"],
+        id: "cg_notebook_names",
+        expectedPath: "Assets/CG/cg_locker_charm_camera.png"
+    )
+    try checkAssetPath(
+        package.assets.cg["cg_box"],
+        id: "cg_box",
+        expectedPath: "Assets/CG/cg_blanket_chain_knot.png"
+    )
+    try checkAssetPath(
+        package.assets.characters["sea_normal"],
+        id: "sea_normal",
+        expectedPath: "Assets/Character/sea_station_clock.png"
+    )
+    try checkAssetPath(
+        package.assets.characters["sea_tender_close"],
+        id: "sea_tender_close",
+        expectedPath: "Assets/Character/sea_orchid_umbrella_handle.png"
+    )
+    try checkAssetPath(
+        package.assets.characters["sea_anxious"],
+        id: "sea_anxious",
+        expectedPath: "Assets/Character/sea_charm_camera.png"
+    )
+
+    let sceneVisualExpectations: [String: (background: String?, character: String?)] = [
+        "prologue_rain_gate": ("shoe_locker_surveillance", "sea_station_clock"),
+        "ch00_shared_umbrella": ("shoe_locker_surveillance", "sea_orchid_umbrella_handle"),
+        "ch01_notebook": ("student_council_interrogation_room", "sea_charm_camera"),
+        "ch02_airi_warning": ("student_council_interrogation_room", "airi_locker_evidence"),
+        "ch03j_neon_koi_market": ("neon_koi_market", "sea_cablecar_token"),
+        "ch03k_rain_mineral_mint": ("rain_mineral_mint", "yuka_rain_orchid_lab"),
+        "ch04_rooftop_confession": ("school_rooftop", "sea_rooftop_thread"),
+        "ch05e_rooftop_greenhouse": ("rooftop_greenhouse", "sea_orchid_umbrella_handle"),
+        "ch05i_flood_siren_tower": ("flood_siren_tower", "airi_resolve"),
+        "ch05m_tide_lock_gate": ("tide_lock_gate", "shadow_mineral_key"),
+        "ch06d_final_crosswalk": ("final_crosswalk", "airi_resolve")
+    ]
+    for (sceneID, expected) in sceneVisualExpectations {
+        guard let scene = package.sceneIndex[sceneID] else {
+            throw ValidationFailure.failed("Missing visual expectation scene: \(sceneID)")
+        }
+        if let background = expected.background {
+            try check(scene.background == background, "Scene \(sceneID) should use background \(background), got \(scene.background ?? "nil")")
+        }
+        if let character = expected.character {
+            try check(scene.character == character, "Scene \(sceneID) should use character \(character), got \(scene.character ?? "nil")")
+        }
+    }
 
     for assetID in [
         "sea_wall_mural",
@@ -302,515 +424,70 @@ func runValidation() throws {
 
     let trueRoute = try endingID(for: [
         "prologue_accept",
-        "umbrella_ask_red",
-        "water_tower_touch",
-        "letter_exchange_read_postmark",
-        "stationery_compare_ink",
-        "clock_set_current_time",
-        "tram_validate_ticket",
-        "mural_read_old_signature",
         "notebook_ask",
-        "arcade_ask_initials",
-        "kiosk_counsel_truth",
-        "radio_trace_signal",
-        "lost_umbrella_check_tags",
-        "cassette_decode_label",
-        "server_compare_timestamps",
-        "elevator_check_floor_log",
         "airi_diary_detail",
-        "locker_catalog_camera",
-        "counseling_play_raw_tape",
-        "antenna_ground_signal",
-        "call_tell_sea_truth",
-        "aquarium_read_plaque",
-        "infirmary_check_pulse",
-        "laundromat_wash_ribbon",
-        "skybridge_hold_present",
-        "hospital_breathe_clear_air",
-        "clinic_read_consent_form",
-        "observation_keep_chart",
-        "sample_compare_clear_vial",
-        "interrogation_record_all",
         "yuka_tell_airi",
         "shadow_listen_recorder",
-        "tollbooth_refuse_shadow_fee",
-        "registry_keep_current_name",
-        "pawnshop_reject_red_key",
-        "library_show_airi",
-        "memory_name_current",
-        "deck_count_real_lights",
-        "museum_read_captions",
-        "basement_match_birth_records",
-        "weather_stop_loop_protocol",
-        "bureau_ground_love_signal",
-        "wash_return_wrong_umbrella",
-        "cablecar_cut_return_thread",
-        "atelier_unwind_thread",
-        "koi_test_clear_scale",
-        "mint_hold_letter_to_light",
-        "stairwell_drop_red_thread",
         "rooftop_boundary",
-        "gauge_measure_real_rain",
-        "pool_keep_exit_lane",
-        "tatami_return_uniform_unstitched",
-        "letter_return_gently",
         "archive_compare_letter_fibers",
-        "lab_separate_scent",
-        "printshop_untie_pattern",
-        "shrine_untie",
-        "photo_keep_one_each",
-        "darkroom_split_frame",
-        "negative_count_real_frames",
-        "corridor_reflect_clear_tea",
-        "teahouse_brew_clear_water",
-        "phone_call_sea_now",
-        "bridge_return_reflection",
-        "pier_wait_for_real_boat",
-        "confession_play_raw_tape",
-        "cinema_watch_hallway_memory",
-        "deadletter_read_unsent_names",
-        "microfilm_read_rain_records",
-        "switchboard_call_present_number",
-        "doll_remove_red_thread",
-        "archive_read",
-        "apartment_take_down",
-        "platform_between",
-        "lab_stabilize",
-        "greenhouse_open_roof",
-        "seed_vault_catalog_orchid",
-        "aquarium_measure_pressure",
-        "generator_ground_red_circuit",
-        "tunnel_break_water_flow",
-        "cathedral_open_valve",
-        "reservoir_open_spillway",
-        "siren_disable_alarm",
-        "server_nave_preserve_log",
-        "memorial_read_tags",
-        "signal_cut_red_thread",
-        "tide_release_clear_water",
-        "postoffice_dispatch_clear_letters",
-        "chapel_pay_exact_fare",
-        "carriage_map_exit_track",
         "room_soothe",
-        "blanket_uncover_chain_knot",
-        "window_trace_real_exit",
-        "musicbox_stop_lullaby",
         "threshold_name_sea_present",
-        "umbrella_return_lower_it",
-        "crosswalk_wait_green",
-        "bus_step_off_loop",
         "station_clock_start_monday"
     ], package: package)
     try check(trueRoute == "true", "True route sequence failed")
 
     let boxRoute = try endingID(for: [
         "prologue_accept",
-        "umbrella_silence",
-        "water_tower_keep_rain",
-        "letter_exchange_keep_sea_note",
-        "stationery_buy_red_pen",
-        "clock_accept_stopped_watch",
-        "tram_ride_with_sea",
-        "mural_paint_red_umbrella",
         "notebook_close_gently",
-        "arcade_play_with_sea",
-        "kiosk_delete_log",
-        "radio_dedicate_song",
-        "lost_umbrella_take_red_one",
-        "cassette_buy_sea_song",
-        "server_delete_for_sea",
-        "elevator_hold_sea_button",
         "airi_defend_sea",
-        "locker_hide_camera_for_sea",
-        "counseling_keep_sea_confession",
-        "antenna_keep_private_channel",
-        "call_delete_airi",
-        "aquarium_hold_red",
-        "infirmary_hide_symptoms",
-        "laundromat_keep_scent",
-        "skybridge_cover_sea_eyes",
-        "hospital_share_raindrop",
-        "clinic_sign_for_sea",
-        "observation_sign_with_sea",
-        "sample_keep_sea_vial_warm",
-        "interrogation_protect_sea_statement",
         "yuka_hide",
         "shadow_reject",
-        "tollbooth_pay_with_sea_memory",
-        "registry_write_two_names",
-        "pawnshop_buy_red_key_for_sea",
-        "library_burn_page",
-        "memory_choose_sea_only",
-        "deck_promise_only_two",
-        "museum_hide_sea_photo",
-        "basement_hide_record",
-        "weather_keep_weekend_rain",
-        "bureau_loop_weekend_forecast",
-        "wash_keep_sea_handle_warm",
-        "cablecar_share_single_token",
-        "atelier_accept_red_measure",
-        "koi_buy_red_umbrella_charm",
-        "mint_stamp_two_names",
-        "stairwell_keep_sea_hand",
         "rooftop_hold_hand",
-        "gauge_keep_sea_vial_warm",
-        "pool_lock_lane_with_sea",
-        "tatami_accept_matching_stitch",
-        "letter_return_gently",
-        "archive_keep_envelope_warm",
-        "lab_bottle_sea_scent",
-        "printshop_print_two_names",
-        "shrine_tie_forever",
-        "photo_keep_couple_strip",
-        "darkroom_keep_all_frames",
-        "negative_sea_only_album",
-        "corridor_drink_same_reflection",
-        "teahouse_drink_same_cup",
-        "phone_cut_outside",
-        "bridge_stay_under_umbrella",
-        "pier_board_with_sea",
-        "confession_record_sea_only",
-        "cinema_sit_with_sea_projection",
-        "deadletter_seal_haru_sea",
-        "microfilm_hide_sea_frame",
-        "switchboard_patch_sea_only",
-        "doll_keep_matching_hand",
         "archive_meet_sea",
-        "apartment_leave_wall",
-        "platform_yuka_leads",
-        "lab_stabilize",
-        "greenhouse_lock_inside",
-        "seed_vault_keep_orchid_warm",
-        "aquarium_watch_with_sea",
-        "generator_lock_power_for_two",
-        "tunnel_follow_sea_voice",
-        "cathedral_kneel_with_sea",
-        "reservoir_close_gate",
-        "siren_play_sea_song",
-        "server_nave_sea_delete_trace",
-        "memorial_choose_red_umbrella",
-        "signal_tie_new_knot",
-        "tide_lock_key_with_sea",
-        "postoffice_keep_sea_letters",
-        "chapel_buy_red_charm",
-        "carriage_sleep_next_to_sea",
         "room_accept",
-        "blanket_accept_soft_restraint",
-        "window_write_two_initials",
-        "musicbox_keep_lullaby_playing",
         "threshold_step_inside",
-        "umbrella_return_close_world",
-        "crosswalk_cross_red_together",
-        "bus_keep_seat_for_sea",
         "station_clock_keep_weekend"
     ], package: package)
     try check(boxRoute == "box", "Yandere box route sequence failed")
 
     let collapseRoute = try endingID(for: [
         "prologue_accept",
-        "umbrella_message_airi",
-        "water_tower_airi_memory",
-        "letter_exchange_show_airi",
-        "stationery_call_airi",
-        "clock_call_airi_memory",
-        "tram_text_airi_platform",
-        "mural_send_airi_signature",
         "notebook_run",
-        "arcade_invite_airi",
-        "kiosk_airi_backup",
-        "radio_call_airi",
-        "lost_umbrella_wait_airi",
-        "cassette_airi_voice",
-        "server_send_airi_warning",
-        "elevator_call_airi",
         "airi_stay",
-        "locker_airi_keep_handkerchief",
-        "counseling_airi_record_warning",
-        "antenna_airi_call_emergency_line",
-        "call_promise_airi",
-        "aquarium_airi_warning",
-        "infirmary_call_airi",
-        "laundromat_answer_airi",
-        "skybridge_wait_airi",
-        "hospital_wait_airi",
-        "clinic_call_airi_guardian",
-        "observation_call_airi_baseline",
-        "sample_airi_safety_photo",
-        "interrogation_airi_keep_ribbon",
         "yuka_tell_airi",
-        "shadow_listen_recorder",
-        "tollbooth_leave_airi_coin",
-        "registry_mark_airi_witness",
-        "pawnshop_hide_airi_receipt",
-        "library_show_airi",
-        "memory_follow_airi_voice",
-        "deck_share_location_airi",
-        "museum_call_airi_witness",
-        "basement_call_airi_witness",
-        "weather_alert_airi",
-        "bureau_airi_public_alert",
-        "wash_airi_claim_ticket",
-        "cablecar_airi_emergency_bell",
-        "atelier_call_airi_tailor",
-        "koi_send_airi_location",
-        "mint_keep_airi_exit_map",
-        "stairwell_leave_airi_pin",
+        "shadow_leave_airi_signal",
         "rooftop_airi_call",
-        "gauge_send_airi_reading",
-        "pool_follow_airi_whistle",
-        "tatami_hide_airi_thread",
-        "letter_show_airi",
-        "archive_call_airi_match",
-        "lab_airi_keep_sample",
-        "printshop_airi_exit_charm",
-        "shrine_pray_airi",
-        "photo_send_airi",
-        "darkroom_airi_mark_exit",
-        "negative_airi_backup_strip",
-        "corridor_leave_airi_teacup",
-        "teahouse_leave_airi_note",
-        "phone_call_airi",
-        "bridge_leave_airi_marker",
-        "pier_leave_airi_ticket",
-        "confession_airi_witness_line",
-        "cinema_mark_airi_empty_seat",
-        "deadletter_save_airi_note",
-        "microfilm_send_airi_frame",
-        "switchboard_leave_airi_line",
-        "doll_tie_airi_warning",
         "archive_airi_escape",
-        "apartment_call_airi",
-        "platform_between",
-        "lab_call_airi",
-        "greenhouse_wait_airi",
-        "seed_vault_airi_sample",
-        "aquarium_airi_surface_signal",
-        "generator_airi_flash_backup",
-        "tunnel_wait_airi_rescue",
-        "cathedral_mark_airi_exit",
-        "reservoir_signal_airi",
-        "siren_flash_airi_code",
-        "server_nave_send_airi_backup",
-        "memorial_hide_airi_tag",
-        "signal_mark_airi_route",
-        "tide_send_airi_beacon",
-        "postoffice_airi_forward_warning",
-        "chapel_leave_airi_coin",
-        "carriage_mark_airi_seat",
         "room_call_airi",
-        "blanket_leave_airi_corner",
-        "window_mark_airi_breath_path",
-        "musicbox_hide_airi_pin",
         "threshold_leave_mark_airi",
-        "umbrella_return_airi_signal",
-        "crosswalk_drop_airi_pin",
-        "bus_drop_airi_ticket",
         "station_clock_drop_airi_note"
     ], package: package)
     try check(collapseRoute == "collapse", "Airi bad route sequence failed")
 
     let ghostRoute = try endingID(for: [
         "prologue_refuse",
-        "umbrella_ask_red",
-        "water_tower_touch",
-        "letter_exchange_read_postmark",
-        "stationery_compare_ink",
-        "clock_set_current_time",
-        "tram_validate_ticket",
-        "mural_read_old_signature",
         "notebook_ask",
-        "arcade_ask_initials",
-        "kiosk_yuka_export",
-        "radio_record_yuka",
-        "lost_umbrella_scan_yuka",
-        "cassette_send_yuka_index",
-        "server_export_yuka_logs",
-        "elevator_export_yuka_log",
         "airi_diary_detail",
-        "locker_yuka_scan_lens",
-        "counseling_yuka_extract_voiceprint",
-        "antenna_yuka_trace_signal_map",
-        "call_ask_yuka",
-        "aquarium_read_plaque",
-        "infirmary_save_chart",
-        "laundromat_read_receipt",
-        "skybridge_send_camera_yuka",
-        "hospital_send_yuka_vitals",
-        "clinic_send_yuka_chart",
-        "observation_yuka_scan_waveform",
-        "sample_yuka_catalog_vial",
-        "interrogation_yuka_formal_case",
         "yuka_cooperate",
         "shadow_report_yuka",
-        "tollbooth_yuka_copy_receipt",
-        "registry_yuka_compare_names",
-        "pawnshop_yuka_trace_key",
-        "library_follow_shadow_note",
-        "memory_mark_yuka_pattern",
-        "deck_map_yuka",
-        "museum_trace_yuka_catalog",
-        "basement_yuka_microfilm",
-        "weather_yuka_pull_archive",
-        "bureau_yuka_archive_pressure",
-        "wash_yuka_residue_sample",
-        "cablecar_yuka_route_manifest",
-        "atelier_photograph_repair_tags",
-        "koi_yuka_sample_scale",
-        "mint_yuka_trace_watermark",
-        "stairwell_record_shadow_key",
         "rooftop_ask_shadow",
-        "gauge_send_yuka_sensor_log",
-        "pool_photograph_drain_code",
-        "tatami_catalog_stitch_pattern",
-        "letter_show_yuka",
-        "archive_yuka_scan_postmark",
-        "lab_yuka_test_scent",
-        "printshop_yuka_catalog_block",
-        "shrine_photograph",
-        "photo_scan_yuka",
-        "darkroom_yuka_develop_fourth",
-        "negative_yuka_route_grid",
-        "corridor_yuka_test_reflection",
-        "teahouse_test_yuka_water",
-        "phone_trace_yuka",
-        "bridge_yuka_photo_reflection",
-        "pier_send_yuka_manifest",
-        "confession_yuka_extract_noise",
-        "cinema_yuka_capture_frame",
-        "deadletter_yuka_index_bundle",
-        "microfilm_yuka_compare_frames",
-        "switchboard_yuka_trace_call",
-        "doll_shadow_serial_number",
         "archive_shadow_file",
-        "apartment_read_water_bills",
-        "platform_yuka_leads",
-        "lab_send_yuka",
-        "greenhouse_send_yuka_sample",
-        "seed_vault_yuka_scan_gene",
-        "aquarium_yuka_trace_current",
-        "generator_yuka_export_voltage",
-        "tunnel_record_yuka_echo",
-        "cathedral_upload_yuka_core",
-        "reservoir_upload_yuka_flow",
-        "siren_send_yuka_frequency",
-        "server_nave_listen_shadow",
-        "memorial_photo_for_yuka",
-        "signal_copy_yuka_table",
-        "tide_export_yuka_final_key",
-        "postoffice_yuka_scan_tube_log",
-        "chapel_yuka_collect_offering_log",
-        "carriage_yuka_pin_route_map",
         "room_escape",
-        "blanket_scan_chain_serial",
-        "window_send_yuka_condensation_map",
-        "musicbox_extract_mechanism_log",
         "threshold_leave_recording_yuka",
-        "umbrella_return_yuka_photo",
-        "crosswalk_send_yuka_live",
-        "bus_send_yuka_route",
         "station_clock_send_yuka_time"
     ], package: package)
     try check(ghostRoute == "ghost", "Hidden ghost route sequence failed")
 
     let abyssRoute = try endingID(for: [
         "prologue_accept",
-        "umbrella_silence",
-        "water_tower_ignore",
-        "letter_exchange_answer_same_words",
-        "stationery_write_until_blur",
-        "clock_turn_back_hands",
-        "tram_follow_wrong_car",
-        "mural_step_into_paint",
         "notebook_run",
-        "arcade_play_with_sea",
-        "kiosk_delete_log",
-        "radio_repeat_name",
-        "lost_umbrella_smell_rain",
-        "cassette_loop_name",
-        "server_sync_sea_profile",
-        "elevator_descend_without_floor",
         "airi_defend_sea",
-        "locker_count_bus_numbers",
-        "counseling_loop_third_chair",
-        "antenna_answer_sea_static",
-        "call_delete_airi",
-        "aquarium_stare_too_long",
-        "infirmary_accept_dizziness",
-        "laundromat_watch_spin",
-        "skybridge_walk_red_signal",
-        "hospital_count_heartbeats",
-        "clinic_copy_sea_pulse",
-        "observation_trace_own_pulse",
-        "sample_reflect_red_water",
-        "interrogation_leave_third_chair",
         "yuka_hide",
         "shadow_ask_how_to_keep",
-        "tollbooth_accept_shadow_price",
-        "registry_erase_haru_name",
-        "pawnshop_trade_voice_for_key",
-        "library_burn_page",
-        "memory_erase_other_names",
-        "deck_step_into_reflection",
-        "museum_touch_empty_frame",
-        "basement_replace_name",
-        "weather_raise_rainfall",
-        "bureau_raise_private_rain",
-        "wash_breathe_mineral_foam",
-        "cablecar_step_into_wrong_car",
-        "atelier_wrap_finger_red",
-        "koi_follow_red_fish",
-        "mint_press_name_until_red",
-        "stairwell_count_wet_steps",
         "rooftop_hold_hand",
-        "gauge_drink_rain_measure",
-        "pool_step_into_reflection_lane",
-        "tatami_sew_name_into_cuff",
-        "letter_keep",
-        "archive_press_letter_to_chest",
-        "lab_breathe_red_scent",
-        "printshop_stamp_until_blur",
-        "shrine_tie_forever",
-        "photo_cut_everyone_else",
-        "darkroom_cut_until_red",
-        "negative_step_into_blank",
-        "corridor_swallow_reflection",
-        "teahouse_swallow_red_sugar",
-        "phone_listen_busy_signal",
-        "bridge_follow_second_sea",
-        "pier_follow_empty_ferry",
-        "confession_loop_tape_backwards",
-        "cinema_walk_into_screen",
-        "deadletter_mail_to_loop",
-        "microfilm_watch_loop",
-        "switchboard_answer_own_voice",
-        "doll_wear_porcelain_finger",
         "archive_meet_sea",
-        "apartment_leave_wall",
-        "platform_ignore_all",
-        "lab_drink_with_sea",
-        "greenhouse_breathe_rain",
-        "seed_vault_swallow_seed_light",
-        "aquarium_follow_red_fragment",
-        "generator_listen_to_hum",
-        "tunnel_drink_echo",
-        "cathedral_baptize_rain",
-        "reservoir_sink_name",
-        "siren_listen_until_static",
-        "server_nave_accept_loop_math",
-        "memorial_float_own_name",
-        "signal_pull_wrong_lever",
-        "tide_swallow_alarm",
-        "postoffice_mail_self_to_weekend",
-        "chapel_offer_voice_to_machine",
-        "carriage_board_blank_carriage",
         "room_accept",
-        "blanket_pull_chain_under_cover",
-        "window_erase_exit_with_breath",
-        "musicbox_wind_until_voice_blurs",
         "threshold_answer_with_sea",
-        "umbrella_return_become_handle",
-        "crosswalk_follow_wrong_reflection",
-        "bus_sleep_until_rain",
         "station_clock_forget_weekday"
     ], package: package)
     try check(abyssRoute == "abyss", "Abyss route sequence failed")
@@ -821,6 +498,7 @@ func runValidation() throws {
 
     let manager = GameStateManager()
     manager.load(package: package)
+    advanceUntilChoice(manager)
     manager.choose(choiceID: "prologue_accept")
     try check(manager.selectedTagCounts["sea_accept"] == 1, "Tag count failed")
     try check(manager.stats.love == 35 && manager.stats.yandere == 20, "Choice delta failed")
