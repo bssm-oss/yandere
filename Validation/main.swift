@@ -46,6 +46,45 @@ func endingID(for choices: [String], package: StoryPackage) throws -> String {
     return endingID
 }
 
+func terminalSceneID(for choices: [String], package: StoryPackage) throws -> (sceneID: String, backlogIDs: Set<String>) {
+    let manager = GameStateManager()
+    manager.load(package: package)
+
+    for choiceID in choices {
+        advanceUntilChoice(manager)
+        guard manager.availableChoices().contains(where: { $0.id == choiceID }) else {
+            let sceneID = manager.currentScene?.id ?? "nil"
+            throw ValidationFailure.failed("Choice \(choiceID) is not available at \(sceneID)")
+        }
+        manager.choose(choiceID: choiceID)
+    }
+
+    var remainingSteps = 80
+    while let scene = manager.currentScene, !scene.isEndingScene, remainingSteps > 0 {
+        remainingSteps -= 1
+        switch manager.phase {
+        case .presentingLine:
+            manager.finishPresentingLine()
+        case .transitioning:
+            manager.advanceToNextScene()
+        case .awaitingChoice:
+            throw ValidationFailure.failed("Unexpected extra choice at \(scene.id)")
+        case .loading, .backlog, .gallery, .ending:
+            break
+        }
+    }
+
+    guard remainingSteps > 0 else {
+        throw ValidationFailure.failed("Route did not reach a terminal ending")
+    }
+
+    guard let sceneID = manager.currentScene?.id else {
+        throw ValidationFailure.failed("Route ended without current scene")
+    }
+
+    return (sceneID, Set(manager.backlog.map(\.sceneID)))
+}
+
 func advanceUntilChoice(_ manager: GameStateManager) {
     while manager.availableChoices().isEmpty,
           let scene = manager.currentScene,
@@ -97,6 +136,23 @@ func runValidation() throws {
 
     let package = try StoryLoader().loadStory(at: storyURL)
     let contentBaseURL = storyURL.deletingLastPathComponent().deletingLastPathComponent()
+    let legacySceneJSON = """
+    {
+      "id": "legacy_scene",
+      "text": "legacy text",
+      "speaker": "하루",
+      "choices": [],
+      "next_scene": null,
+      "character": "sea_normal",
+      "effects": []
+    }
+    """.data(using: .utf8)!
+    let legacyScene = try JSONDecoder().decode(SceneNode.self, from: legacySceneJSON)
+    try check(legacyScene.visuals.isEmpty, "Legacy scene without visuals should decode with empty visuals")
+    try check(
+        legacyScene.stageVisuals == [SceneVisual(type: .character, id: "sea_normal", position: .center)],
+        "Legacy scene should fall back to centered character staging"
+    )
     try check(package.schemaVersion == 1, "schema_version should be 1")
     try check(package.metadata.storyID == "weekend_rain.v1", "Unexpected story id")
     try check(package.worldFoundation.cityName.contains("Rainveil City"), "World foundation city missing")
@@ -110,6 +166,7 @@ func runValidation() throws {
     )
     try check(package.sceneIndex[package.metadata.startScene] != nil, "Missing start scene")
     try check(package.sceneIndex[package.metadata.finalScene] != nil, "Missing final scene")
+    try check(package.endingIndex[package.metadata.defaultEnding] != nil, "Missing default ending rule")
     try check(package.statBounds.initial == GameStats.defaults, "Unexpected initial stats")
     try check(package.scenes.count >= 106, "Expanded story should include at least 106 scenes including endings")
     try check(package.assets.backgrounds.count >= 96, "Expected expanded background set")
@@ -134,6 +191,14 @@ func runValidation() throws {
         let hits = forbiddenSceneTerms.filter { scene.text.contains($0) }
         let hitList = hits.joined(separator: ", ")
         try check(hits.isEmpty, "Scene \(scene.id) contains non-diegetic terms: \(hitList)")
+        let prose = ([scene.speaker, scene.text] + scene.choices.map(\.text))
+            .joined(separator: "\n")
+            .replacingOccurrences(of: "Rainveil", with: "")
+            .replacingOccurrences(of: "City", with: "")
+        try check(
+            prose.range(of: "[A-Za-z]", options: .regularExpression) == nil,
+            "Scene \(scene.id) contains non-Korean Latin prose"
+        )
         try check(
             scene.text.filter { $0 == "“" }.count == scene.text.filter { $0 == "”" }.count,
             "Scene \(scene.id) has unbalanced dialogue quotes"
@@ -227,6 +292,34 @@ func runValidation() throws {
             try check(scene.character == character, "Scene \(sceneID) should use character \(character), got \(scene.character ?? "nil")")
         }
     }
+
+    func checkSceneVisuals(_ sceneID: String, expected: [(String, SceneVisualPosition)]) throws {
+        guard let scene = package.sceneIndex[sceneID] else {
+            throw ValidationFailure.failed("Missing staged visual scene: \(sceneID)")
+        }
+        let actual = scene.visuals.map { ($0.id, $0.position) }
+        try check(
+            actual.elementsEqual(expected, by: { $0.0 == $1.0 && $0.1 == $1.1 }),
+            "Scene \(sceneID) staged visuals mismatch: \(actual)"
+        )
+    }
+
+    try checkSceneVisuals(
+        "ch02_airi_warning",
+        expected: [("airi_locker_evidence", .left), ("sea_charm_camera", .right)]
+    )
+    try checkSceneVisuals(
+        "ch03_yuka_investigation",
+        expected: [("sea_mural_reflection", .left), ("yuka_lab_coat", .right)]
+    )
+    try checkSceneVisuals(
+        "ch05z_a_final_corridor",
+        expected: [("airi_resolve", .left), ("sea_threshold", .right)]
+    )
+    try checkSceneVisuals(
+        "ch06f_weekend_station_clock",
+        expected: [("airi_resolve", .left), ("sea_station_clock", .center), ("yuka_weather_terminal", .right)]
+    )
 
     for assetID in [
         "sea_wall_mural",
@@ -435,6 +528,21 @@ func runValidation() throws {
         "station_clock_start_monday"
     ], package: package)
     try check(trueRoute == "true", "True route sequence failed")
+    let trueTerminal = try terminalSceneID(for: [
+        "prologue_accept",
+        "notebook_ask",
+        "airi_diary_detail",
+        "yuka_tell_airi",
+        "shadow_listen_recorder",
+        "rooftop_boundary",
+        "archive_compare_letter_fibers",
+        "room_soothe",
+        "threshold_name_sea_present",
+        "station_clock_start_monday"
+    ], package: package)
+    try check(trueTerminal.sceneID == "ending_true", "True route should reach ending_true, got \(trueTerminal.sceneID)")
+    try check(trueTerminal.backlogIDs.contains("ch06g_all_routes_montage"), "True route should pass final montage bridge")
+    try check(trueTerminal.backlogIDs.contains("ch06h_final_evidence_board"), "True route should pass final evidence board")
 
     let boxRoute = try endingID(for: [
         "prologue_accept",
@@ -449,6 +557,19 @@ func runValidation() throws {
         "station_clock_keep_weekend"
     ], package: package)
     try check(boxRoute == "box", "Yandere box route sequence failed")
+    let boxTerminal = try terminalSceneID(for: [
+        "prologue_accept",
+        "notebook_close_gently",
+        "airi_defend_sea",
+        "yuka_hide",
+        "shadow_reject",
+        "rooftop_hold_hand",
+        "archive_meet_sea",
+        "room_accept",
+        "threshold_step_inside",
+        "station_clock_keep_weekend"
+    ], package: package)
+    try check(boxTerminal.sceneID == "ending_box", "Box route should reach ending_box")
 
     let collapseRoute = try endingID(for: [
         "prologue_accept",
@@ -463,6 +584,19 @@ func runValidation() throws {
         "station_clock_drop_airi_note"
     ], package: package)
     try check(collapseRoute == "collapse", "Airi bad route sequence failed")
+    let collapseTerminal = try terminalSceneID(for: [
+        "prologue_accept",
+        "notebook_run",
+        "airi_stay",
+        "yuka_tell_airi",
+        "shadow_leave_airi_signal",
+        "rooftop_airi_call",
+        "archive_airi_escape",
+        "room_call_airi",
+        "threshold_leave_mark_airi",
+        "station_clock_drop_airi_note"
+    ], package: package)
+    try check(collapseTerminal.sceneID == "ending_collapse", "Collapse route should reach ending_collapse")
 
     let ghostRoute = try endingID(for: [
         "prologue_refuse",
@@ -477,6 +611,19 @@ func runValidation() throws {
         "station_clock_send_yuka_time"
     ], package: package)
     try check(ghostRoute == "ghost", "Hidden ghost route sequence failed")
+    let ghostTerminal = try terminalSceneID(for: [
+        "prologue_refuse",
+        "notebook_ask",
+        "airi_diary_detail",
+        "yuka_cooperate",
+        "shadow_report_yuka",
+        "rooftop_ask_shadow",
+        "archive_shadow_file",
+        "room_escape",
+        "threshold_leave_recording_yuka",
+        "station_clock_send_yuka_time"
+    ], package: package)
+    try check(ghostTerminal.sceneID == "ending_ghost", "Ghost route should reach ending_ghost")
 
     let abyssRoute = try endingID(for: [
         "prologue_accept",
@@ -491,6 +638,19 @@ func runValidation() throws {
         "station_clock_forget_weekday"
     ], package: package)
     try check(abyssRoute == "abyss", "Abyss route sequence failed")
+    let abyssTerminal = try terminalSceneID(for: [
+        "prologue_accept",
+        "notebook_run",
+        "airi_defend_sea",
+        "yuka_hide",
+        "shadow_ask_how_to_keep",
+        "rooftop_hold_hand",
+        "archive_meet_sea",
+        "room_accept",
+        "threshold_answer_with_sea",
+        "station_clock_forget_weekday"
+    ], package: package)
+    try check(abyssTerminal.sceneID == "ending_abyss", "Abyss route should reach ending_abyss")
 
     var stats = GameStats(love: 95, yandere: 2, sanity: 50)
     stats.apply(StatDelta(love: 20, yandere: -10, sanity: -100), bounds: package.statBounds.range)

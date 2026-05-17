@@ -83,6 +83,10 @@ final class FlagLogicTests: XCTestCase {
             "station_clock_start_monday"
         ]
         XCTAssertEqual(try TestSupport.endingID(for: trueRoute, package: package), "true")
+        let trueTerminal = try TestSupport.terminalSceneID(for: trueRoute, package: package)
+        XCTAssertEqual(trueTerminal.sceneID, "ending_true")
+        XCTAssertTrue(trueTerminal.backlogIDs.contains("ch06g_all_routes_montage"))
+        XCTAssertTrue(trueTerminal.backlogIDs.contains("ch06h_final_evidence_board"))
 
         let boxRoute = [
             "prologue_accept",
@@ -97,6 +101,7 @@ final class FlagLogicTests: XCTestCase {
             "station_clock_keep_weekend"
         ]
         XCTAssertEqual(try TestSupport.endingID(for: boxRoute, package: package), "box")
+        XCTAssertEqual(try TestSupport.terminalSceneID(for: boxRoute, package: package).sceneID, "ending_box")
 
         let collapseRoute = [
             "prologue_accept",
@@ -111,6 +116,7 @@ final class FlagLogicTests: XCTestCase {
             "station_clock_drop_airi_note"
         ]
         XCTAssertEqual(try TestSupport.endingID(for: collapseRoute, package: package), "collapse")
+        XCTAssertEqual(try TestSupport.terminalSceneID(for: collapseRoute, package: package).sceneID, "ending_collapse")
 
         let ghostRoute = [
             "prologue_refuse",
@@ -125,6 +131,7 @@ final class FlagLogicTests: XCTestCase {
             "station_clock_send_yuka_time"
         ]
         XCTAssertEqual(try TestSupport.endingID(for: ghostRoute, package: package), "ghost")
+        XCTAssertEqual(try TestSupport.terminalSceneID(for: ghostRoute, package: package).sceneID, "ending_ghost")
 
         let abyssRoute = [
             "prologue_accept",
@@ -139,5 +146,6 @@ final class FlagLogicTests: XCTestCase {
             "station_clock_forget_weekday"
         ]
         XCTAssertEqual(try TestSupport.endingID(for: abyssRoute, package: package), "abyss")
+        XCTAssertEqual(try TestSupport.terminalSceneID(for: abyssRoute, package: package).sceneID, "ending_abyss")
     }
 }
