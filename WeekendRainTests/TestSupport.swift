@@ -41,6 +41,46 @@ enum TestSupport {
         return manager.evaluateEnding()?.id ?? ""
     }
 
+    static func terminalSceneID(for choices: [String], package: StoryPackage) throws -> (sceneID: String, backlogIDs: Set<String>) {
+        let manager = GameStateManager()
+        manager.load(package: package)
+
+        for choiceID in choices {
+            advanceUntilChoice(manager)
+            guard manager.availableChoices().contains(where: { $0.id == choiceID }) else {
+                throw NSError(domain: "WeekendRainTests", code: 1, userInfo: [
+                    NSLocalizedDescriptionKey: "Choice \(choiceID) is not available at \(manager.currentScene?.id ?? "nil")"
+                ])
+            }
+            manager.choose(choiceID: choiceID)
+        }
+
+        var remainingSteps = 80
+        while let scene = manager.currentScene, !scene.isEndingScene, remainingSteps > 0 {
+            remainingSteps -= 1
+            switch manager.phase {
+            case .presentingLine:
+                manager.finishPresentingLine()
+            case .transitioning:
+                manager.advanceToNextScene()
+            case .awaitingChoice:
+                throw NSError(domain: "WeekendRainTests", code: 1, userInfo: [
+                    NSLocalizedDescriptionKey: "Unexpected extra choice at \(scene.id)"
+                ])
+            case .loading, .backlog, .gallery, .ending:
+                break
+            }
+        }
+
+        guard remainingSteps > 0, let sceneID = manager.currentScene?.id else {
+            throw NSError(domain: "WeekendRainTests", code: 1, userInfo: [
+                NSLocalizedDescriptionKey: "Route did not reach a terminal ending"
+            ])
+        }
+
+        return (sceneID, Set(manager.backlog.map(\.sceneID)))
+    }
+
     static func advanceUntilChoice(_ manager: GameStateManager) {
         while manager.availableChoices().isEmpty,
               let scene = manager.currentScene,

@@ -159,6 +159,28 @@ public enum StatKey: String, Codable, CaseIterable {
     case sanity
 }
 
+public enum SceneVisualType: String, Codable, Equatable {
+    case character
+}
+
+public enum SceneVisualPosition: String, Codable, CaseIterable, Equatable, Hashable {
+    case left
+    case center
+    case right
+}
+
+public struct SceneVisual: Codable, Equatable {
+    public let type: SceneVisualType
+    public let id: String
+    public let position: SceneVisualPosition
+
+    public init(type: SceneVisualType, id: String, position: SceneVisualPosition) {
+        self.type = type
+        self.id = id
+        self.position = position
+    }
+}
+
 public struct SceneNode: Codable, Equatable {
     public let id: String
     public let text: String
@@ -170,11 +192,21 @@ public struct SceneNode: Codable, Equatable {
     public let cg: String?
     public let music: String?
     public let effects: [String]
+    public let visuals: [SceneVisual]
     public let unlockCG: String?
     public let decisionTitle: String?
 
     public var isEndingScene: Bool {
         id.hasPrefix("ending_")
+    }
+
+    public var stageVisuals: [SceneVisual] {
+        if !visuals.isEmpty {
+            return visuals
+        }
+
+        guard let character else { return [] }
+        return [SceneVisual(type: .character, id: character, position: .center)]
     }
 
     enum CodingKeys: String, CodingKey {
@@ -188,6 +220,7 @@ public struct SceneNode: Codable, Equatable {
         case cg
         case music
         case effects
+        case visuals
         case unlockCG = "unlock_cg"
         case decisionTitle = "decision_title"
     }
@@ -203,6 +236,7 @@ public struct SceneNode: Codable, Equatable {
         cg: String? = nil,
         music: String? = nil,
         effects: [String] = [],
+        visuals: [SceneVisual] = [],
         unlockCG: String? = nil,
         decisionTitle: String? = nil
     ) {
@@ -216,8 +250,26 @@ public struct SceneNode: Codable, Equatable {
         self.cg = cg
         self.music = music
         self.effects = effects
+        self.visuals = visuals
         self.unlockCG = unlockCG
         self.decisionTitle = decisionTitle
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(String.self, forKey: .id)
+        text = try container.decode(String.self, forKey: .text)
+        speaker = try container.decode(String.self, forKey: .speaker)
+        choices = try container.decode([ChoiceNode].self, forKey: .choices)
+        nextScene = try container.decodeIfPresent(String.self, forKey: .nextScene)
+        background = try container.decodeIfPresent(String.self, forKey: .background)
+        character = try container.decodeIfPresent(String.self, forKey: .character)
+        cg = try container.decodeIfPresent(String.self, forKey: .cg)
+        music = try container.decodeIfPresent(String.self, forKey: .music)
+        effects = try container.decode([String].self, forKey: .effects)
+        visuals = try container.decodeIfPresent([SceneVisual].self, forKey: .visuals) ?? []
+        unlockCG = try container.decodeIfPresent(String.self, forKey: .unlockCG)
+        decisionTitle = try container.decodeIfPresent(String.self, forKey: .decisionTitle)
     }
 }
 

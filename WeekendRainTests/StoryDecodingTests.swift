@@ -19,6 +19,8 @@ final class StoryDecodingTests: XCTestCase {
         XCTAssertGreaterThanOrEqual(package.assets.characters.count, 48)
         XCTAssertGreaterThanOrEqual(package.assets.cg.count, 63)
         XCTAssertEqual(package.statBounds.initial, GameStats.defaults)
+        XCTAssertNotNil(package.endingIndex[package.metadata.defaultEnding])
+        XCTAssertNoThrow(try StoryValidator.validate(package))
     }
 
     func testSceneReferencesResolve() throws {
@@ -46,9 +48,72 @@ final class StoryDecodingTests: XCTestCase {
                 XCTAssertNotNil(package.assets.cg[unlockCG], "\(scene.id) points to missing unlock_cg \(unlockCG)")
             }
 
+            var occupiedVisualPositions = Set<SceneVisualPosition>()
+            for visual in scene.visuals {
+                XCTAssertNotNil(package.assets.characters[visual.id], "\(scene.id) points to missing visual character \(visual.id)")
+                XCTAssertTrue(occupiedVisualPositions.insert(visual.position).inserted, "\(scene.id) duplicates visual position \(visual.position)")
+            }
+
+            if scene.effects.contains("event_cg") {
+                XCTAssertNotNil(scene.cg, "\(scene.id) has event_cg without cg")
+            }
+
             for choice in scene.choices {
                 XCTAssertTrue(sceneIDs.contains(choice.nextScene), "\(choice.id) points to missing \(choice.nextScene)")
             }
+        }
+    }
+
+    func testLegacyCharacterFallbackAndStagedVisuals() throws {
+        let legacySceneJSON = """
+        {
+          "id": "legacy_scene",
+          "text": "legacy text",
+          "speaker": "하루",
+          "choices": [],
+          "next_scene": null,
+          "character": "sea_normal",
+          "effects": []
+        }
+        """.data(using: .utf8)!
+        let legacyScene = try JSONDecoder().decode(SceneNode.self, from: legacySceneJSON)
+        XCTAssertTrue(legacyScene.visuals.isEmpty)
+        XCTAssertEqual(
+            legacyScene.stageVisuals,
+            [SceneVisual(type: .character, id: "sea_normal", position: .center)]
+        )
+
+        let package = try TestSupport.loadPackage()
+        XCTAssertEqual(
+            package.sceneIndex["ch02_airi_warning"]?.visuals,
+            [
+                SceneVisual(type: .character, id: "airi_locker_evidence", position: .left),
+                SceneVisual(type: .character, id: "sea_charm_camera", position: .right)
+            ]
+        )
+        XCTAssertEqual(
+            package.sceneIndex["ch06f_weekend_station_clock"]?.visuals,
+            [
+                SceneVisual(type: .character, id: "airi_resolve", position: .left),
+                SceneVisual(type: .character, id: "sea_station_clock", position: .center),
+                SceneVisual(type: .character, id: "yuka_weather_terminal", position: .right)
+            ]
+        )
+    }
+
+    func testAssetPathsStayBundledAndRelative() throws {
+        let package = try TestSupport.loadPackage()
+        let assets = Array(package.assets.backgrounds.values)
+            + Array(package.assets.characters.values)
+            + Array(package.assets.cg.values)
+
+        for asset in assets {
+            XCTAssertFalse(asset.path.contains(".."), asset.id)
+            XCTAssertFalse(asset.path.contains("\\"), asset.id)
+            XCTAssertFalse(asset.path.contains(":"), asset.id)
+            XCTAssertFalse(asset.path.hasPrefix("/"), asset.id)
+            XCTAssertFalse(asset.path.hasPrefix("~"), asset.id)
+            XCTAssertTrue(asset.path.hasPrefix("Assets/"), asset.id)
         }
     }
 }

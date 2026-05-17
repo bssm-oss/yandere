@@ -1,4 +1,5 @@
 import AppKit
+import QuartzCore
 
 private final class SceneImageView: NSImageView {
     var usesAspectFill = false { didSet { needsDisplay = true } }
@@ -75,6 +76,13 @@ private final class SceneImageView: NSImageView {
     }
 }
 
+private struct SpritePlacement {
+    let height: CGFloat
+    let centerX: CGFloat
+    let bottom: CGFloat
+    let maxWidth: CGFloat
+}
+
 open class NovelSceneView: NSView {
     public var onChoiceSelected: ((String) -> Void)?
     public var onAdvanceRequested: (() -> Void)?
@@ -90,7 +98,9 @@ open class NovelSceneView: NSView {
     private let backgroundLayerView = NSView()
     private let backgroundImageView = SceneImageView()
     private let cgImageView = SceneImageView()
-    private let characterImageView = SceneImageView()
+    private let characterStageView = NSView()
+    private var characterImageViews: [SceneVisualPosition: SceneImageView] = [:]
+    private let characterPositions: [SceneVisualPosition] = [.left, .center, .right]
 
     // HUD (top)
     private let titleLabel = NSTextField(labelWithString: "주말의 비")
@@ -123,10 +133,8 @@ open class NovelSceneView: NSView {
     private var isTyping = false
     private var blinkTimer: Timer?
     private var visibleChoiceButtons: [ChoiceButton] = []
-    private var baseSpriteHeightMultiplier: CGFloat = 0.72
-    private var baseSpriteCenterXMultiplier: CGFloat = 0.60
-    private var baseSpriteBottomMultiplier: CGFloat = 0.03
-    private var baseSpriteMaxWidthMultiplier: CGFloat = 0.58
+    private var baseSpritePlacements: [SceneVisualPosition: SpritePlacement] = [:]
+    private var currentCharacterIDs: [SceneVisualPosition: String] = [:]
 
     open override var acceptsFirstResponder: Bool { true }
 
@@ -206,7 +214,6 @@ open class NovelSceneView: NSView {
 
         backgroundImageView.usesAspectFill = true
         cgImageView.usesAspectFill = true
-        characterImageView.usesSpritePlacement = true
 
         for iv in [backgroundImageView, cgImageView] as [SceneImageView] {
             iv.imageScaling = .scaleNone
@@ -221,14 +228,10 @@ open class NovelSceneView: NSView {
         cgImageView.alphaValue = 0
         addSubview(cgImageView)
 
-        characterImageView.imageScaling = .scaleNone
-        characterImageView.animates = true
-        characterImageView.setContentHuggingPriority(.defaultLow, for: .horizontal)
-        characterImageView.setContentHuggingPriority(.defaultLow, for: .vertical)
-        characterImageView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-        characterImageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
-        characterImageView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(characterImageView)
+        characterStageView.wantsLayer = true
+        characterStageView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(characterStageView)
+        configureCharacterStage()
 
         rainView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(rainView)
@@ -375,6 +378,30 @@ open class NovelSceneView: NSView {
         setupConstraints()
     }
 
+    private func configureCharacterStage() {
+        for position in characterPositions {
+            let imageView = SceneImageView()
+            imageView.usesSpritePlacement = true
+            imageView.imageScaling = .scaleNone
+            imageView.animates = true
+            imageView.alphaValue = 0
+            imageView.isHidden = true
+            imageView.setContentHuggingPriority(.defaultLow, for: .horizontal)
+            imageView.setContentHuggingPriority(.defaultLow, for: .vertical)
+            imageView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+            imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            characterStageView.addSubview(imageView)
+            characterImageViews[position] = imageView
+            NSLayoutConstraint.activate([
+                imageView.leadingAnchor.constraint(equalTo: characterStageView.leadingAnchor),
+                imageView.trailingAnchor.constraint(equalTo: characterStageView.trailingAnchor),
+                imageView.topAnchor.constraint(equalTo: characterStageView.topAnchor),
+                imageView.bottomAnchor.constraint(equalTo: characterStageView.bottomAnchor),
+            ])
+        }
+    }
+
     private func setupConstraints() {
         let choicePanelWidth = choicePanel.widthAnchor.constraint(equalTo: choiceOverlay.widthAnchor, multiplier: 0.46)
         choicePanelWidth.priority = .defaultHigh
@@ -397,10 +424,10 @@ open class NovelSceneView: NSView {
             cgImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             // Character stage: full-scene canvas so sprites keep natural visual scale.
-            characterImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            characterImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            characterImageView.topAnchor.constraint(equalTo: topAnchor),
-            characterImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            characterStageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            characterStageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            characterStageView.topAnchor.constraint(equalTo: topAnchor),
+            characterStageView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             rainView.leadingAnchor.constraint(equalTo: leadingAnchor),
             rainView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -527,17 +554,39 @@ open class NovelSceneView: NSView {
     }
 
     private func updateCharacterPlacement(forChoiceOverlay show: Bool) {
-        if show {
-            characterImageView.spriteHeightMultiplier = min(baseSpriteHeightMultiplier, 0.72)
-            characterImageView.spriteCenterXMultiplier = 0.28
-            characterImageView.spriteBottomMultiplier = max(baseSpriteBottomMultiplier, -0.04)
-            characterImageView.spriteMaxWidthMultiplier = min(baseSpriteMaxWidthMultiplier, 0.46)
-        } else {
-            characterImageView.spriteHeightMultiplier = baseSpriteHeightMultiplier
-            characterImageView.spriteCenterXMultiplier = baseSpriteCenterXMultiplier
-            characterImageView.spriteBottomMultiplier = baseSpriteBottomMultiplier
-            characterImageView.spriteMaxWidthMultiplier = baseSpriteMaxWidthMultiplier
+        for position in characterPositions {
+            guard let imageView = characterImageViews[position] else { continue }
+            let base = baseSpritePlacements[position] ?? SpritePlacement(
+                height: 0.72,
+                centerX: centerX(for: position),
+                bottom: 0.03,
+                maxWidth: 0.58
+            )
+            let placement = show ? choiceOverlayPlacement(for: base, position: position) : base
+            imageView.spriteHeightMultiplier = placement.height
+            imageView.spriteCenterXMultiplier = placement.centerX
+            imageView.spriteBottomMultiplier = placement.bottom
+            imageView.spriteMaxWidthMultiplier = placement.maxWidth
         }
+    }
+
+    private func choiceOverlayPlacement(for base: SpritePlacement, position: SceneVisualPosition) -> SpritePlacement {
+        let shiftedCenterX: CGFloat
+        switch position {
+        case .left:
+            shiftedCenterX = min(base.centerX, 0.20)
+        case .center:
+            shiftedCenterX = 0.29
+        case .right:
+            shiftedCenterX = 0.39
+        }
+
+        return SpritePlacement(
+            height: min(base.height, 0.72),
+            centerX: shiftedCenterX,
+            bottom: max(base.bottom, -0.04),
+            maxWidth: min(base.maxWidth, 0.42)
+        )
     }
 
     // MARK: - Dialogue paging
@@ -643,7 +692,8 @@ open class NovelSceneView: NSView {
         contentBaseURL: URL?
     ) {
         let yandere = CGFloat(stats.yandere) / 100.0
-        let showEventCG = scene.isEndingScene || scene.character == nil || scene.effects.contains("event_cg")
+        let characterVisuals = scene.stageVisuals.filter { $0.type == .character }
+        let showEventCG = scene.isEndingScene || scene.effects.contains("event_cg") || (characterVisuals.isEmpty && scene.cg != nil)
 
         let baseColor: NSColor
         switch scene.background {
@@ -685,28 +735,94 @@ open class NovelSceneView: NSView {
             cgImageView.isHidden = true
         }
 
-        if !showEventCG, let charID = scene.character, let charAsset = assets?.characters[charID] {
-            let characterImage = VisualAssetRenderer.image(for: charAsset, baseURL: contentBaseURL, role: .character)
-            let placement = spritePlacement(for: charID, scene: scene, image: characterImage)
-            baseSpriteHeightMultiplier = placement.height
-            baseSpriteCenterXMultiplier = placement.centerX
-            baseSpriteBottomMultiplier = placement.bottom
-            baseSpriteMaxWidthMultiplier = placement.maxWidth
-            updateCharacterPlacement(forChoiceOverlay: currentPhase == .awaitingChoice)
-            characterImageView.image = characterImage
-            characterImageView.alphaValue = charID == "haru_reflection" ? 0.52 : 0.96
-            characterImageView.isHidden = false
+        if showEventCG {
+            hideAllCharacterVisuals()
         } else {
-            characterImageView.image = nil
-            characterImageView.isHidden = true
+            renderCharacterVisuals(characterVisuals, scene: scene, assets: assets, contentBaseURL: contentBaseURL)
         }
+    }
+
+    private func renderCharacterVisuals(
+        _ visuals: [SceneVisual],
+        scene: SceneNode,
+        assets: AssetManifest?,
+        contentBaseURL: URL?
+    ) {
+        let activePositions = Set(visuals.map(\.position))
+        for position in characterPositions where !activePositions.contains(position) {
+            hideCharacter(at: position)
+        }
+
+        for visual in visuals {
+            guard let imageView = characterImageViews[visual.position], let charAsset = assets?.characters[visual.id] else {
+                hideCharacter(at: visual.position)
+                continue
+            }
+
+            let characterImage = VisualAssetRenderer.image(for: charAsset, baseURL: contentBaseURL, role: .character)
+            baseSpritePlacements[visual.position] = spritePlacement(
+                for: visual.id,
+                position: visual.position,
+                activeVisualCount: visuals.count,
+                scene: scene,
+                image: characterImage
+            )
+            updateCharacterPlacement(forChoiceOverlay: currentPhase == .awaitingChoice)
+            showCharacter(imageView, id: visual.id, at: visual.position, image: characterImage)
+        }
+    }
+
+    private func showCharacter(_ imageView: SceneImageView, id: String, at position: SceneVisualPosition, image: NSImage) {
+        let targetAlpha = characterVisualAlpha(for: id)
+        let shouldCrossfade = imageView.isHidden || currentCharacterIDs[position] != id
+        currentCharacterIDs[position] = id
+        imageView.image = image
+        imageView.isHidden = false
+
+        if shouldCrossfade {
+            imageView.alphaValue = 0
+            NSAnimationContext.runAnimationGroup { context in
+                context.duration = 0.22
+                context.timingFunction = CAMediaTimingFunction(name: .easeOut)
+                imageView.animator().alphaValue = targetAlpha
+            }
+        } else {
+            imageView.alphaValue = targetAlpha
+        }
+    }
+
+    private func hideAllCharacterVisuals() {
+        for position in characterPositions {
+            hideCharacter(at: position)
+        }
+    }
+
+    private func hideCharacter(at position: SceneVisualPosition) {
+        guard let imageView = characterImageViews[position] else { return }
+        currentCharacterIDs[position] = nil
+        guard !imageView.isHidden || imageView.image != nil else { return }
+
+        NSAnimationContext.runAnimationGroup({ context in
+            context.duration = 0.16
+            imageView.animator().alphaValue = 0
+        }) { [weak self, weak imageView] in
+            guard self?.currentCharacterIDs[position] == nil else { return }
+            imageView?.isHidden = true
+            imageView?.image = nil
+        }
+    }
+
+    private func characterVisualAlpha(for characterID: String) -> CGFloat {
+        characterID == "haru_reflection" || characterID == "haru_umbrella_reflection" ? 0.52 : 0.96
     }
 
     private func spritePlacement(
         for characterID: String,
+        position: SceneVisualPosition,
+        activeVisualCount: Int,
         scene: SceneNode,
         image: NSImage
-    ) -> (height: CGFloat, centerX: CGFloat, bottom: CGFloat, maxWidth: CGFloat) {
+    ) -> SpritePlacement {
         let aspect = image.size.height > 0 ? image.size.width / image.size.height : 0.66
         var height: CGFloat
         var bottom: CGFloat
@@ -731,25 +847,25 @@ open class NovelSceneView: NSView {
             maxWidth = 0.54
         }
 
-        var centerX: CGFloat = 0.60
+        var centerX = centerX(for: position)
         if characterID.contains("shadow") {
-            centerX = 0.61
+            centerX += position == .center ? 0.04 : 0.01
             height -= 0.02
             bottom -= 0.01
         }
         if characterID.contains("yuka") {
-            centerX = 0.58
+            centerX -= position == .right ? 0.01 : 0.02
             height -= 0.02
         }
         if characterID.contains("airi") {
-            centerX = 0.52
+            centerX -= position == .left ? 0.01 : 0.03
             height -= 0.01
         }
         if characterID == "haru_reflection" {
-            return (min(height, 0.58), 0.50, max(bottom, 0.08), min(maxWidth, 0.44))
+            return SpritePlacement(height: min(height, 0.58), centerX: centerX, bottom: max(bottom, 0.08), maxWidth: min(maxWidth, 0.44))
         }
         if scene.effects.contains("decision_moment") {
-            centerX = characterID.contains("airi") ? 0.48 : 0.62
+            centerX += position == .center ? 0.02 : 0
             height += 0.03
             bottom -= 0.02
         }
@@ -764,12 +880,28 @@ open class NovelSceneView: NSView {
             bottom -= 0.03
         }
 
-        return (
-            max(0.46, min(height, 0.88)),
-            max(0.44, min(centerX, 0.66)),
-            max(-0.12, min(bottom, 0.16)),
-            max(0.38, min(maxWidth, 0.58))
+        if activeVisualCount > 1 {
+            height -= activeVisualCount >= 3 ? 0.08 : 0.04
+            maxWidth = min(maxWidth, activeVisualCount >= 3 ? 0.34 : 0.40)
+        }
+
+        return SpritePlacement(
+            height: max(0.46, min(height, 0.88)),
+            centerX: max(0.18, min(centerX, 0.82)),
+            bottom: max(-0.12, min(bottom, 0.16)),
+            maxWidth: max(0.30, min(maxWidth, 0.58))
         )
+    }
+
+    private func centerX(for position: SceneVisualPosition) -> CGFloat {
+        switch position {
+        case .left:
+            return 0.30
+        case .center:
+            return 0.50
+        case .right:
+            return 0.70
+        }
     }
 
     // MARK: - Input
