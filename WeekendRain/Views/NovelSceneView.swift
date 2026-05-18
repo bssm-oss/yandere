@@ -135,6 +135,7 @@ open class NovelSceneView: NSView {
     private var visibleChoiceButtons: [ChoiceButton] = []
     private var baseSpritePlacements: [SceneVisualPosition: SpritePlacement] = [:]
     private var currentCharacterIDs: [SceneVisualPosition: String] = [:]
+    private var lastBackgroundID: String?
 
     open override var acceptsFirstResponder: Bool { true }
 
@@ -722,6 +723,15 @@ open class NovelSceneView: NSView {
             .blended(withFraction: sanityDrain * 0.14, of: sanityTint)
         backgroundLayerView.layer?.backgroundColor = (tintedBase ?? baseColor).cgColor
 
+        if scene.background != lastBackgroundID {
+            let fade = CATransition()
+            fade.type = .fade
+            fade.duration = 0.42
+            fade.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+            backgroundLayerView.layer?.add(fade, forKey: "bgTransition")
+            lastBackgroundID = scene.background
+        }
+
         if let bgID = scene.background, let bgAsset = assets?.backgrounds[bgID] {
             backgroundImageView.image = VisualAssetRenderer.image(for: bgAsset, baseURL: contentBaseURL, role: .background)
             backgroundImageView.alphaValue = showEventCG ? 0.18 : 0.90
@@ -969,6 +979,47 @@ open class NovelSceneView: NSView {
     @objc private func galleryPressed() { onGalleryRequested?() }
     @objc private func savePressed() { onSaveRequested?() }
     @objc private func loadPressed() { onLoadRequested?() }
+
+    // MARK: - Toast
+
+    public func showToast(_ message: String) {
+        let container = NSView()
+        container.wantsLayer = true
+        container.layer?.backgroundColor = NSColor.black.withAlphaComponent(0.70).cgColor
+        container.layer?.cornerRadius = 8
+        container.translatesAutoresizingMaskIntoConstraints = false
+
+        let label = NSTextField(labelWithString: message)
+        label.font = NSFont.systemFont(ofSize: 13, weight: .regular)
+        label.textColor = NSColor.white.withAlphaComponent(0.92)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        container.addSubview(label)
+        NSLayoutConstraint.activate([
+            label.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 14),
+            label.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -14),
+            label.topAnchor.constraint(equalTo: container.topAnchor, constant: 9),
+            label.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -9),
+        ])
+
+        addSubview(container)
+        NSLayoutConstraint.activate([
+            container.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            container.topAnchor.constraint(equalTo: topAnchor, constant: 52),
+        ])
+
+        container.alphaValue = 0
+        NSAnimationContext.runAnimationGroup({ ctx in
+            ctx.duration = 0.22
+            container.animator().alphaValue = 1
+        }) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
+                NSAnimationContext.runAnimationGroup({ ctx in
+                    ctx.duration = 0.30
+                    container.animator().alphaValue = 0
+                }) { container.removeFromSuperview() }
+            }
+        }
+    }
 }
 
 // MARK: - NovelControlButton

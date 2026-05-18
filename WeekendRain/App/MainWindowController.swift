@@ -8,6 +8,7 @@ final class MainWindowController: NSWindowController, GameStateManagerDelegate {
 
     private let titleView = TitleView()
     private let sceneView = NovelSceneView()
+    private var titleAnimated = false
     private let storyLoader = StoryLoader()
     private let saveManager = SaveManager()
     private let gameState = GameStateManager()
@@ -43,6 +44,15 @@ final class MainWindowController: NSWindowController, GameStateManagerDelegate {
         window.setFrame(frame, display: true, animate: false)
         window.setContentSize(Self.preferredContentSize)
         window.makeKeyAndOrderFront(nil)
+        if !titleAnimated {
+            titleAnimated = true
+            titleView.alphaValue = 0
+            NSAnimationContext.runAnimationGroup { ctx in
+                ctx.duration = 0.80
+                ctx.timingFunction = CAMediaTimingFunction(name: .easeOut)
+                titleView.animator().alphaValue = 1.0
+            }
+        }
     }
 
     // MARK: - GameStateManagerDelegate
@@ -118,8 +128,8 @@ final class MainWindowController: NSWindowController, GameStateManagerDelegate {
         sceneView.alphaValue = 0
         window.contentView = sceneView
         NSAnimationContext.runAnimationGroup { ctx in
-            ctx.duration = 0.55
-            ctx.timingFunction = CAMediaTimingFunction(name: .easeIn)
+            ctx.duration = 0.45
+            ctx.timingFunction = CAMediaTimingFunction(name: .easeOut)
             sceneView.animator().alphaValue = 1.0
         }
     }
@@ -130,10 +140,15 @@ final class MainWindowController: NSWindowController, GameStateManagerDelegate {
         guard let save = gameState.makeSave() else { return }
         do {
             try saveManager.save(save)
-            showAlert(title: "저장 완료", message: "게임을 저장했습니다.")
+            sceneView.showToast("저장 완료")
         } catch {
             showAlert(title: "저장 실패", message: String(describing: error))
         }
+    }
+
+    func autoSave() {
+        guard let save = gameState.makeSave() else { return }
+        try? saveManager.save(save)
     }
 
     private func loadSave() {
