@@ -3687,7 +3687,7 @@
       "speaker": "세아",
       "text": "「들어와, 하루 군.」\n이름을 가르쳐 준 적이 없었다. 나는 발을 멈췄다. 세아는 우산 손잡이를 살짝 더 내 쪽으로 밀며 웃었다.\n「학생회 명부에 있잖아. 오래 읽었어.」\n우산 안쪽은 생각보다 좁았다. 그녀의 어깨가 내 팔에 스칠 만큼. 빗소리가 갑자기 멀어지고, 붉은 우산 천 너머로 도시가 흐릿해졌다.\n\n*'오래 읽었어'라는 말이 왜 이렇게 오래 귓속에 남는지 모르겠다.*\n세아는 내가 불편해할 만큼 가까이 서 있으면서도 한 번도 밀어붙이지 않았다. 대신 우산의 각도만 아주 조금씩 바꿨다. 내가 젖지 않는 쪽으로. 그 조심스러움 때문에 더 물러서기 어려웠다. 다정함이 길을 막는 방식도 있다는 것을, 그때는 아직 몰랐다.",
       "choices": [],
-      "next_scene": "ch00g_sea_wall_mural",
+      "next_scene": "ch00_airi_call_1",
       "background": "shoe_locker_surveillance",
       "character": "sea_orchid_umbrella_handle",
       "music": "bus_stop_rain",
@@ -3700,6 +3700,60 @@
           "position": "center"
         }
       ]
+    },
+    {
+      "id": "ch00_airi_call_1",
+      "title": "부재중 전화 1",
+      "background": "school_gate_evening",
+      "character": "airi_normal",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_normal",
+          "position": "center"
+        }
+      ],
+      "text": "교문을 나서는 순간, 주머니 속 핸드폰이 진동했다. 화면에는 '아이리'라는 이름이 떠 있었다. 세아가 바로 옆에서 우산을 접으며 나를 올려다보고 있었다. 전화를 받을 수가 없었다.",
+      "choices": [
+        {
+          "id": "call1_ignore",
+          "text": "진동을 무시하고 세아와 걷는다",
+          "next_scene": "ch00_airi_call_2",
+          "stat_changes": {},
+          "tag_changes": {},
+          "conditions": []
+        }
+      ],
+      "next_scene": null,
+      "tags": [],
+      "conditions": []
+    },
+    {
+      "id": "ch00_airi_call_2",
+      "title": "부재중 전화 2",
+      "background": "seaside_path_dusk",
+      "character": "airi_normal",
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_normal",
+          "position": "center"
+        }
+      ],
+      "text": "방조제로 향하는 길, 다시 한 번 아이리에게서 전화가 왔다. 잠깐 멈칫했지만 손가락이 움직이지 않았다. 세아는 내 눈치를 채지 못한 채 앞서 걸어가고 있었다. 두 번째 부재중 전화가 쌓였다.",
+      "choices": [
+        {
+          "id": "call2_ignore",
+          "text": "핸드폰을 주머니에 넣고 따라간다",
+          "next_scene": "ch00g_sea_wall_mural",
+          "stat_changes": {},
+          "tag_changes": {},
+          "conditions": []
+        }
+      ],
+      "next_scene": null,
+      "tags": [],
+      "conditions": []
     },
     {
       "id": "ch00b_water_tower",
@@ -3730,7 +3784,7 @@
       "choices": [],
       "next_scene": "ch00d_stationery_oracle",
       "background": "letter_room",
-      "character": "sea_letter_smile",
+      "character": "sea_normal",
       "cg": "cg_letter_exchange",
       "music": "letter_room_rain",
       "effects": [
@@ -3748,7 +3802,7 @@
     {
       "id": "ch00d_stationery_oracle",
       "speaker": "문구점 주인",
-      "text": "학교 뒤 골목 문구점의 주인 노인은 붉은 만년필을 천천히 닦으며 말했다.\n「그 애가 여기 온 다음 달부터는 빨간 잉크만 팔려. 파란 것도 검은 것도 아니고.」\n노인은 잠시 멈추었다. 「언제부터인지는 묻지 마. 그냥 알아.」\n나는 잉크병 안을 들여다보았다. 붉은 액체가 천천히, 혼자서 소용돌이치는 것 같았다.\n\n*나는 파란 잉크를 사러 왔었다. 계산대 앞에서 손에 든 것이 붉은 잉크병이었다. 언제 집어 들었는지 기억이 없었다.*",
+      "text": "며칠 뒤, 혼자 잉크를 사러 학교 뒤 골목에 들어섰다.\n학교 뒤 골목 문구점의 주인 노인은 붉은 만년필을 천천히 닦으며 말했다.\n「그 애가 여기 온 다음 달부터는 빨간 잉크만 팔려. 파란 것도 검은 것도 아니고.」\n노인은 잠시 멈추었다. 「언제부터인지는 묻지 마. 그냥 알아.」\n나는 잉크병 안을 들여다보았다. 붉은 액체가 천천히, 혼자서 소용돌이치는 것 같았다.\n\n*나는 파란 잉크를 사러 왔었다. 계산대 앞에서 손에 든 것이 붉은 잉크병이었다. 언제 집어 들었는지 기억이 없었다.*",
       "choices": [],
       "next_scene": "ch00e_clock_repair_shop",
       "background": "rain_stationery",
@@ -3770,7 +3824,7 @@
     {
       "id": "ch00e_clock_repair_shop",
       "speaker": "시계 수리공",
-      "text": "시계 수리점 벽에 걸린 시계들이 전부 같은 시각에 멈춰 있었다. 토요일 오후 4시.\n수리공은 일하는 손을 멈추지 않고 말했다. 「자기도 모르게 맞춰지는 거야. 그 애 주변에 있으면.」\n나는 가장 가까운 시계의 초침을 보았다. 움직이지 않았다. 유리 너머로 내 얼굴이 비쳤다.\n*토요일 오후 4시. 내가 처음 세아를 의식한 시각이 언제였는지 생각해 보았다. 기억이 없었다.*\n그때 세아가 내 소매를 살짝 잡아당겼다. 「가자, 하루 군.」\n수리공은 뒤를 돌아보지 않았다. 「다음에 또 와.」 처음 만나는 사람에게 할 말이 아니었다.\n손이 닿은 부분의 시간이 혼자서만 멈추는 것 같았다.",
+      "text": "세아가 '잠깐 들러도 돼?'라고 묻지 않고 먼저 문을 열었다. 세아와 함께 걷다 들어선 골목의 시계 수리점이었다.\n시계 수리점 벽에 걸린 시계들이 전부 같은 시각에 멈춰 있었다. 토요일 오후 4시.\n수리공은 일하는 손을 멈추지 않고 말했다. 「자기도 모르게 맞춰지는 거야. 그 애 주변에 있으면.」\n나는 가장 가까운 시계의 초침을 보았다. 움직이지 않았다. 유리 너머로 내 얼굴이 비쳤다.\n*토요일 오후 4시. 내가 처음 세아를 의식한 시각이 언제였는지 생각해 보았다. 기억이 없었다.*\n그때 세아가 내 소매를 살짝 잡아당겼다. 「가자, 하루 군.」\n수리공은 뒤를 돌아보지 않았다. 「다음에 또 와.」 처음 만나는 사람에게 할 말이 아니었다.\n손이 닿은 부분의 시간이 혼자서만 멈추는 것 같았다.",
       "choices": [],
       "next_scene": "ch00ea_loop_clock_map",
       "background": "clock_repair_shop",
@@ -3796,19 +3850,25 @@
       "choices": [],
       "next_scene": "ch00f_rain_tram_terminal",
       "background": "clock_repair_shop",
-      "character": null,
+      "character": "sea_clock_reflection",
       "cg": "cg_loop_clock_map",
       "music": "rain_pulse",
       "effects": [
         "event_cg"
       ],
       "unlock_cg": "cg_loop_clock_map",
-      "visuals": []
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_clock_reflection",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch00f_rain_tram_terminal",
       "speaker": "하루",
-      "text": "비 오는 전차 터미널에는 승객이 없었다.\n매표기의 작은 화면에 내 이름과 세아의 이름이 나란히 떠 있었다.\n*언제부터였지? 이 이름이 내 옆에 항상 붙어 있는 게.*\n매표기 화면을 닫으려 했다. 터치가 되지 않았다. 단말은 꺼지지 않았다. 두 이름은 그대로 있었다.\n비 냄새가 터미널 안쪽까지 스며들었다. 젖은 철의 냄새와 섞였다.\n「하루 군, 저 터미널 카페에 잠깐 들를 거야. 기다려.」\n그녀의 목소리는 빗소리보다 낮았지만, 내 귀에는 또렷하게 들렸다.\n*카페 유리창 너머로 세아가 보였다. 음료를 고르지 않고 내 쪽을 보고 있었다. 처음부터.*",
+      "text": "토요일 저녁, 세아가 전차를 같이 타자고 했다. 어디까지 가는지는 묻지 않았다. 묻기 전에 이미 걷고 있었다.\n비 오는 전차 터미널에는 승객이 없었다.\n매표기의 작은 화면에 내 이름과 세아의 이름이 나란히 떠 있었다.\n*언제부터였지? 이 이름이 내 옆에 항상 붙어 있는 게.*\n매표기 화면을 닫으려 했다. 터치가 되지 않았다. 단말은 꺼지지 않았다. 두 이름은 그대로 있었다.\n비 냄새가 터미널 안쪽까지 스며들었다. 젖은 철의 냄새와 섞였다.\n「하루 군, 저 터미널 카페에 잠깐 들를 거야. 기다려.」\n그녀의 목소리는 빗소리보다 낮았지만, 내 귀에는 또렷하게 들렸다.\n*카페 유리창 너머로 세아가 보였다. 음료를 고르지 않고 내 쪽을 보고 있었다. 처음부터.*",
       "choices": [],
       "next_scene": "ch00fa_loop_constellation",
       "background": "rain_tram_terminal",
@@ -3834,14 +3894,20 @@
       "choices": [],
       "next_scene": "ch00z_a_monday_dissolve",
       "background": "rain_tram_terminal",
-      "character": null,
+      "character": "sea_tram_window",
       "cg": "cg_loop_constellation",
       "music": "rain_pulse",
       "effects": [
         "event_cg"
       ],
       "unlock_cg": "cg_loop_constellation",
-      "visuals": []
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_tram_window",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch00z_a_monday_dissolve",
@@ -3914,7 +3980,7 @@
       "visuals": [
         {
           "type": "character",
-          "id": "sea_breakdown",
+          "id": "sea_tender_close",
           "position": "center"
         }
       ]
@@ -3922,7 +3988,7 @@
     {
       "id": "ch00g_sea_wall_mural",
       "speaker": "세아",
-      "text": "비가 굵어졌다. 벽화 속 붉은 우산은 방금 새로 칠한 듯 선명했다. 세아는 그 앞에 서서 나를 기다리고 있었다.\n주머니 속 아이리의 부재중 전화가 세 번째로 진동했다. 세아는 그 소리를 들었다. 들었는데도 묻지 않았다. 묻지 않는 것으로 이미 대답을 알고 있다는 얼굴이었다.\n「오늘 여기까지 비가 따라왔어.」 우산이 내 쪽으로 기울었다.\n벽화 속 우산 아래에는 두 사람이 아니라 한 사람만 그려져 있었다. 다른 한 사람의 자리는 빈 채로 남아 있었다.\n*전화를 받는다는 것은 아이리에게 내가 아직 바깥에 있다고 말하는 일이다. 전화를 받지 않는다는 것은 세아의 우산 아래 들어간다는 일이다. 어느 쪽도 단순한 친절이 아니었다.*\n세아가 한 발 다가왔다. 「하루 군이 고르면 돼. 기다리는 건 잘하니까.」",
+      "text": "방과 후, 세아는 학교 정문 대신 방조제 쪽으로 걸음을 옮겼다. 따라오지 말라는 말 없이, 돌아보지 않고. 발걸음을 멈추기 어려운 속도로 걸었다.\n비가 굵어졌다. 벽화 속 붉은 우산은 방금 새로 칠한 듯 선명했다. 세아는 그 앞에 서서 나를 기다리고 있었다.\n주머니 속 아이리의 부재중 전화가 세 번째로 진동했다. 세아는 그 소리를 들었다. 들었는데도 묻지 않았다. 묻지 않는 것으로 이미 대답을 알고 있다는 얼굴이었다.\n「오늘 여기까지 비가 따라왔어.」 우산이 내 쪽으로 기울었다.\n벽화 속 우산 아래에는 두 사람이 아니라 한 사람만 그려져 있었다. 다른 한 사람의 자리는 빈 채로 남아 있었다.\n*전화를 받는다는 것은 아이리에게 내가 아직 바깥에 있다고 말하는 일이다. 전화를 받지 않는다는 것은 세아의 우산 아래 들어간다는 일이다. 어느 쪽도 단순한 친절이 아니었다.*\n세아가 한 발 다가왔다. 「하루 군이 고르면 돼. 기다리는 건 잘하니까.」",
       "choices": [
         {
           "id": "prologue_accept",
@@ -4098,7 +4164,7 @@
         }
       ],
       "next_scene": null,
-      "background": "student_council_interrogation_room",
+      "background": "classroom_dusk",
       "character": "sea_charm_camera",
       "music": "dusk_static",
       "effects": [
@@ -4179,7 +4245,7 @@
       "choices": [],
       "next_scene": "ch01c_ai_kiosk",
       "background": "retro_arcade",
-      "character": "sea_tender_close",
+      "character": "sea_letter_smile",
       "music": "arcade_crt",
       "effects": [
         "event_cg"
@@ -4211,8 +4277,8 @@
       "visuals": [
         {
           "type": "character",
-          "id": "clinic_nurse_ai",
-          "position": "right"
+          "id": "rain_ai_terminal",
+          "position": "center"
         }
       ]
     },
@@ -4277,8 +4343,8 @@
       "visuals": [
         {
           "type": "character",
-          "id": "umbrella_keeper_ai",
-          "position": "right"
+          "id": "cassette_vendor_ai",
+          "position": "center"
         }
       ]
     },
@@ -4311,7 +4377,7 @@
       "choices": [],
       "next_scene": "ch01z_a_locker_room_morning",
       "background": "maintenance_elevator",
-      "character": "yuka_elevator_panel",
+      "character": "yuka_glasses_off",
       "cg": "cg_maintenance_elevator",
       "music": "service_elevator_hum",
       "effects": [
@@ -4409,7 +4475,7 @@
       "choices": [],
       "next_scene": "ch02_airi_warning",
       "background": "locker_corridor",
-      "character": "airi_resolve",
+      "character": "airi_normal",
       "music": "rain_theme",
       "effects": [],
       "unlock_cg": null,
@@ -4452,7 +4518,13 @@
             "sea_accept"
           ],
           "next_scene": "airi_defend_sea_aftermath",
-          "conditions": []
+          "conditions": [
+            {
+              "min_stats": {
+                "yandere": 30
+              }
+            }
+          ]
         },
         {
           "id": "airi_stay",
@@ -4599,7 +4671,7 @@
       "text": "옥상 안테나 기둥 아래에 부적들이 줄로 묶여 있었다. 전부 붉은 실로 연결되어 있었다.\n가운데에는 내 학생증 사진이 코팅된 채 걸려 있었다. 사진 아래에는 날짜가 직접 눌러 쓴 글씨로 새겨져 있었다. 첫 날짜는 세아가 전학 오기 사흘 전이었다.\n*누가 이것을 걸었는지, 내가 모르는 사이에 얼마나 오래 있었는지.*\n학생증을 집으려다 멈췄다. 종이에서 비 냄새가 났다. 오늘 비가 아니었다. 여러 번, 여러 계절의 비가 스며든 냄새였다. 한 번 걸린 게 아니라는 뜻이었다. 세아가 옆에 서서 안테나를 올려다보았다. 「여기 오면 전파가 잘 잡혀. 마음도.」 나는 아무 말도 하지 못했다.",
       "next_scene": "ch02b_after_school_call",
       "background": "rooftop_antenna_shrine",
-      "character": "sea_charm_camera",
+      "character": "sea_normal",
       "cg": "cg_antenna_signal_charm",
       "music": "rooftop_rain",
       "effects": [
@@ -4622,7 +4694,7 @@
       "choices": [],
       "next_scene": "ch02c_mineral_aquarium",
       "background": "rain_street",
-      "character": "haru_reflection",
+      "character": "airi_midnight",
       "music": "phone_rain",
       "effects": [],
       "unlock_cg": null,
@@ -4663,7 +4735,7 @@
       "choices": [],
       "next_scene": "ch02e_midnight_laundromat",
       "background": "school_infirmary",
-      "character": "sea_calm_sad",
+      "character": "clinic_nurse_ai",
       "cg": "cg_infirmary_pulse",
       "music": "infirmary_pulse",
       "effects": [
@@ -4751,7 +4823,7 @@
       "choices": [],
       "next_scene": "ch02i_clinical_observation_ward",
       "background": "rain_clinic_records",
-      "character": "clinic_nurse_ai",
+      "character": "yuka_clinic_vial",
       "cg": "cg_rain_clinic_records",
       "music": "clinic_pulse_rain",
       "effects": [
@@ -4877,7 +4949,7 @@
       "choices": [],
       "next_scene": "ch02z_d_evidence_weight",
       "background": "rain_street",
-      "character": "yuka_normal",
+      "character": "yuka_glasses_off",
       "music": "rain_theme",
       "effects": [],
       "unlock_cg": null,
@@ -4896,7 +4968,7 @@
       "choices": [],
       "next_scene": "ch02z_e_cafe_back_exit",
       "background": "rain_street",
-      "character": "yuka_lab_coat",
+      "character": "yuka_normal",
       "music": "rain_theme",
       "effects": [],
       "unlock_cg": null,
@@ -4978,7 +5050,7 @@
       ],
       "next_scene": null,
       "background": "student_council_room",
-      "character": "yuka_normal",
+      "character": "sea_mural_reflection",
       "music": "archive_pulse",
       "effects": [
         "decision_moment"
@@ -5087,7 +5159,13 @@
             "sea_accept"
           ],
           "next_scene": "shadow_reject_aftermath",
-          "conditions": []
+          "conditions": [
+            {
+              "min_stats": {
+                "love": 40
+              }
+            }
+          ]
         },
         {
           "id": "shadow_ask_how_to_keep",
@@ -5101,7 +5179,13 @@
             "avoidance"
           ],
           "next_scene": "shadow_ask_how_to_keep_aftermath",
-          "conditions": []
+          "conditions": [
+            {
+              "min_stats": {
+                "yandere": 65
+              }
+            }
+          ]
         },
         {
           "id": "shadow_report_yuka",
@@ -5297,7 +5381,7 @@
       "choices": [],
       "next_scene": "ch03c_library_margins",
       "background": "rain_pawnshop_counter",
-      "character": "shadow_receipt_ledger",
+      "character": "shadow_kurogasa",
       "cg": "cg_pawnshop_red_key",
       "music": "quiet_pawnshop_rain",
       "effects": [
@@ -5341,7 +5425,7 @@
       "choices": [],
       "next_scene": "ch03e_observation_deck",
       "background": "memory_hallway",
-      "character": "sea_photo_strip",
+      "character": "sea_normal",
       "cg": "cg_memory_hallway",
       "music": "memory_corridor",
       "effects": [
@@ -5363,7 +5447,7 @@
       "choices": [],
       "next_scene": "ch03ea_rainveil_evidence_map",
       "background": "observation_deck",
-      "character": "yuka_observation",
+      "character": "yuka_weather_terminal",
       "cg": "cg_observation_deck",
       "music": "city_water_map",
       "effects": [
@@ -5385,7 +5469,7 @@
       "choices": [],
       "next_scene": "ch03f_rain_history_museum",
       "background": "observation_deck",
-      "character": "yuka_glasses_off",
+      "character": "yuka_normal",
       "cg": "cg_rainveil_evidence_map",
       "music": "archive_low",
       "effects": [
@@ -5429,7 +5513,7 @@
       "choices": [],
       "next_scene": "ch03h_weather_control_room",
       "background": "archive_basement",
-      "character": "archive_clerk_ai",
+      "character": "yuka_archive_lantern",
       "cg": "cg_archive_basement",
       "music": "archive_basement_reader",
       "effects": [
@@ -5484,8 +5568,8 @@
       "visuals": [
         {
           "type": "character",
-          "id": "rain_ai_terminal",
-          "position": "right"
+          "id": "yuka_weather_raincoat",
+          "position": "center"
         }
       ]
     },
@@ -5550,8 +5634,8 @@
       "visuals": [
         {
           "type": "character",
-          "id": "clinic_nurse_ai",
-          "position": "right"
+          "id": "sea_rooftop_thread",
+          "position": "center"
         }
       ]
     },
@@ -5562,7 +5646,7 @@
       "choices": [],
       "next_scene": "ch03k_rain_mineral_mint",
       "background": "neon_koi_market",
-      "character": "sea_cablecar_token",
+      "character": "sea_letter_smile",
       "cg": "cg_mineral_koi_scale",
       "music": "koi_market_rain",
       "effects": [
@@ -5584,7 +5668,7 @@
       "choices": [],
       "next_scene": "ch03l_roof_access_stairwell",
       "background": "rain_mineral_mint",
-      "character": "yuka_rain_orchid_lab",
+      "character": "yuka_lab_coat",
       "cg": "cg_watermark_letter",
       "music": "mint_watermark",
       "effects": [
@@ -5647,7 +5731,7 @@
       "choices": [],
       "next_scene": "ch03z_c_rooftop_before_choice",
       "background": "school_rooftop",
-      "character": "sea_rooftop_thread",
+      "character": "sea_normal",
       "music": "rain_theme",
       "effects": [],
       "unlock_cg": null,
@@ -5666,7 +5750,7 @@
       "choices": [],
       "next_scene": "ch03z_d_rooftop_last_step",
       "background": "school_rooftop",
-      "character": "sea_rooftop_thread",
+      "character": "sea_breakdown",
       "music": "rain_theme",
       "effects": [],
       "unlock_cg": null,
@@ -5728,7 +5812,13 @@
             "sea_accept"
           ],
           "next_scene": "rooftop_hold_hand_aftermath",
-          "conditions": []
+          "conditions": [
+            {
+              "min_stats": {
+                "yandere": 55
+              }
+            }
+          ]
         },
         {
           "id": "rooftop_airi_call",
@@ -5757,7 +5847,13 @@
             "truth"
           ],
           "next_scene": "rooftop_ask_shadow_aftermath",
-          "conditions": []
+          "conditions": [
+            {
+              "min_stats": {
+                "sanity": 45
+              }
+            }
+          ]
         }
       ],
       "next_scene": null,
@@ -5883,7 +5979,7 @@
       "choices": [],
       "next_scene": "ch04ac_home_ec_tatami_room",
       "background": "abandoned_indoor_pool",
-      "character": "airi_pool_whistle",
+      "character": "airi_normal",
       "cg": "cg_pool_red_whistle",
       "music": "pool_empty_echo",
       "effects": [
@@ -5905,7 +6001,7 @@
       "choices": [],
       "next_scene": "ch04b_letter_locker",
       "background": "home_ec_tatami_room",
-      "character": "sea_rooftop_thread",
+      "character": "sea_normal",
       "cg": "cg_tatami_red_stitch",
       "music": "tatami_afterconfession",
       "effects": [
@@ -5971,7 +6067,7 @@
       "choices": [],
       "next_scene": "ch04bc_shrine_knot_printshop",
       "background": "rain_scent_stationery_lab",
-      "character": "airi_wet_envelope",
+      "character": "airi_resolve",
       "cg": "cg_postmark_route_map",
       "music": "scented_rain_lab",
       "effects": [
@@ -6015,7 +6111,7 @@
       "choices": [],
       "next_scene": "ch04d_analog_photo_booth",
       "background": "rain_shrine",
-      "character": "sea_calm_sad",
+      "character": "sea_rooftop_thread",
       "cg": "cg_rain_shrine",
       "music": "rain_shrine",
       "effects": [
@@ -6069,8 +6165,8 @@
       "visuals": [
         {
           "type": "character",
-          "id": "shadow_recorder_close",
-          "position": "right"
+          "id": "sea_photo_strip",
+          "position": "center"
         }
       ]
     },
@@ -6103,7 +6199,7 @@
       "choices": [],
       "next_scene": "ch04e_old_teahouse",
       "background": "teacup_display_corridor",
-      "character": "sea_photo_strip",
+      "character": "sea_calm_sad",
       "cg": "cg_teacup_missing_frame",
       "music": "teacup_corridor",
       "effects": [
@@ -6147,7 +6243,7 @@
       "choices": [],
       "next_scene": "ch04g_mirror_bridge",
       "background": "phone_booth_alley",
-      "character": "sea_phone_booth",
+      "character": "airi_normal",
       "cg": "cg_phone_booth",
       "music": "phone_booth_ring",
       "effects": [
@@ -6169,7 +6265,7 @@
       "choices": [],
       "next_scene": "ch04h_ferry_pier",
       "background": "mirror_bridge",
-      "character": "sea_bridge_reflection",
+      "character": "sea_normal",
       "cg": "cg_mirror_bridge",
       "music": "mirror_bridge_rain",
       "effects": [
@@ -6257,7 +6353,7 @@
       "choices": [],
       "next_scene": "ch04l_microfilm_reservoir_archive",
       "background": "dead_letter_sorting_room",
-      "character": "sea_confession_cassette",
+      "character": "yuka_archive_lantern",
       "cg": "cg_dead_letter_bundle",
       "music": "dead_letter_room",
       "effects": [
@@ -6279,7 +6375,7 @@
       "choices": [],
       "next_scene": "ch04m_rain_switchboard_exchange",
       "background": "microfilm_reservoir_archive",
-      "character": "yuka_archive_lantern",
+      "character": "yuka_rain_orchid_lab",
       "cg": "cg_microfilm_rain_records",
       "music": "microfilm_reservoir_hum",
       "effects": [
@@ -6364,7 +6460,7 @@
       "choices": [],
       "next_scene": "ch04z_c_underground_corridor",
       "background": "classroom_dusk",
-      "character": "yuka_elevator_panel",
+      "character": "yuka_lab_coat",
       "music": "rain_theme",
       "effects": [],
       "unlock_cg": null,
@@ -6383,7 +6479,7 @@
       "choices": [],
       "next_scene": "ch04z_d_envelope_choice_approach",
       "background": "letter_room",
-      "character": "yuka_archive_lantern",
+      "character": "yuka_lab_coat",
       "music": "rain_theme",
       "effects": [],
       "unlock_cg": null,
@@ -6464,7 +6560,13 @@
             "sea_accept"
           ],
           "next_scene": "archive_meet_sea_aftermath",
-          "conditions": []
+          "conditions": [
+            {
+              "min_stats": {
+                "love": 55
+              }
+            }
+          ]
         },
         {
           "id": "archive_airi_escape",
@@ -6498,7 +6600,7 @@
       ],
       "next_scene": null,
       "background": "student_council_room",
-      "character": "yuka_glasses_off",
+      "character": "yuka_archive_lantern",
       "music": "archive_pulse",
       "effects": [
         "decision_moment"
@@ -6614,7 +6716,7 @@
       "choices": [],
       "next_scene": "ch05d_water_lab",
       "background": "abandoned_platform",
-      "character": "sea_shadow_smile",
+      "character": "sea_calm_sad",
       "music": "platform_blue",
       "effects": [],
       "unlock_cg": "cg_platform_three",
@@ -6634,7 +6736,7 @@
       "choices": [],
       "next_scene": "ch05e_rooftop_greenhouse",
       "background": "water_lab",
-      "character": "yuka_glasses_off",
+      "character": "yuka_rain_orchid_lab",
       "cg": "cg_water_lab",
       "music": "water_lab",
       "effects": [
@@ -6656,7 +6758,7 @@
       "choices": [],
       "next_scene": "ch05ea_rain_seed_vault",
       "background": "rooftop_greenhouse",
-      "character": "sea_orchid_umbrella_handle",
+      "character": "sea_normal",
       "cg": "cg_greenhouse",
       "music": "greenhouse_rain",
       "effects": [
@@ -6699,7 +6801,7 @@
       "text": "지하 관측 수족관의 물결이 사람 목소리에 반응했다. 유카가 숫자를 말하자 잔물결이 일었다.\n세아가 내 이름을 부르자 물이 붉게 일렁였다. 큰 파도처럼. 유카는 측정 장비를 들고 기록했다. 「이건 과학이야.」 나는 붉어진 물을 보면서, 세아가 내 이름을 부를 때마다 도시가 반응한다는 것을 처음으로 실감했다.\n\n세아는 수조 유리에 손을 얹었다. 붉은 물결이 그 손 쪽으로 몰려들었다.\n\n*유카의 말대로라면, 이건 측정 가능한 사실이다. 측정 가능한 사실이 왜 이렇게 불안한가.*",
       "next_scene": "ch05ec_moss_generator_room",
       "background": "underground_observation_aquarium",
-      "character": "sea_orchid_umbrella_handle",
+      "character": "yuka_lab_coat",
       "cg": "cg_underwater_umbrella_fragment",
       "music": "aquarium_pressure",
       "effects": [
@@ -6766,7 +6868,7 @@
       "choices": [],
       "next_scene": "ch05h_reservoir_gate",
       "background": "purification_cathedral",
-      "character": "sea_clinic_consent",
+      "character": "sea_breakdown",
       "cg": "cg_purification_cathedral",
       "music": "purification_cathedral",
       "effects": [],
@@ -6786,7 +6888,7 @@
       "choices": [],
       "next_scene": "ch05i_flood_siren_tower",
       "background": "reservoir_gate",
-      "character": "shadow_reservoir",
+      "character": "yuka_normal",
       "cg": "cg_reservoir_gate",
       "music": "reservoir_gate",
       "effects": [
@@ -6809,7 +6911,7 @@
       "choices": [],
       "next_scene": "ch05j_weather_server_nave",
       "background": "flood_siren_tower",
-      "character": "airi_resolve",
+      "character": "airi_normal",
       "cg": "cg_flood_siren_tower",
       "music": "flood_siren_static",
       "effects": [
@@ -6831,7 +6933,7 @@
       "choices": [],
       "next_scene": "ch05k_umbrella_memorial",
       "background": "weather_server_nave",
-      "character": "yuka_weather_terminal",
+      "character": "rain_ai_terminal",
       "cg": "cg_rainveil_evidence_desk",
       "music": "server_rain_hymn",
       "effects": [
@@ -6875,7 +6977,7 @@
       "choices": [],
       "next_scene": "ch05m_tide_lock_gate",
       "background": "railway_signal_box",
-      "character": "yuka_archive_lantern",
+      "character": "yuka_normal",
       "cg": "cg_signal_red_thread",
       "music": "signal_box_static",
       "effects": [
@@ -6941,7 +7043,7 @@
       "choices": [],
       "next_scene": "ch05p_sleeping_carriage_depot",
       "background": "vending_chapel_underpass",
-      "character": "sea_red_ticket",
+      "character": "sea_breakdown",
       "cg": "cg_vending_chapel_offering",
       "music": "vending_chapel_coin_rain",
       "effects": [
@@ -6987,7 +7089,7 @@
       "choices": [],
       "next_scene": "ch05z_c_decision_moment",
       "background": "locked_room",
-      "character": "sea_threshold",
+      "character": "sea_normal",
       "music": "rain_theme",
       "effects": [],
       "unlock_cg": null,
@@ -7032,7 +7134,7 @@
       "visuals": [
         {
           "type": "character",
-          "id": "sea_anxious",
+          "id": "sea_tender_close",
           "position": "center"
         }
       ]
@@ -7135,7 +7237,7 @@
       "visuals": [
         {
           "type": "character",
-          "id": "sea_threshold",
+          "id": "sea_childlike",
           "position": "center"
         }
       ]
@@ -7243,7 +7345,7 @@
       "choices": [],
       "next_scene": "ch06ac_broken_music_box_altar",
       "background": "condensation_window_map",
-      "character": "yuka_window_flashlight",
+      "character": "yuka_normal",
       "cg": "cg_condensation_window_map",
       "music": "investigation_low",
       "effects": [
@@ -7265,7 +7367,7 @@
       "choices": [],
       "next_scene": "ch06b_threshold_choice",
       "background": "broken_music_box_altar",
-      "character": "sea_blanket_thread",
+      "character": "sea_breakdown",
       "cg": "cg_music_box_red_key",
       "music": "music_box_broken",
       "effects": [],
@@ -7495,7 +7597,7 @@
       "choices": [],
       "next_scene": "ch06e_dawn_bus_loop",
       "background": "final_crosswalk",
-      "character": "airi_resolve",
+      "character": "airi_normal",
       "cg": "cg_final_crosswalk",
       "music": "final_signal_rain",
       "effects": [],
@@ -7556,7 +7658,7 @@
       "choices": [],
       "next_scene": "ch06z_c_clock_before_choice",
       "background": "weekend_station_clock",
-      "character": "sea_station_clock",
+      "character": "sea_tender_close",
       "music": "rain_theme",
       "effects": [],
       "unlock_cg": null,
@@ -7805,14 +7907,20 @@
       "choices": [],
       "next_scene": "ch06h_final_evidence_board",
       "background": "rain_street",
-      "character": null,
+      "character": "sea_bridge_reflection",
       "cg": "cg_all_routes_montage",
       "music": "final_rain",
       "effects": [
         "event_cg"
       ],
       "unlock_cg": "cg_all_routes_montage",
-      "visuals": []
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_bridge_reflection",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "ch06h_final_evidence_board",
@@ -7821,7 +7929,7 @@
       "choices": [],
       "next_scene": "final_weekend_rain",
       "background": "student_council_interrogation_room",
-      "character": null,
+      "character": "yuka_normal",
       "cg": "cg_rainveil_final_evidence",
       "music": "final_rain",
       "effects": [
@@ -7843,14 +7951,20 @@
       "choices": [],
       "next_scene": null,
       "background": "rain_street",
-      "character": null,
+      "character": "sea_crosswalk",
       "music": "final_rain",
       "effects": [
         "ending_judge"
       ],
       "unlock_cg": "cg_rainveil_final_evidence",
       "cg": "cg_final_puddle",
-      "visuals": []
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_crosswalk",
+          "position": "center"
+        }
+      ]
     },
     {
       "id": "pre_ending_true",
@@ -7885,7 +7999,7 @@
       "visuals": [
         {
           "type": "character",
-          "id": "sea_letter_smile",
+          "id": "sea_threshold",
           "position": "center"
         }
       ]
@@ -7916,7 +8030,7 @@
       "choices": [],
       "next_scene": "ending_ghost",
       "background": "classroom_dusk",
-      "character": "yuka_window_flashlight",
+      "character": "yuka_lab_coat",
       "music": "rain_theme",
       "effects": [],
       "unlock_cg": null,
@@ -7966,7 +8080,7 @@
       "visuals": [
         {
           "type": "character",
-          "id": "sea_breakdown",
+          "id": "sea_station_clock",
           "position": "center"
         }
       ]
@@ -7990,7 +8104,7 @@
       "visuals": [
         {
           "type": "character",
-          "id": "sea_calm_sad",
+          "id": "sea_breakdown",
           "position": "center"
         }
       ]
@@ -8038,8 +8152,8 @@
       "visuals": [
         {
           "type": "character",
-          "id": "yuka_window_flashlight",
-          "position": "right"
+          "id": "yuka_glasses_off",
+          "position": "center"
         }
       ]
     },
@@ -8074,13 +8188,19 @@
       "choices": [],
       "next_scene": "prologue_rain_gate",
       "background": "rain_street",
-      "character": null,
+      "character": "haru_reflection",
       "music": "gray_rain",
       "effects": [
         "soft_black"
       ],
       "unlock_cg": null,
-      "visuals": []
+      "visuals": [
+        {
+          "type": "character",
+          "id": "haru_reflection",
+          "position": "center"
+        }
+      ]
     }
   ]
 }

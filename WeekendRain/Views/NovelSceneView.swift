@@ -178,7 +178,7 @@ open class NovelSceneView: NSView {
             dialogueLabel.stringValue = dialoguePages.last ?? scene.text
             stopAdvancePulse()
             choiceHeaderLabel.stringValue = scene.decisionTitle ?? "결정의 순간"
-            choiceMoodLabel.stringValue = "빗소리가 낮아진다. 지금 대답해야 한다."
+            choiceMoodLabel.stringValue = choiceMoodText(for: stats)
             populateChoices(choices)
             showChoiceOverlay(true, animated: true)
 
@@ -602,7 +602,7 @@ open class NovelSceneView: NSView {
         var current = ""
         for character in normalized {
             current.append(character)
-            if ".!?。".contains(character) {
+            if ".!?。…".contains(character) {
                 let unit = current.trimmingCharacters(in: .whitespacesAndNewlines)
                 if !unit.isEmpty { units.append(unit) }
                 current = ""
@@ -715,8 +715,12 @@ open class NovelSceneView: NSView {
         default:                     baseColor = NSColor(calibratedRed: 0.06, green: 0.08, blue: 0.11, alpha: 1)
         }
 
-        backgroundLayerView.layer?.backgroundColor = baseColor
-            .blended(withFraction: yandere * 0.18, of: .systemRed)?.cgColor ?? baseColor.cgColor
+        let sanityDrain = max(0, CGFloat(60 - stats.sanity)) / 60.0
+        let sanityTint = NSColor(calibratedRed: 0.25, green: 0.08, blue: 0.35, alpha: 1)
+        let tintedBase = baseColor
+            .blended(withFraction: yandere * 0.18, of: .systemRed)?
+            .blended(withFraction: sanityDrain * 0.14, of: sanityTint)
+        backgroundLayerView.layer?.backgroundColor = (tintedBase ?? baseColor).cgColor
 
         if let bgID = scene.background, let bgAsset = assets?.backgrounds[bgID] {
             backgroundImageView.image = VisualAssetRenderer.image(for: bgAsset, baseURL: contentBaseURL, role: .background)
@@ -930,6 +934,16 @@ open class NovelSceneView: NSView {
             requestAdvanceOrSkip()
         default:
             super.keyDown(with: event)
+        }
+    }
+
+    private func choiceMoodText(for stats: GameStats) -> String {
+        switch (stats.yandere, stats.sanity) {
+        case (80..., _):  return "숨이 막힌다. 이 선택이 모든 걸 바꿀지도 모른다."
+        case (_, ...20):  return "머릿속이 뿌옇다. 무엇이 맞는지 모르겠다."
+        case (55..., _):  return "고를 때마다 무언가가 달라진다는 걸 안다."
+        case (_, 70...):  return "빗소리가 멀어진다. 확신이 필요하다."
+        default:          return "빗소리가 낮아진다. 지금 대답해야 한다."
         }
     }
 
