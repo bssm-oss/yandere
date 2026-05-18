@@ -3704,7 +3704,7 @@
     {
       "id": "ch00_airi_call_1",
       "title": "부재중 전화 1",
-      "background": "school_gate_evening",
+      "background": "shoe_locker_surveillance",
       "character": "airi_normal",
       "visuals": [
         {
@@ -3737,7 +3737,7 @@
     {
       "id": "ch00_airi_call_2",
       "title": "부재중 전화 2",
-      "background": "seaside_path_dusk",
+      "background": "rain_street",
       "character": "airi_normal",
       "visuals": [
         {
