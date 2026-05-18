@@ -4534,7 +4534,9 @@
             {
               "min_stats": {
                 "yandere": 30
-              }
+              },
+              "max_stats": {},
+              "tags_at_least": {}
             }
           ]
         },
@@ -5175,7 +5177,9 @@
             {
               "min_stats": {
                 "love": 40
-              }
+              },
+              "max_stats": {},
+              "tags_at_least": {}
             }
           ]
         },
@@ -5195,7 +5199,9 @@
             {
               "min_stats": {
                 "yandere": 65
-              }
+              },
+              "max_stats": {},
+              "tags_at_least": {}
             }
           ]
         },
@@ -5828,7 +5834,9 @@
             {
               "min_stats": {
                 "yandere": 55
-              }
+              },
+              "max_stats": {},
+              "tags_at_least": {}
             }
           ]
         },
@@ -5863,7 +5871,9 @@
             {
               "min_stats": {
                 "sanity": 45
-              }
+              },
+              "max_stats": {},
+              "tags_at_least": {}
             }
           ]
         }
@@ -6576,7 +6586,9 @@
             {
               "min_stats": {
                 "love": 55
-              }
+              },
+              "max_stats": {},
+              "tags_at_least": {}
             }
           ]
         },
