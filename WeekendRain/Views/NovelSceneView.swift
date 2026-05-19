@@ -724,7 +724,7 @@ open class NovelSceneView: NSView {
     ) {
         let yandere = CGFloat(stats.yandere) / 100.0
         let characterVisuals = scene.stageVisuals.filter { $0.type == .character }
-        let showEventCG = scene.isEndingScene || scene.effects.contains("event_cg") || (characterVisuals.isEmpty && scene.cg != nil)
+        let showEventCG = shouldPresentEventCG(for: scene, characterVisuals: characterVisuals)
 
         let baseColor: NSColor
         switch scene.background {
@@ -776,6 +776,7 @@ open class NovelSceneView: NSView {
                 fade.duration = cgTransitionDuration(for: scene)
                 fade.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
                 cgImageView.layer?.add(fade, forKey: "cgTransition")
+                runEventCGDrift(for: cgID, scene: scene)
             }
             cgImageView.image = VisualAssetRenderer.image(for: cgAsset, baseURL: contentBaseURL, role: .cg)
             cgImageView.alphaValue = eventCGAlpha(for: cgID, scene: scene)
@@ -802,16 +803,64 @@ open class NovelSceneView: NSView {
         }
     }
 
+    private func shouldPresentEventCG(for scene: SceneNode, characterVisuals: [SceneVisual]) -> Bool {
+        guard let cgID = scene.cg else { return false }
+        if scene.isEndingScene || scene.effects.contains("event_cg") { return true }
+        if characterVisuals.isEmpty { return true }
+        return cgID.hasPrefix("cg_action_")
+            || cgID.hasPrefix("cg_buildup_")
+            || cgID.hasPrefix("cg_pre_ending_")
+            || cgID.hasPrefix("cg_generated_")
+    }
+
     private func eventCGAlpha(for cgID: String, scene: SceneNode) -> CGFloat {
+        if scene.effects.contains("close_cut") { return 0.99 }
+        if scene.effects.contains("action_focus") || scene.effects.contains("object_closeup") { return 0.97 }
+        if cgID.hasPrefix("cg_pre_ending_") { return 0.96 }
         if cgID.hasPrefix("cg_buildup_") { return 0.96 }
         if cgID.hasPrefix("cg_action_") { return 0.95 }
         return scene.isEndingScene ? 0.94 : 0.92
     }
 
     private func cgTransitionDuration(for scene: SceneNode) -> CFTimeInterval {
+        if scene.effects.contains("close_cut") { return 0.24 }
         if scene.effects.contains("screen_shake") { return 0.28 }
+        if scene.effects.contains("action_focus") { return 0.46 }
+        if scene.effects.contains("object_closeup") { return 0.52 }
         if scene.effects.contains("rain_hush") { return 0.55 }
         return 0.40
+    }
+
+    private func runEventCGDrift(for cgID: String, scene: SceneNode) {
+        guard let layer = cgImageView.layer else { return }
+        layer.removeAnimation(forKey: "eventCGDrift")
+
+        let isActionShot = cgID.hasPrefix("cg_action_") || scene.effects.contains("action_focus")
+        let isObjectShot = scene.effects.contains("object_closeup")
+        let isCloseCut = scene.effects.contains("close_cut")
+        let duration: CFTimeInterval = isCloseCut ? 4.4 : (isActionShot ? 5.2 : (isObjectShot ? 6.3 : 7.2))
+
+        let scale = CABasicAnimation(keyPath: "transform.scale")
+        scale.fromValue = isCloseCut ? 1.030 : (isActionShot ? 1.018 : 1.0)
+        scale.toValue = isCloseCut ? 1.075 : (isActionShot ? 1.060 : (isObjectShot ? 1.045 : 1.035))
+
+        let pan = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        let panAmount: CGFloat = isActionShot ? 8 : (isObjectShot ? 5 : 3)
+        pan.values = [0, -panAmount, panAmount * 0.75, 0]
+        pan.keyTimes = [0, 0.36, 0.74, 1]
+
+        let verticalPan = CAKeyframeAnimation(keyPath: "transform.translation.y")
+        let verticalAmount: CGFloat = isCloseCut ? 5 : 2
+        verticalPan.values = [0, verticalAmount, -verticalAmount * 0.45, 0]
+        verticalPan.keyTimes = [0, 0.42, 0.76, 1]
+
+        let group = CAAnimationGroup()
+        group.animations = isCloseCut ? [scale, pan, verticalPan] : [scale, pan]
+        group.duration = duration
+        group.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        group.fillMode = .forwards
+        group.isRemovedOnCompletion = false
+        layer.add(group, forKey: "eventCGDrift")
     }
 
     private func renderCharacterVisuals(
@@ -986,15 +1035,16 @@ open class NovelSceneView: NSView {
         guard signature != lastEffectSignature else { return }
         lastEffectSignature = signature
 
-        if effects.contains("screen_shake") || effects.contains("siren") || effects.contains("door_lock") {
-            runSceneShake(strength: effects.contains("siren") ? 15 : 10)
+        if effects.contains("screen_shake") || effects.contains("siren") || effects.contains("door_lock") || effects.contains("constraint_snap") {
+            let strength: CGFloat = effects.contains("siren") ? 15 : (effects.contains("constraint_snap") ? 8 : 10)
+            runSceneShake(strength: strength)
         }
 
-        if effects.contains("decision_moment") || effects.contains("door_lock") {
+        if effects.contains("decision_moment") || effects.contains("door_lock") || effects.contains("action_focus") || effects.contains("object_closeup") || effects.contains("close_cut") || effects.contains("evidence_glint") || effects.contains("constraint_snap") || effects.contains("hesitation_focus") {
             runDialoguePulse()
         }
 
-        if effects.contains("red_reflection") || effects.contains("siren") || effects.contains("neon_warp") {
+        if effects.contains("red_reflection") || effects.contains("siren") || effects.contains("neon_warp") || effects.contains("evidence_glint") || effects.contains("constraint_snap") {
             runEffectFlash(color: ambientEffectStyle(for: effects)?.color ?? .systemRed)
         }
     }
@@ -1009,8 +1059,17 @@ open class NovelSceneView: NSView {
         if effects.contains("siren") || effects.contains("door_lock") {
             return SceneEffectStyle(color: NSColor(calibratedRed: 0.70, green: 0.03, blue: 0.06, alpha: 1), alpha: 0.22)
         }
+        if effects.contains("constraint_snap") {
+            return SceneEffectStyle(color: NSColor(calibratedRed: 0.74, green: 0.03, blue: 0.07, alpha: 1), alpha: 0.18)
+        }
         if effects.contains("red_reflection") {
             return SceneEffectStyle(color: NSColor(calibratedRed: 0.72, green: 0.05, blue: 0.08, alpha: 1), alpha: 0.15)
+        }
+        if effects.contains("close_cut") {
+            return SceneEffectStyle(color: .black, alpha: 0.20)
+        }
+        if effects.contains("evidence_glint") {
+            return SceneEffectStyle(color: NSColor(calibratedRed: 0.92, green: 0.72, blue: 0.26, alpha: 1), alpha: 0.11)
         }
         if effects.contains("cold_light") {
             return SceneEffectStyle(color: NSColor(calibratedRed: 0.22, green: 0.54, blue: 0.76, alpha: 1), alpha: 0.13)
@@ -1023,6 +1082,18 @@ open class NovelSceneView: NSView {
         }
         if effects.contains("neon_warp") {
             return SceneEffectStyle(color: NSColor(calibratedRed: 0.30, green: 0.10, blue: 0.65, alpha: 1), alpha: 0.14)
+        }
+        if effects.contains("hesitation_focus") {
+            return SceneEffectStyle(color: NSColor(calibratedWhite: 0.04, alpha: 1), alpha: 0.14)
+        }
+        if effects.contains("action_focus") {
+            return SceneEffectStyle(color: .black, alpha: 0.16)
+        }
+        if effects.contains("object_closeup") {
+            return SceneEffectStyle(color: NSColor(calibratedWhite: 0.04, alpha: 1), alpha: 0.12)
+        }
+        if effects.contains("soft_rain") {
+            return SceneEffectStyle(color: NSColor(calibratedRed: 0.16, green: 0.30, blue: 0.42, alpha: 1), alpha: 0.08)
         }
         if effects.contains("rainbow") {
             return SceneEffectStyle(color: NSColor(calibratedRed: 0.24, green: 0.42, blue: 0.86, alpha: 1), alpha: 0.08)

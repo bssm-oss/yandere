@@ -109,7 +109,7 @@ public final class GalleryViewController: NSViewController, NSCollectionViewData
         overlayPrompt.translatesAutoresizingMaskIntoConstraints = false
         overlay.addSubview(overlayPrompt)
 
-        let close = NSButton(title: "Close", target: self, action: #selector(hideOverlay))
+        let close = NSButton(title: "닫기", target: self, action: #selector(hideOverlay))
         close.bezelStyle = .rounded
         close.translatesAutoresizingMaskIntoConstraints = false
         overlay.addSubview(close)
@@ -143,10 +143,23 @@ public final class GalleryViewController: NSViewController, NSCollectionViewData
 
     private func showOverlay(for asset: VisualAsset) {
         overlayTitle.stringValue = asset.name
-        overlayPrompt.stringValue = asset.prompt
+        overlayPrompt.stringValue = galleryDescription(for: asset)
         overlayImageView.image = VisualAssetRenderer.image(for: asset, baseURL: contentBaseURL, role: .cg)
         overlay.isHidden = false
         overlay.animator().alphaValue = 1
+    }
+
+    private func galleryDescription(for asset: VisualAsset) -> String {
+        if asset.id.hasPrefix("cg_pre_ending_") || asset.tags.contains("ending") {
+            return "마지막 선택 직전에 잠깐 멈춰 선 기억입니다. 손에 남은 물건과 시선의 방향이 결말을 먼저 말해 줍니다."
+        }
+        if asset.id.hasPrefix("cg_action_") || asset.tags.contains("action") {
+            return "대사 사이에서 실제로 일어난 행동을 붙잡은 장면입니다. 손, 물건, 거리감이 다음 말보다 먼저 관계를 바꿉니다."
+        }
+        if asset.id.hasPrefix("cg_buildup_") || asset.tags.contains("buildup") {
+            return "선택에 닿기 전, Rainveil의 비가 감정의 방향을 천천히 드러내는 장면입니다."
+        }
+        return "Rainveil의 토요일에 남은 장면입니다. 같은 비 아래에서도 인물마다 다른 기억으로 잠깁니다."
     }
 
     private func updateCollectionLayout() {

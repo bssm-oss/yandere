@@ -59,7 +59,7 @@ func terminalSceneID(for choices: [String], package: StoryPackage) throws -> (sc
         manager.choose(choiceID: choiceID)
     }
 
-    var remainingSteps = 80
+    var remainingSteps = 140
     while let scene = manager.currentScene, !scene.isEndingScene, remainingSteps > 0 {
         remainingSteps -= 1
         switch manager.phase {
@@ -168,10 +168,10 @@ func runValidation() throws {
     try check(package.sceneIndex[package.metadata.finalScene] != nil, "Missing final scene")
     try check(package.endingIndex[package.metadata.defaultEnding] != nil, "Missing default ending rule")
     try check(package.statBounds.initial == GameStats.defaults, "Unexpected initial stats")
-    try check(package.scenes.count >= 218, "Market-ready story should include at least 218 scenes including endings")
+    try check(package.scenes.count >= 301, "Market-ready story should include at least 301 scenes including endings")
     try check(package.assets.backgrounds.count >= 96, "Expected expanded background set")
     try check(package.assets.characters.count >= 74, "Expected expanded character image set")
-    try check(package.assets.cg.count >= 126, "Expected expanded CG image set")
+    try check(package.assets.cg.count >= 214, "Expected expanded CG image set")
 
     let sceneTextLengths = package.scenes.map { $0.text.count }
     let averageSceneTextLength = Double(sceneTextLengths.reduce(0, +)) / Double(max(sceneTextLengths.count, 1))
@@ -183,6 +183,12 @@ func runValidation() throws {
     )
     let multiVisualSceneCount = package.scenes.filter { $0.visuals.count >= 2 }.count
     try check(multiVisualSceneCount >= 24, "Expected more multi-character staging scenes")
+    let actionEventSceneCount = package.scenes.filter { scene in
+        guard let cg = scene.cg else { return false }
+        return scene.effects.contains("event_cg")
+            && (cg.hasPrefix("cg_action_") || cg.hasPrefix("cg_buildup_") || cg.hasPrefix("cg_pre_ending_"))
+    }.count
+    try check(actionEventSceneCount >= 104, "Expected at least 104 action or object-focused event CG scenes")
     let choiceTextLengths = package.scenes.flatMap { $0.choices.map { $0.text.count } }
     try check((choiceTextLengths.max() ?? 0) <= 18, "Choice labels should be short action verbs")
 
@@ -378,6 +384,77 @@ func runValidation() throws {
     try checkSceneCG("ch03a_recorder_before_reply", expectedCG: "cg_buildup_recorder_pause")
     try checkSceneCG("ch05a_key_music_box_pause", expectedCG: "cg_buildup_key_music_box")
     try checkSceneCG("ch06zz_a_station_objects_under_clock", expectedCG: "cg_buildup_station_objects")
+    try checkSceneCG("ch00ac_second_missed_call_screen", expectedCG: "cg_action_second_missed_call")
+    try checkSceneCG("ch00ae_monday_calendar_bleed", expectedCG: "cg_buildup_monday_calendar_bleed")
+    try checkSceneCG("ch02z_ca_yuka_tape_seals_envelope", expectedCG: "cg_action_yuka_tapes_envelope")
+    try checkSceneCG("ch02zz_b_alley_map_three_rules", expectedCG: "cg_action_alley_three_rules_map")
+    try checkSceneCG("ch03z_ca_rooftop_closed_umbrella", expectedCG: "cg_buildup_rooftop_closed_umbrella")
+    try checkSceneCG("ch04z_ba_elevator_button_already_lit", expectedCG: "cg_action_elevator_b3_lit")
+    try checkSceneCG("ch04zz_ba_archive_silence_handprint", expectedCG: "cg_buildup_archive_handprint")
+    try checkSceneCG("ch05z_aa_airi_message_lock_screen", expectedCG: "cg_action_airi_message_door")
+    try checkSceneCG("ch05z_ca_threshold_red_line", expectedCG: "cg_action_room_threshold_red_line")
+    try checkSceneCG("room_call_airi_signal_blocked_cg", expectedCG: "cg_action_airi_signal_blocked")
+    try checkSceneCG("room_escape_window_rain_mark", expectedCG: "cg_action_escape_window_mark")
+    try checkSceneCG("ch06z_ca_clock_hand_stutters", expectedCG: "cg_buildup_station_clock_hand_stutter")
+    try checkSceneCG("ch01z_ca_airi_envelope_photo_corner", expectedCG: "cg_action_airi_photo_envelope_corner")
+    try checkSceneCG("ch02z_da_evidence_photos_fanned", expectedCG: "cg_action_evidence_photos_fanned")
+    try checkSceneCG("ch03z_da_puddle_two_reflections", expectedCG: "cg_buildup_rooftop_puddle_reflections")
+    try checkSceneCG("ch04z_da_white_envelope_weight", expectedCG: "cg_buildup_white_envelope_weight")
+    try checkSceneCG("ch05z_da_towel_hand_distance", expectedCG: "cg_action_towel_hand_distance")
+    try checkSceneCG("ch06c_a_returned_umbrella_handle_close", expectedCG: "cg_action_returned_umbrella_handle")
+    try checkSceneCG("ch04i_a_cassette_play_button", expectedCG: "cg_action_cassette_play_button")
+    try checkSceneCG("ch06fa_a_train_door_hand_release", expectedCG: "cg_action_train_door_hand_release")
+    try checkSceneCG("ch00a_umbrella_handoff_close_generated", expectedCG: "cg_action_ai_umbrella_handoff_close")
+    try checkSceneCG("ch02b_a_call_static_breath_cg", expectedCG: "cg_action_call_static_breath")
+    try checkSceneCG("ch05a_archive_elevator_reflection_cg", expectedCG: "cg_buildup_elevator_envelope_reflection")
+    try checkSceneCG("ch06d_aa_crosswalk_half_step_cg", expectedCG: "cg_action_crosswalk_half_step")
+    try checkSceneCG("ch06d_c_three_routes_crosswalk_cg", expectedCG: "cg_action_three_routes_crosswalk")
+    try checkSceneCG("ch01z_db_umbrella_handle_shift", expectedCG: "cg_action_umbrella_handle_shift")
+    try checkSceneCG("ch00zz_c_name_line_under_rain", expectedCG: "cg_buildup_name_line_under_rain")
+    try checkSceneCG("ch02z_fb_stairwell_message_failed", expectedCG: "cg_action_stairwell_message_failed")
+    try checkSceneCG("ch03z_ab_rooftop_door_gap", expectedCG: "cg_buildup_rooftop_door_gap")
+    try checkSceneCG("ch04z_eb_fourth_envelope_slide", expectedCG: "cg_action_fourth_envelope_slide")
+    try checkSceneCG("ch05z_bb_door_gap_music_box", expectedCG: "cg_buildup_door_gap_music_box")
+    try checkSceneCG("ch06z_bb_ticket_gate_red_line", expectedCG: "cg_buildup_ticket_gate_red_line")
+    try checkSceneCG("ch06fa_b_hand_after_release", expectedCG: "cg_buildup_hand_after_release")
+    try checkSceneCG("ch00a_d_umbrella_edge_lowered", expectedCG: "cg_action_ai_umbrella_edge_lowered")
+    try checkSceneCG("ch01a_b_arcade_token_in_palm", expectedCG: "cg_action_arcade_token_in_palm")
+    try checkSceneCG("ch01z_eg_envelope_corner_wet", expectedCG: "cg_buildup_airi_envelope_corner_wet")
+    try checkSceneCG("ch02z_db_evidence_photo_turnover", expectedCG: "cg_action_evidence_photo_turnover")
+    try checkSceneCG("ch03a_b_recorder_light_answers", expectedCG: "cg_action_underpass_recorder_light")
+    try checkSceneCG("ch04aa_b_rain_gauge_drop", expectedCG: "cg_buildup_rain_gauge_drop")
+    try checkSceneCG("ch04i_b_cassette_thread_press", expectedCG: "cg_action_ai_cassette_thread_press")
+    try checkSceneCG("ch05z_bc_music_box_key_turn", expectedCG: "cg_action_music_box_key_turn")
+    try checkSceneCG("ch06a_b_teacup_ripple_thread", expectedCG: "cg_buildup_teacup_ripple_thread")
+    try checkSceneCG("ch05z_cb_threshold_shoe_cross", expectedCG: "cg_action_threshold_shoe_cross")
+    try checkSceneCG("ch06z_cc_station_clock_ticket_shadow", expectedCG: "cg_buildup_station_clock_ticket_shadow")
+    try checkSceneCG("pre_ending_true_b_train_reflection", expectedCG: "cg_buildup_pre_ending_train_reflection")
+    try checkSceneCG("ch00a_e_umbrella_snap_under_finger", expectedCG: "cg_buildup_umbrella_snap_under_finger")
+    try checkSceneCG("ch00_airi_call_1b_phone_send_blocked", expectedCG: "cg_action_ai_phone_send_blocked")
+    try checkSceneCG("ch00aa_b_phone_dropped_under_umbrella", expectedCG: "cg_buildup_phone_dropped_under_umbrella")
+    try checkSceneCG("ch01a_c_arcade_coin_slot_pause", expectedCG: "cg_action_arcade_coin_slot_pause")
+    try checkSceneCG("ch02z_eb_cafe_backdoor_latch", expectedCG: "cg_action_cafe_backdoor_latch")
+    try checkSceneCG("ch03z_ac_rooftop_ribbon_drop", expectedCG: "cg_buildup_rooftop_ribbon_drop")
+    try checkSceneCG("ch04j_b_submerged_film_frame", expectedCG: "cg_buildup_submerged_film_frame")
+    try checkSceneCG("ch05z_bd_red_key_handoff", expectedCG: "cg_action_ai_red_key_handoff")
+    try checkSceneCG("ch05z_cc_room_lock_click", expectedCG: "cg_action_room_lock_click")
+    try checkSceneCG("ch06z_cb_clock_pulse_over_ticket", expectedCG: "cg_buildup_clock_pulse_over_ticket")
+    try checkSceneCG("pre_ending_collapse_b_airi_note_under_shoe", expectedCG: "cg_buildup_airi_note_under_shoe")
+    try checkSceneCG("pre_ending_true_c_platform_breath", expectedCG: "cg_buildup_platform_breath_on_glass")
+    try checkSceneCG("ch06c_b_umbrella_pushed_back", expectedCG: "cg_action_ai_umbrella_pushed_back")
+    try checkSceneCG("ch06c_c_umbrella_puddle_direction", expectedCG: "cg_buildup_umbrella_puddle_direction")
+    try checkSceneCG("ch06h_b_evidence_photo_pin", expectedCG: "cg_action_ai_evidence_photo_pin")
+    try checkSceneCG("ch01z_g_envelope_under_jacket", expectedCG: "cg_buildup_envelope_under_jacket")
+    try checkSceneCG("ch02j_b_vial_cap_twist", expectedCG: "cg_action_vial_cap_twist")
+    try checkSceneCG("ch03a_c_recorder_spool_red", expectedCG: "cg_buildup_recorder_spool_red")
+    try checkSceneCG("ch04z_ec_archive_stamp_press", expectedCG: "cg_action_archive_stamp_press")
+    try checkSceneCG("ch05z_be_red_key_imprint", expectedCG: "cg_buildup_red_key_imprint")
+    try checkSceneCG("ch06z_cd_ticket_folded_palm", expectedCG: "cg_buildup_ticket_folded_palm")
+    try checkSceneCG("pre_ending_ghost_b_waveform_pin", expectedCG: "cg_action_yuka_waveform_pin")
+    try checkSceneCG("ch00a_f_umbrella_snap_button_generated", expectedCG: "cg_action_ai_umbrella_snap_button")
+    try checkSceneCG("ch01a_d_arcade_coin_reflection_generated", expectedCG: "cg_action_ai_arcade_coin_slot_reflection")
+    try checkSceneCG("ch02z_ec_latch_hooked_from_rain_generated", expectedCG: "cg_action_ai_cafe_latch_hooked")
+    try checkSceneCG("ch05z_cd_room_chain_slide_generated", expectedCG: "cg_action_ai_room_chain_slide")
 
     for assetID in [
         "sea_wall_mural",
@@ -510,7 +587,78 @@ func runValidation() throws {
         "cg_buildup_location_deleted",
         "cg_buildup_recorder_pause",
         "cg_buildup_key_music_box",
-        "cg_buildup_station_objects"
+        "cg_buildup_station_objects",
+        "cg_action_second_missed_call",
+        "cg_buildup_monday_calendar_bleed",
+        "cg_action_yuka_tapes_envelope",
+        "cg_action_alley_three_rules_map",
+        "cg_buildup_rooftop_closed_umbrella",
+        "cg_action_elevator_b3_lit",
+        "cg_buildup_archive_handprint",
+        "cg_action_airi_message_door",
+        "cg_action_room_threshold_red_line",
+        "cg_action_airi_signal_blocked",
+        "cg_action_escape_window_mark",
+        "cg_buildup_station_clock_hand_stutter",
+        "cg_action_airi_photo_envelope_corner",
+        "cg_action_evidence_photos_fanned",
+        "cg_buildup_rooftop_puddle_reflections",
+        "cg_buildup_white_envelope_weight",
+        "cg_action_towel_hand_distance",
+        "cg_action_returned_umbrella_handle",
+        "cg_action_cassette_play_button",
+        "cg_action_train_door_hand_release",
+        "cg_action_ai_umbrella_handoff_close",
+        "cg_action_call_static_breath",
+        "cg_buildup_elevator_envelope_reflection",
+        "cg_action_crosswalk_half_step",
+        "cg_action_three_routes_crosswalk",
+        "cg_action_umbrella_handle_shift",
+        "cg_buildup_name_line_under_rain",
+        "cg_action_stairwell_message_failed",
+        "cg_buildup_rooftop_door_gap",
+        "cg_action_fourth_envelope_slide",
+        "cg_buildup_door_gap_music_box",
+        "cg_buildup_ticket_gate_red_line",
+        "cg_buildup_hand_after_release",
+        "cg_action_ai_umbrella_edge_lowered",
+        "cg_action_ai_cassette_thread_press",
+        "cg_action_arcade_token_in_palm",
+        "cg_buildup_airi_envelope_corner_wet",
+        "cg_action_evidence_photo_turnover",
+        "cg_action_underpass_recorder_light",
+        "cg_buildup_rain_gauge_drop",
+        "cg_action_music_box_key_turn",
+        "cg_buildup_teacup_ripple_thread",
+        "cg_action_threshold_shoe_cross",
+        "cg_buildup_station_clock_ticket_shadow",
+        "cg_buildup_pre_ending_train_reflection",
+        "cg_action_ai_phone_send_blocked",
+        "cg_action_ai_red_key_handoff",
+        "cg_buildup_umbrella_snap_under_finger",
+        "cg_buildup_phone_dropped_under_umbrella",
+        "cg_action_arcade_coin_slot_pause",
+        "cg_action_cafe_backdoor_latch",
+        "cg_buildup_rooftop_ribbon_drop",
+        "cg_buildup_submerged_film_frame",
+        "cg_action_room_lock_click",
+        "cg_buildup_clock_pulse_over_ticket",
+        "cg_buildup_airi_note_under_shoe",
+        "cg_buildup_platform_breath_on_glass",
+        "cg_action_ai_umbrella_pushed_back",
+        "cg_buildup_umbrella_puddle_direction",
+        "cg_action_ai_evidence_photo_pin",
+        "cg_buildup_envelope_under_jacket",
+        "cg_action_vial_cap_twist",
+        "cg_buildup_recorder_spool_red",
+        "cg_action_archive_stamp_press",
+        "cg_buildup_red_key_imprint",
+        "cg_buildup_ticket_folded_palm",
+        "cg_action_yuka_waveform_pin",
+        "cg_action_ai_umbrella_snap_button",
+        "cg_action_ai_arcade_coin_slot_reflection",
+        "cg_action_ai_cafe_latch_hooked",
+        "cg_action_ai_room_chain_slide"
     ] {
         guard let asset = package.assets.cg[assetID] else {
             throw ValidationFailure.failed("Missing generated CG metadata: \(assetID)")
