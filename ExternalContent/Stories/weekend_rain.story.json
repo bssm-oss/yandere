@@ -3749,6 +3749,91 @@
           "threshold",
           "clues"
         ]
+      },
+      "cg_buildup_umbrella_distance": {
+        "id": "cg_buildup_umbrella_distance",
+        "name": "우산 아래 좁아지는 거리",
+        "path": "Assets/CG/cg_buildup_umbrella_distance.png",
+        "prompt": "visual novel buildup CG, shared red umbrella at rainy school entrance, shoes and hands move closer by a few centimeters",
+        "tags": [
+          "cg",
+          "generated",
+          "buildup",
+          "umbrella",
+          "sea",
+          "rain"
+        ]
+      },
+      "cg_buildup_envelope_weight": {
+        "id": "cg_buildup_envelope_weight",
+        "name": "처마 밑 봉투의 무게",
+        "path": "Assets/CG/cg_buildup_envelope_weight.png",
+        "prompt": "visual novel buildup CG, damp envelope between hesitant hands under school eaves with red umbrella reflection",
+        "tags": [
+          "cg",
+          "generated",
+          "buildup",
+          "envelope",
+          "airi",
+          "sea"
+        ]
+      },
+      "cg_buildup_location_deleted": {
+        "id": "cg_buildup_location_deleted",
+        "name": "지워지는 위치 신호",
+        "path": "Assets/CG/cg_buildup_location_deleted.png",
+        "prompt": "visual novel buildup CG, service stairwell phone location is stopped before sending, rain light through wired glass",
+        "tags": [
+          "cg",
+          "generated",
+          "buildup",
+          "phone",
+          "stairwell",
+          "airi",
+          "yuka"
+        ]
+      },
+      "cg_buildup_recorder_pause": {
+        "id": "cg_buildup_recorder_pause",
+        "name": "재생 전 녹음기의 붉은 불빛",
+        "path": "Assets/CG/cg_buildup_recorder_pause.png",
+        "prompt": "visual novel buildup CG, cassette recorder before play in rainy underpass with red light and black umbrella silhouette",
+        "tags": [
+          "cg",
+          "generated",
+          "buildup",
+          "recorder",
+          "shadow",
+          "underpass"
+        ]
+      },
+      "cg_buildup_key_music_box": {
+        "id": "cg_buildup_key_music_box",
+        "name": "오르골 옆 오래된 열쇠",
+        "path": "Assets/CG/cg_buildup_key_music_box.png",
+        "prompt": "visual novel buildup CG, old apartment key beside broken music box and red thread near half-open rainy door",
+        "tags": [
+          "cg",
+          "generated",
+          "buildup",
+          "key",
+          "music_box",
+          "sea"
+        ]
+      },
+      "cg_buildup_station_objects": {
+        "id": "cg_buildup_station_objects",
+        "name": "정지한 시계 아래 남은 물건들",
+        "path": "Assets/CG/cg_buildup_station_objects.png",
+        "prompt": "visual novel buildup CG, weekend station platform still life with red ticket, damp note, recorder, stopped clock reflection",
+        "tags": [
+          "cg",
+          "generated",
+          "buildup",
+          "station",
+          "clock",
+          "choice"
+        ]
       }
     }
   },
@@ -4526,7 +4611,7 @@
       "text": "현관까지 내려오는 동안 아무 일도 일어나지 않았다. 그래서 더 오래 걸렸다. 세아는 신발을 갈아 신으며 내 발끝을 보았다. 「오락실, 아직 있어.」 갑자기 나온 말이었지만, 세아는 오래 전부터 그 문장을 들고 있었던 사람처럼 차분했다. 「비가 오면 소리가 덜 새거든.」 나는 왜 오락실 소리가 새면 안 되는지 묻지 못했다. *위험한 말은 대개 조용한 설명 사이에 숨어 있었다. 그런데 나는 그 조용함이 싫지 않았다.* 아이리의 시선이 등 뒤에 닿았다. 세아는 우산을 펴며 내 쪽 손잡이를 조금 비워 두었다.",
       "speaker": "세아",
       "choices": [],
-      "next_scene": "ch01b_arcade_invitation",
+      "next_scene": "ch01a_umbrella_distance_under_eaves",
       "background": "locker_corridor",
       "character": "sea_orchid_umbrella_handle",
       "cg": "cg_action_arcade_umbrella_invite",
@@ -4535,6 +4620,37 @@
         "event_cg",
         "red_reflection"
       ],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_resolve",
+          "position": "left"
+        },
+        {
+          "type": "character",
+          "id": "sea_orchid_umbrella_handle",
+          "position": "right"
+        }
+      ]
+    },
+    {
+      "id": "ch01a_umbrella_distance_under_eaves",
+      "chapter": "Chapter 1",
+      "title": "처마 아래 좁아지는 거리",
+      "speaker": "하루",
+      "text": "세아가 우산을 펼쳤을 때, 붉은 천 아래의 공기가 먼저 좁아졌다. 현관 바닥에는 우리 신발 끝이 나란히 비쳤고, 세아는 일부러 한 걸음만 비켜 섰다. 「여기면 안 젖어.」 다정한 말이었다. 그런데 우산 손잡이는 내 손이 닿을 자리만 남겨 둔 채 멈춰 있었다. *받으면 따라가는 것이 되고, 받지 않으면 세아의 손을 오래 보게 된다. 어느 쪽도 완전히 거절처럼 느껴지지 않았다.* 아이리는 뒤에서 아무 말도 하지 않았다. 그 침묵이 오히려 발목을 잡았다.",
+      "choices": [],
+      "next_scene": "ch01b_arcade_invitation",
+      "background": "locker_corridor",
+      "character": "sea_orchid_umbrella_handle",
+      "cg": "cg_buildup_umbrella_distance",
+      "music": "bus_stop_rain",
+      "effects": [
+        "event_cg",
+        "red_reflection",
+        "soft_rain"
+      ],
+      "unlock_cg": null,
       "visuals": [
         {
           "type": "character",
@@ -4790,7 +4906,7 @@
       "speaker": "아이리",
       "text": "「하루, 여기.」\n아이리는 처마 밑에서 기다리고 있었다. 어깨가 젖어 있었고, 봉투는 품 안쪽에 넣어 젖지 않게 막고 있었다. 세아는 한 걸음 뒤에서 멈췄다.\n아이리는 세아를 보지 않았다. 대신 내 손에 봉투를 밀어 넣었다.\n「지금 읽지 마. 먼저 빠져나와.」 말은 짧았다. 설명은 없었다. 그래서 더 사실처럼 들렸다.\n*아이리가 무언가를 겁낼 때는 겁난다고 말하지 않는다. 대신 내가 움직여야 하는 방향만 남긴다.*\n세아의 우산 끝에서 빗물이 규칙적으로 떨어졌다. 셋을 세자 아이리가 입을 열었다.",
       "choices": [],
-      "next_scene": "ch02_airi_warning",
+      "next_scene": "ch01z_f_envelope_weight_pause",
       "background": "locker_corridor",
       "character": "airi_normal",
       "music": "rain_theme",
@@ -4812,6 +4928,37 @@
         }
       ],
       "cg": "cg_action_airi_envelope_handoff"
+    },
+    {
+      "id": "ch01z_f_envelope_weight_pause",
+      "chapter": "Chapter 2",
+      "title": "봉투를 받기 전의 무게",
+      "speaker": "하루",
+      "text": "봉투는 내 손에 완전히 넘어오기 전부터 무거웠다. 종이 몇 장의 무게가 아니었다. 아이리는 손을 놓지 않았고, 세아는 우산을 든 채 반 걸음 뒤에서 기다렸다. 「지금은 숨기고 있어.」 아이리가 말했다. 「읽는 건 혼자일 때 해.」 세아는 웃지 않았다. 대신 내 손끝과 아이리의 손끝 사이를 조용히 보았다. *그 작은 틈에 내가 모르는 시간이 끼어 있었다. 세아가 나를 좋아하기 전의 시간인지, 내가 이미 놓친 시간인지 알 수 없었다.* 봉투 모서리에서 빗물이 한 방울 떨어졌다.",
+      "choices": [],
+      "next_scene": "ch02_airi_warning",
+      "background": "locker_corridor",
+      "character": "airi_resolve",
+      "cg": "cg_buildup_envelope_weight",
+      "music": "rain_theme",
+      "effects": [
+        "event_cg",
+        "red_reflection",
+        "soft_black"
+      ],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_resolve",
+          "position": "left"
+        },
+        {
+          "type": "character",
+          "id": "sea_orchid_umbrella_handle",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch02_airi_warning",
@@ -5339,7 +5486,7 @@
       "text": "비상계단은 카페보다 좁고 차가웠다. 철문이 닫히자 정문 쪽 빗소리가 한 겹 멀어졌다. 핸드폰 화면에 아이리의 이름이 다시 떴다. 유카는 받으라고 말하지 않았다. 대신 계단 아래를 봤다. 「하루, 숨 쉬어.」 아이리의 목소리가 스피커 너머에서 끊겼다. 「지금 네 위치를 지워.」 유카가 내 화면을 확인했다. 「세아가 보는 건 네가 아니라 네가 남기는 흔적이야.」 *내가 무서워한 것은 들키는 일이 아니었다. 세아가 이미 알고 있었는데도 모른 척해 주고 있다는 가능성이었다.* 계단 위쪽에서 물방울이 떨어졌다. 한 박자 늦게, 또 한 번. 누군가 같은 간격으로 내려오고 있었다.",
       "speaker": "아이리",
       "choices": [],
-      "next_scene": "ch02zz_a_yuka_alley_rules",
+      "next_scene": "ch02z_g_location_deleted_pause",
       "background": "rain_street",
       "character": "airi_resolve",
       "cg": "cg_action_phone_stairwell_warning",
@@ -5349,6 +5496,37 @@
         "screen_shake",
         "cold_light"
       ],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_resolve",
+          "position": "left"
+        },
+        {
+          "type": "character",
+          "id": "yuka_glasses_off",
+          "position": "right"
+        }
+      ]
+    },
+    {
+      "id": "ch02z_g_location_deleted_pause",
+      "chapter": "Chapter 3",
+      "title": "지워지는 위치",
+      "speaker": "유카",
+      "text": "유카는 내 핸드폰을 빼앗지 않았다. 손등으로 화면을 살짝 눌러 보낼 수 없게 만들었을 뿐이다. 「강제로 막으면 네가 다시 보내.」 유카가 말했다. 「그러니까 네가 직접 지워.」 아이리의 숨소리가 통화 너머에서 작게 흔들렸다. 나는 위치 표시를 지웠다. 손가락 하나로 끝나는 행동인데, 지우고 나니 계단참 전체가 비어 보였다. *세아에게 숨기는 것이 아니라, 세아가 이미 알고 있는 길 위에서 발자국을 닦는 기분이었다.* 철문 밖에서 누군가 지나가는 소리가 났다.",
+      "choices": [],
+      "next_scene": "ch02zz_a_yuka_alley_rules",
+      "background": "rain_street",
+      "character": "yuka_glasses_off",
+      "cg": "cg_buildup_location_deleted",
+      "music": null,
+      "effects": [
+        "event_cg",
+        "cold_light",
+        "soft_black"
+      ],
+      "unlock_cg": null,
       "visuals": [
         {
           "type": "character",
@@ -5536,7 +5714,7 @@
       "text": "지하 통로 입구에서 비 냄새가 위로 올라왔다. 땅 아래인데도 물웅덩이가 있었고, 발을 디딜 때마다 학교 소리가 멀어졌다. 계단 벽에는 우산 자국이 오래된 달력처럼 겹쳐 있었다. 「여기부터는 혼자 가.」 유카가 말했다. 「내가 같이 있으면 말을 안 할 거야.」 누구를 말하는지 묻지 않아도 알 것 같았다. *혼자 내려가는 것이 용기인지, 이미 늦었다는 증거인지 구분되지 않았다.* 주머니 속 녹음기가 작게 눌렸다. 재생 버튼에 손가락이 닿자, 아래쪽 어둠에서 누군가 우산을 접는 소리가 났다.",
       "speaker": "하루",
       "choices": [],
-      "next_scene": "ch03b_shadow_underpass",
+      "next_scene": "ch03a_recorder_before_reply",
       "background": "underpass_rain",
       "character": "yuka_glasses_off",
       "cg": "cg_action_underpass_recorder",
@@ -5552,6 +5730,32 @@
           "id": "yuka_glasses_off",
           "position": "right"
         },
+        {
+          "type": "character",
+          "id": "shadow_kurogasa",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch03a_recorder_before_reply",
+      "chapter": "Chapter 4",
+      "title": "재생 버튼 앞의 정적",
+      "speaker": "하루",
+      "text": "녹음기의 붉은 불빛은 아주 작았다. 그런데 지하 통로 전체가 그 불빛을 숨기지 못했다. 버튼 위에 손가락을 올리자, 어둠 속 우산의 윤곽이 조금 가까워진 것처럼 보였다. 「듣기 전에 정해 둬.」 낮은 목소리가 물웅덩이 쪽에서 올라왔다. 「듣고 나면 모른 척하기가 어려워져.」 나는 버튼을 누르지 못하고 숨만 세었다. *진실이 무서운 게 아니라, 세아의 목소리가 거기에도 있을까 봐 무서웠다.* 빗물이 천장에서 한 방울 떨어져 재생 표시 옆을 적셨다.",
+      "choices": [],
+      "next_scene": "ch03b_shadow_underpass",
+      "background": "underpass_rain",
+      "character": "shadow_kurogasa",
+      "cg": "cg_buildup_recorder_pause",
+      "music": null,
+      "effects": [
+        "event_cg",
+        "soft_black",
+        "rain_hush"
+      ],
+      "unlock_cg": null,
+      "visuals": [
         {
           "type": "character",
           "id": "shadow_kurogasa",
@@ -7231,7 +7435,7 @@
       "text": "학교를 나서기 전에 아이리에게 메시지를 쓰려다 지웠다. 무슨 말을 해야 할지보다, 어디까지 말해도 되는지가 먼저 걸렸다. 세아에게도 연락하지 않았다. 연락하지 않았는데도 곧 알 것 같았다. 「오래 걸리면 세아가 먼저 와.」 유카가 우산을 접으며 말했다. 「그러니까 먼저 움직여.」 *도망이 아니라 확인이라고 생각하려 했다. 하지만 확인하러 가는 발걸음은 늘 도망치는 사람처럼 빨라졌다.* 오래된 아파트 열쇠가 봉투 바닥에서 소리 냈다. 작은 금속음 하나가 다음 장소를 정했다.",
       "speaker": "하루",
       "choices": [],
-      "next_scene": "ch05c_old_apartment",
+      "next_scene": "ch05a_key_music_box_pause",
       "background": "rain_street",
       "character": "airi_wet_envelope",
       "cg": "cg_action_archive_key_handoff",
@@ -7250,6 +7454,32 @@
           "type": "character",
           "id": "yuka_glasses_off",
           "position": "right"
+        }
+      ]
+    },
+    {
+      "id": "ch05a_key_music_box_pause",
+      "chapter": "Chapter 5",
+      "title": "열쇠 옆의 오르골",
+      "speaker": "하루",
+      "text": "아파트 복도에 들어서자 열쇠가 봉투 안에서 다시 울렸다. 그 소리는 문을 여는 소리보다 먼저 방 안으로 들어간 것 같았다. 바닥에는 낡은 오르골이 놓여 있었다. 누가 떨어뜨린 것이 아니라, 누군가 일부러 여기까지 밀어 둔 모양이었다. 「그 노래, 알지.」 세아의 목소리가 문 너머에서 들린 듯했다. 실제로 들은 것인지 기억이 먼저 말한 것인지 알 수 없었다. *열쇠를 줍는 순간, 내가 문을 여는 사람이 아니라 이미 초대받은 사람처럼 느껴졌다.* 붉은 실 끝이 문틈 안쪽으로 천천히 사라졌다.",
+      "choices": [],
+      "next_scene": "ch05c_old_apartment",
+      "background": "old_apartment",
+      "character": "sea_blanket_thread",
+      "cg": "cg_buildup_key_music_box",
+      "music": "music_box",
+      "effects": [
+        "event_cg",
+        "red_reflection",
+        "soft_black"
+      ],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_blanket_thread",
+          "position": "center"
         }
       ]
     },
@@ -8497,7 +8727,7 @@
       "speaker": "하루",
       "text": "역 시계 아래에서 세아가 내 손을 잡았다. 분침은 움직이지 않았다. 초침만 같은 자리를 맴돌며 작은 소리를 냈다.\n「월요일로 가도 돼.」 세아가 말했다. 「근데 가기 전에, 나를 보고 가.」\n돌아보면 전차 문이 열려 있었다. 앞을 보면 세아의 뒷모습과 젖은 손목의 붉은 실이 있었다. 어느 쪽도 나를 밀지 않았다.\n*선택은 누군가를 버리는 일이 아니라, 내가 무엇을 기억한 채 다음 빗속으로 갈지를 정하는 일일지도 모른다.*\n손안의 체온이 조금 세졌다. 세아는 끌어당기지 않았다. 놓지도 않았다. 그 사이가 마지막 토요일처럼 길었다.",
       "choices": [],
-      "next_scene": "ch06zz_b_three_signals_on_platform",
+      "next_scene": "ch06zz_a_station_objects_under_clock",
       "background": "weekend_station_clock",
       "character": "sea_station_clock",
       "music": "rain_theme",
@@ -8515,6 +8745,42 @@
       ],
       "unlock_cg": "cg_generated_station_clock_choice",
       "cg": "cg_generated_station_clock_choice"
+    },
+    {
+      "id": "ch06zz_a_station_objects_under_clock",
+      "chapter": "Chapter 6",
+      "title": "시계 아래 남은 물건들",
+      "speaker": "하루",
+      "text": "플랫폼 바닥에는 물건들이 먼저 도착해 있었다. 아이리의 젖은 쪽지, 유카가 남긴 작은 기록기, 세아가 쥐고 있던 붉은 표. 모두 내가 들고 왔다고 생각했는데, 어느 순간 내 손은 비어 있었다. 「잃어버린 게 아니야.」 세아가 말했다. 「여기에 둔 거야. 네가 볼 수 있게.」 기차가 오지 않는 선로 위로 불빛만 지나갔다. *사람을 선택하기 전에, 그 사람들이 남긴 방식들을 먼저 봐야 했다. 그래야 미안함과 끌림을 같은 이름으로 부르지 않을 수 있었다.* 시계의 초침이 같은 칸을 한 번 더 긁었다.",
+      "choices": [],
+      "next_scene": "ch06zz_b_three_signals_on_platform",
+      "background": "weekend_station_clock",
+      "character": "sea_station_clock",
+      "cg": "cg_buildup_station_objects",
+      "music": "station_clock",
+      "effects": [
+        "event_cg",
+        "glass_reflection",
+        "rain_hush"
+      ],
+      "unlock_cg": null,
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_resolve",
+          "position": "left"
+        },
+        {
+          "type": "character",
+          "id": "sea_station_clock",
+          "position": "center"
+        },
+        {
+          "type": "character",
+          "id": "yuka_weather_terminal",
+          "position": "right"
+        }
+      ]
     },
     {
       "id": "ch06zz_b_three_signals_on_platform",

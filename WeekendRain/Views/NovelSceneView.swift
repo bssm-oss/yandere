@@ -148,6 +148,7 @@ open class NovelSceneView: NSView {
     private var baseSpritePlacements: [SceneVisualPosition: SpritePlacement] = [:]
     private var currentCharacterIDs: [SceneVisualPosition: String] = [:]
     private var lastBackgroundID: String?
+    private var lastCGID: String?
     private var lastEffectSignature: String?
 
     open override var acceptsFirstResponder: Bool { true }
@@ -233,6 +234,7 @@ open class NovelSceneView: NSView {
         cgImageView.usesAspectFill = true
 
         for iv in [backgroundImageView, cgImageView] as [SceneImageView] {
+            iv.wantsLayer = true
             iv.imageScaling = .scaleNone
             iv.animates = true
             iv.setContentHuggingPriority(.defaultLow, for: .horizontal)
@@ -762,19 +764,35 @@ open class NovelSceneView: NSView {
 
         if let bgID = scene.background, let bgAsset = assets?.backgrounds[bgID] {
             backgroundImageView.image = VisualAssetRenderer.image(for: bgAsset, baseURL: contentBaseURL, role: .background)
-            backgroundImageView.alphaValue = showEventCG ? 0.18 : 0.90
+            backgroundImageView.alphaValue = showEventCG ? 0.12 : 0.90
         } else {
             backgroundImageView.image = nil
         }
 
         if showEventCG, let cgID = scene.cg, let cgAsset = assets?.cg[cgID] {
+            if lastCGID != cgID || cgImageView.isHidden {
+                let fade = CATransition()
+                fade.type = .fade
+                fade.duration = cgTransitionDuration(for: scene)
+                fade.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+                cgImageView.layer?.add(fade, forKey: "cgTransition")
+            }
             cgImageView.image = VisualAssetRenderer.image(for: cgAsset, baseURL: contentBaseURL, role: .cg)
-            cgImageView.alphaValue = 0.92
+            cgImageView.alphaValue = eventCGAlpha(for: cgID, scene: scene)
             cgImageView.isHidden = false
+            lastCGID = cgID
         } else {
+            if lastCGID != nil {
+                let fade = CATransition()
+                fade.type = .fade
+                fade.duration = 0.22
+                fade.timingFunction = CAMediaTimingFunction(name: .easeOut)
+                cgImageView.layer?.add(fade, forKey: "cgTransition")
+            }
             cgImageView.image = nil
             cgImageView.alphaValue = 0
             cgImageView.isHidden = true
+            lastCGID = nil
         }
 
         if showEventCG {
@@ -782,6 +800,18 @@ open class NovelSceneView: NSView {
         } else {
             renderCharacterVisuals(characterVisuals, scene: scene, assets: assets, contentBaseURL: contentBaseURL)
         }
+    }
+
+    private func eventCGAlpha(for cgID: String, scene: SceneNode) -> CGFloat {
+        if cgID.hasPrefix("cg_buildup_") { return 0.96 }
+        if cgID.hasPrefix("cg_action_") { return 0.95 }
+        return scene.isEndingScene ? 0.94 : 0.92
+    }
+
+    private func cgTransitionDuration(for scene: SceneNode) -> CFTimeInterval {
+        if scene.effects.contains("screen_shake") { return 0.28 }
+        if scene.effects.contains("rain_hush") { return 0.55 }
+        return 0.40
     }
 
     private func renderCharacterVisuals(

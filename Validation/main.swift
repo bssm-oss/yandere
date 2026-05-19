@@ -168,10 +168,10 @@ func runValidation() throws {
     try check(package.sceneIndex[package.metadata.finalScene] != nil, "Missing final scene")
     try check(package.endingIndex[package.metadata.defaultEnding] != nil, "Missing default ending rule")
     try check(package.statBounds.initial == GameStats.defaults, "Unexpected initial stats")
-    try check(package.scenes.count >= 212, "Market-ready story should include at least 212 scenes including endings")
+    try check(package.scenes.count >= 218, "Market-ready story should include at least 218 scenes including endings")
     try check(package.assets.backgrounds.count >= 96, "Expected expanded background set")
     try check(package.assets.characters.count >= 74, "Expected expanded character image set")
-    try check(package.assets.cg.count >= 120, "Expected expanded CG image set")
+    try check(package.assets.cg.count >= 126, "Expected expanded CG image set")
 
     let sceneTextLengths = package.scenes.map { $0.text.count }
     let averageSceneTextLength = Double(sceneTextLengths.reduce(0, +)) / Double(max(sceneTextLengths.count, 1))
@@ -372,6 +372,12 @@ func runValidation() throws {
     try checkSceneCG("ch06c_escape_landing_breath", expectedCG: "cg_action_escape_phone_door")
     try checkSceneCG("ch06y_after_threshold_hallway", expectedCG: "cg_action_threshold_clues")
     try checkSceneCG("ch06zz_b_three_signals_on_platform", expectedCG: "cg_action_station_three_signals")
+    try checkSceneCG("ch01a_umbrella_distance_under_eaves", expectedCG: "cg_buildup_umbrella_distance")
+    try checkSceneCG("ch01z_f_envelope_weight_pause", expectedCG: "cg_buildup_envelope_weight")
+    try checkSceneCG("ch02z_g_location_deleted_pause", expectedCG: "cg_buildup_location_deleted")
+    try checkSceneCG("ch03a_recorder_before_reply", expectedCG: "cg_buildup_recorder_pause")
+    try checkSceneCG("ch05a_key_music_box_pause", expectedCG: "cg_buildup_key_music_box")
+    try checkSceneCG("ch06zz_a_station_objects_under_clock", expectedCG: "cg_buildup_station_objects")
 
     for assetID in [
         "sea_wall_mural",
@@ -498,7 +504,13 @@ func runValidation() throws {
         "cg_action_escape_phone_door",
         "cg_action_station_three_signals",
         "cg_action_arcade_umbrella_invite",
-        "cg_action_threshold_clues"
+        "cg_action_threshold_clues",
+        "cg_buildup_umbrella_distance",
+        "cg_buildup_envelope_weight",
+        "cg_buildup_location_deleted",
+        "cg_buildup_recorder_pause",
+        "cg_buildup_key_music_box",
+        "cg_buildup_station_objects"
     ] {
         guard let asset = package.assets.cg[assetID] else {
             throw ValidationFailure.failed("Missing generated CG metadata: \(assetID)")
