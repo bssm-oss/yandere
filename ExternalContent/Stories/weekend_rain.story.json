@@ -3615,6 +3615,140 @@
           "clock",
           "ending"
         ]
+      },
+      "cg_action_umbrella_handoff": {
+        "id": "cg_action_umbrella_handoff",
+        "name": "우산 손잡이를 건네는 순간",
+        "path": "Assets/CG/cg_action_umbrella_handoff.png",
+        "prompt": "visual novel action CG, Sea offers a red umbrella handle to Haru at a rainy school gate, clear handoff gesture, Rainveil City mood",
+        "tags": [
+          "cg",
+          "generated",
+          "action",
+          "umbrella",
+          "sea"
+        ]
+      },
+      "cg_action_airi_envelope_handoff": {
+        "id": "cg_action_airi_envelope_handoff",
+        "name": "처마 아래 봉투 전달",
+        "path": "Assets/CG/cg_action_airi_envelope_handoff.png",
+        "prompt": "visual novel action CG, Airi hands a damp sealed envelope to Haru under school eaves while Sea watches with a red umbrella",
+        "tags": [
+          "cg",
+          "generated",
+          "action",
+          "envelope",
+          "airi"
+        ]
+      },
+      "cg_action_phone_stairwell_warning": {
+        "id": "cg_action_phone_stairwell_warning",
+        "name": "비상계단의 위치 삭제",
+        "path": "Assets/CG/cg_action_phone_stairwell_warning.png",
+        "prompt": "visual novel action CG, Yuka warns Haru in a service stairwell by pushing down his glowing phone, clear phone warning action",
+        "tags": [
+          "cg",
+          "generated",
+          "action",
+          "phone",
+          "yuka"
+        ]
+      },
+      "cg_action_underpass_recorder": {
+        "id": "cg_action_underpass_recorder",
+        "name": "지하통로 녹음기 재생 전",
+        "path": "Assets/CG/cg_action_underpass_recorder.png",
+        "prompt": "visual novel action CG, Haru finger hovers over a cassette recorder in a rainy underpass, black umbrella silhouette ahead",
+        "tags": [
+          "cg",
+          "generated",
+          "action",
+          "recorder",
+          "shadow"
+        ]
+      },
+      "cg_action_archive_key_handoff": {
+        "id": "cg_action_archive_key_handoff",
+        "name": "기록 보관소의 열쇠와 봉투",
+        "path": "Assets/CG/cg_action_archive_key_handoff.png",
+        "prompt": "visual novel action CG, Yuka slides an old apartment key and damp envelope across an archive desk toward Haru",
+        "tags": [
+          "cg",
+          "generated",
+          "action",
+          "key",
+          "archive",
+          "yuka"
+        ]
+      },
+      "cg_action_blanket_teacup_thread": {
+        "id": "cg_action_blanket_teacup_thread",
+        "name": "담요 매듭과 찻잔",
+        "path": "Assets/CG/cg_action_blanket_teacup_thread.png",
+        "prompt": "visual novel action CG, Sea pushes a warm teacup beside a blanket with a tiny red thread knot in a locked room",
+        "tags": [
+          "cg",
+          "generated",
+          "action",
+          "tea",
+          "thread",
+          "sea"
+        ]
+      },
+      "cg_action_escape_phone_door": {
+        "id": "cg_action_escape_phone_door",
+        "name": "문밖의 메시지와 붉은 반사",
+        "path": "Assets/CG/cg_action_escape_phone_door.png",
+        "prompt": "visual novel action CG, Haru steps out through a half-open door with a glowing phone and red umbrella reflection in hallway",
+        "tags": [
+          "cg",
+          "generated",
+          "action",
+          "escape",
+          "phone",
+          "airi"
+        ]
+      },
+      "cg_action_station_three_signals": {
+        "id": "cg_action_station_three_signals",
+        "name": "플랫폼의 세 신호",
+        "path": "Assets/CG/cg_action_station_three_signals.png",
+        "prompt": "visual novel action CG, station platform with damp note, recorder/log device, and Sea hand with red thread under clock",
+        "tags": [
+          "cg",
+          "generated",
+          "action",
+          "station",
+          "choice"
+        ]
+      },
+      "cg_action_arcade_umbrella_invite": {
+        "id": "cg_action_arcade_umbrella_invite",
+        "name": "오락실로 향하는 우산 초대",
+        "path": "Assets/CG/cg_action_arcade_umbrella_invite.png",
+        "prompt": "visual novel action CG, Sea opens a red umbrella at school entrance and leaves handle space for Haru, neon arcade beyond rain",
+        "tags": [
+          "cg",
+          "generated",
+          "action",
+          "umbrella",
+          "arcade",
+          "sea"
+        ]
+      },
+      "cg_action_threshold_clues": {
+        "id": "cg_action_threshold_clues",
+        "name": "문턱 앞 단서들",
+        "path": "Assets/CG/cg_action_threshold_clues.png",
+        "prompt": "visual novel action CG, threshold doorway with note, recorder, red-thread name card, and Sea waiting inside with open hand",
+        "tags": [
+          "cg",
+          "generated",
+          "action",
+          "threshold",
+          "clues"
+        ]
       }
     }
   },
@@ -3743,7 +3877,9 @@
       "background": "shoe_locker_surveillance",
       "character": "sea_orchid_umbrella_handle",
       "music": "bus_stop_rain",
-      "effects": [],
+      "effects": [
+        "event_cg"
+      ],
       "unlock_cg": null,
       "visuals": [
         {
@@ -3751,7 +3887,8 @@
           "id": "sea_orchid_umbrella_handle",
           "position": "center"
         }
-      ]
+      ],
+      "cg": "cg_action_umbrella_handoff"
     },
     {
       "id": "ch00_airi_call_1",
@@ -4392,9 +4529,10 @@
       "next_scene": "ch01b_arcade_invitation",
       "background": "locker_corridor",
       "character": "sea_orchid_umbrella_handle",
-      "cg": null,
+      "cg": "cg_action_arcade_umbrella_invite",
       "music": null,
       "effects": [
+        "event_cg",
         "red_reflection"
       ],
       "visuals": [
@@ -4657,6 +4795,7 @@
       "character": "airi_normal",
       "music": "rain_theme",
       "effects": [
+        "event_cg",
         "red_reflection"
       ],
       "unlock_cg": null,
@@ -4671,7 +4810,8 @@
           "id": "sea_orchid_umbrella_handle",
           "position": "right"
         }
-      ]
+      ],
+      "cg": "cg_action_airi_envelope_handoff"
     },
     {
       "id": "ch02_airi_warning",
@@ -5202,9 +5342,10 @@
       "next_scene": "ch02zz_a_yuka_alley_rules",
       "background": "rain_street",
       "character": "airi_resolve",
-      "cg": null,
+      "cg": "cg_action_phone_stairwell_warning",
       "music": null,
       "effects": [
+        "event_cg",
         "screen_shake",
         "cold_light"
       ],
@@ -5398,9 +5539,10 @@
       "next_scene": "ch03b_shadow_underpass",
       "background": "underpass_rain",
       "character": "yuka_glasses_off",
-      "cg": null,
+      "cg": "cg_action_underpass_recorder",
       "music": null,
       "effects": [
+        "event_cg",
         "soft_black",
         "screen_shake"
       ],
@@ -7092,9 +7234,10 @@
       "next_scene": "ch05c_old_apartment",
       "background": "rain_street",
       "character": "airi_wet_envelope",
-      "cg": null,
+      "cg": "cg_action_archive_key_handoff",
       "music": null,
       "effects": [
+        "event_cg",
         "cold_light"
       ],
       "visuals": [
@@ -7795,9 +7938,10 @@
       "next_scene": "ch06aa_blanket_chain_inventory",
       "background": "locked_room",
       "character": "sea_blanket_thread",
-      "cg": null,
+      "cg": "cg_action_blanket_teacup_thread",
       "music": null,
       "effects": [
+        "event_cg",
         "glass_reflection"
       ],
       "visuals": [
@@ -7816,9 +7960,10 @@
       "next_scene": "ch06c_red_umbrella_return",
       "background": "locked_room",
       "character": "airi_resolve",
-      "cg": null,
+      "cg": "cg_action_escape_phone_door",
       "music": null,
       "effects": [
+        "event_cg",
         "cold_light",
         "screen_shake"
       ],
@@ -8095,9 +8240,10 @@
       "next_scene": "ch06y_station_entrance_delay",
       "background": "threshold_door",
       "character": "sea_threshold",
-      "cg": null,
+      "cg": "cg_action_threshold_clues",
       "music": null,
       "effects": [
+        "event_cg",
         "soft_black"
       ],
       "visuals": [
@@ -8378,9 +8524,10 @@
       "next_scene": "ch06f_weekend_station_clock",
       "background": "weekend_station_clock",
       "character": "sea_station_clock",
-      "cg": null,
+      "cg": "cg_action_station_three_signals",
       "music": null,
       "effects": [
+        "event_cg",
         "screen_shake",
         "cold_light",
         "red_reflection"

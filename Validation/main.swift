@@ -171,7 +171,7 @@ func runValidation() throws {
     try check(package.scenes.count >= 212, "Market-ready story should include at least 212 scenes including endings")
     try check(package.assets.backgrounds.count >= 96, "Expected expanded background set")
     try check(package.assets.characters.count >= 74, "Expected expanded character image set")
-    try check(package.assets.cg.count >= 110, "Expected expanded CG image set")
+    try check(package.assets.cg.count >= 120, "Expected expanded CG image set")
 
     let sceneTextLengths = package.scenes.map { $0.text.count }
     let averageSceneTextLength = Double(sceneTextLengths.reduce(0, +)) / Double(max(sceneTextLengths.count, 1))
@@ -310,6 +310,14 @@ func runValidation() throws {
         )
     }
 
+    func checkSceneCG(_ sceneID: String, expectedCG: String) throws {
+        guard let scene = package.sceneIndex[sceneID] else {
+            throw ValidationFailure.failed("Missing CG scene: \(sceneID)")
+        }
+        try check(scene.cg == expectedCG, "Scene \(sceneID) should use CG \(expectedCG), got \(scene.cg ?? "nil")")
+        try check(scene.effects.contains("event_cg"), "Scene \(sceneID) should present \(expectedCG) as an event CG")
+    }
+
     try checkSceneVisuals(
         "ch02_airi_warning",
         expected: [("airi_locker_evidence", .left), ("sea_charm_camera", .right)]
@@ -354,6 +362,16 @@ func runValidation() throws {
         "ch06y_station_entrance_delay",
         expected: [("airi_resolve", .left), ("sea_station_clock", .center), ("yuka_weather_terminal", .right)]
     )
+    try checkSceneCG("ch00_shared_umbrella", expectedCG: "cg_action_umbrella_handoff")
+    try checkSceneCG("ch01a_arcade_invite_seed", expectedCG: "cg_action_arcade_umbrella_invite")
+    try checkSceneCG("ch01z_e_airi_waits_under_eaves", expectedCG: "cg_action_airi_envelope_handoff")
+    try checkSceneCG("ch02z_f_service_stairwell_call", expectedCG: "cg_action_phone_stairwell_warning")
+    try checkSceneCG("ch03a_underpass_rain_delay", expectedCG: "cg_action_underpass_recorder")
+    try checkSceneCG("ch05a_apartment_key_delay", expectedCG: "cg_action_archive_key_handoff")
+    try checkSceneCG("ch06a_blanket_room_rule", expectedCG: "cg_action_blanket_teacup_thread")
+    try checkSceneCG("ch06c_escape_landing_breath", expectedCG: "cg_action_escape_phone_door")
+    try checkSceneCG("ch06y_after_threshold_hallway", expectedCG: "cg_action_threshold_clues")
+    try checkSceneCG("ch06zz_b_three_signals_on_platform", expectedCG: "cg_action_station_three_signals")
 
     for assetID in [
         "sea_wall_mural",
@@ -470,7 +488,17 @@ func runValidation() throws {
         "cg_generated_rooftop_thread_confession",
         "cg_generated_archive_envelopes",
         "cg_generated_locked_room_threshold",
-        "cg_generated_station_clock_choice"
+        "cg_generated_station_clock_choice",
+        "cg_action_umbrella_handoff",
+        "cg_action_airi_envelope_handoff",
+        "cg_action_phone_stairwell_warning",
+        "cg_action_underpass_recorder",
+        "cg_action_archive_key_handoff",
+        "cg_action_blanket_teacup_thread",
+        "cg_action_escape_phone_door",
+        "cg_action_station_three_signals",
+        "cg_action_arcade_umbrella_invite",
+        "cg_action_threshold_clues"
     ] {
         guard let asset = package.assets.cg[assetID] else {
             throw ValidationFailure.failed("Missing generated CG metadata: \(assetID)")
