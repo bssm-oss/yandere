@@ -4130,7 +4130,7 @@
       "speaker": "하루",
       "text": "세아는 대답 대신 우산 손잡이를 내 손에 쥐어 주었다. 그 손이 아주 잠깐 내 손가락을 감쌌다.\n따뜻했다. 우산 손잡이가 아니라 그 손이 따뜻했다.\n빗소리가 다른 모든 것을 흐리게 만들었다. 나는 그것이 다정함이라고 생각했다.\n*우산을 건네받은 순간, 붉은 천이 내 머리 위로 기울었다. 그 각도가 정확히 내 어깨 너비에 맞았다.*\n하지만 집으로 돌아오는 길에 깨달았다. 선택은 내가 한 게 아니었다.\n우산이 기울었을 때, 나는 이미 안으로 들어가 있었다. 걸음을 멈추지도 않고. 생각하지도 않고.\n세아의 손이 닿은 손등 부분이, 집까지 오는 내내 따뜻했다.",
       "choices": [],
-      "next_scene": "ch00b_water_tower",
+      "next_scene": "ch00a_breakwater_walk_back",
       "background": "sea_wall_mural",
       "character": "sea_mural_reflection",
       "music": "sea_wall_salt_rain",
@@ -4151,7 +4151,7 @@
       "speaker": "하루",
       "text": "세아의 표정은 무너지지 않았다. 그게 더 이상했다. 실망한 사람은 뭔가 무너지는 게 있어야 한다.\n그녀는 오히려 더 단정하게 웃었다. 「그래.」 딱 한 마디.\n우산이 거두어지고 빗속에 서자, 세아의 붉은 우산이 점점 멀어졌다. 아이리의 전화를 받으며 발걸음을 옮겼지만, 시선이 저절로 돌아갔다. 세아는 이미 나를 보지 않고 있었다.\n\n*거절을 이렇게 조용히 받아들이는 사람은 처음이었다.*\n*아니면 처음부터 거절을 예상하고 있었거나.*\n아이리는 수화기 너머에서 내 이름을 불렀다. 나는 대답했다. 대답하면서도 세아의 어깨가 비에 젖어 가는 것을 보았다. 내가 거절한 것은 우산 안쪽뿐인데, 세아는 자기 몸 전체를 비에 내놓은 사람처럼 멀어지고 있었다. 그 장면이 너무 조용해서, 나는 안도해야 하는 순간에 미안함부터 배웠다.",
       "choices": [],
-      "next_scene": "ch00b_water_tower",
+      "next_scene": "ch00a_breakwater_walk_back",
       "background": "sea_wall_mural",
       "character": "sea_mural_reflection",
       "music": "sea_wall_salt_rain",
@@ -4172,7 +4172,7 @@
       "speaker": "하루",
       "text": "위치 전송 완료.\n화면을 내리자 세아의 눈동자가 아주 잠깐 내 손 쪽을 따라왔다. 아이리의 이름을 보았을 것이다. 그런데도 세아는 웃었다. 상처받지 않은 사람처럼, 혹은 상처받을 순서를 이미 정해 둔 사람처럼.\n「아이리가 기다리겠다.」 악의가 없는 목소리였다. 악의가 없어서 더 오래 남았다.\n세아는 천천히 우산을 접었다. 비는 바로 그녀의 어깨를 적셨다.\n「왜 우산 안 써?」 내가 물었다.\n「하루 군이 안 들어오니까.」\n*그 말은 원망이 아니라 계산이었다. 내가 선택한 거리만큼 세아도 자기 몸을 비에 내놓았다. 아이리가 오면 나는 안도할 것이다. 그리고 그 안도 때문에 세아가 젖는 것을 보게 될 것이다.*\n아이리가 도착할 때까지 세아는 한 번도 돌아보지 않았다. 나는 구조받는 사람처럼 서 있었고, 이상하게도 죄인이 된 것 같았다.",
       "choices": [],
-      "next_scene": "ch00b_water_tower",
+      "next_scene": "ch00a_breakwater_walk_back",
       "background": "sea_wall_mural",
       "character": "sea_mural_reflection",
       "music": "sea_wall_salt_rain",
@@ -4185,6 +4185,53 @@
           "type": "character",
           "id": "sea_mural_reflection",
           "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch00a_breakwater_walk_back",
+      "text": "방조제에서 내려오는 길은 생각보다 길었다. 세아는 앞서 걷지 않았고, 뒤처지지도 않았다. 내 발소리에 맞춰 속도를 조금씩 바꾸었다. 「괜찮아. 오늘은 여기까지만 기억해도 돼.」 다정한 말이었다. 그런데 어디까지 기억해도 되는지를 세아가 정해 준 것처럼 들렸다. *방금 무언가를 고른 것 같았지만, 고른 뒤의 내가 어떤 얼굴을 하고 있는지는 아직 몰랐다.* 바닷바람이 우산 안쪽으로 들어왔다. 세아의 어깨가 내 팔에 아주 잠깐 닿았다가 떨어졌다. 그 짧은 간격이 물때처럼 남았다.",
+      "speaker": "세아",
+      "choices": [],
+      "next_scene": "ch00a_first_morning_after",
+      "background": "sea_wall_mural",
+      "character": "sea_mural_reflection",
+      "cg": null,
+      "music": null,
+      "effects": [
+        "soft_black"
+      ],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_mural_reflection",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch00a_first_morning_after",
+      "text": "다음 날 아침, 교실 냄새가 낯설었다. 젖은 운동화와 분필 가루, 어제까지 아무 의미 없던 소리들이 하나씩 크게 들렸다. 아이리는 평소처럼 내 책상 옆을 지나갔다가 멈췄다. 「어제 늦게 들어갔지.」 묻는 말이 아니었다. 나는 대답 대신 교과서를 폈다. *어제의 세아를 설명하려면 먼저 내가 왜 그 우산 아래에 남았는지 말해야 했다. 그 말을 아직 나도 몰랐다.* 창밖 물탱크 위로 비둘기 대신 붉은 우산 하나가 접혀 있었다. 물탱크를 보러 가야겠다는 생각이, 남의 생각처럼 조용히 떠올랐다.",
+      "speaker": "하루",
+      "choices": [],
+      "next_scene": "ch00b_water_tower",
+      "background": "classroom_dusk",
+      "character": "airi_normal",
+      "cg": null,
+      "music": null,
+      "effects": [
+        "cold_light"
+      ],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_normal",
+          "position": "left"
+        },
+        {
+          "type": "character",
+          "id": "sea_orchid_umbrella_handle",
+          "position": "right"
         }
       ]
     },
@@ -4259,7 +4306,7 @@
       "speaker": "하루",
       "text": "「언제부터야?」\n세아는 첫 번째로 대답을 늦췄다. 침묵이 길었다. 빗소리만 창문을 두드렸다.\n「언제부터가 중요해?」\n그녀의 눈은 변하지 않았다. 나는 그 눈에서 대답을 찾으려다 포기했다.\n*알고 싶다는 것이 이미 그녀의 구역 안으로 들어선 것처럼 느껴졌다. 질문이 허락이었다.*\n세아는 잠시 후 조용히 말했다. 「기억나는 것부터라고 하면, 처음부터야.」\n더 이상 묻지 않았다. 처음부터라는 말이, 대답이면서 동시에 새 질문이었다.\n세아는 노트를 천천히 가방에 넣었다. 서두르지 않았다. 나는 그것을 말리지 않았다.",
       "choices": [],
-      "next_scene": "ch01b_arcade_invitation",
+      "next_scene": "ch01a_note_after_class_breath",
       "background": "student_council_interrogation_room",
       "character": "sea_charm_camera",
       "music": "dusk_static",
@@ -4278,7 +4325,7 @@
       "speaker": "하루",
       "text": "노트를 덮는 내 손 위에 세아의 손이 겹쳤다. 따뜻했다.\n「고마워.」 그녀가 말했다.\n그 감사가 누구를 위한 것인지 알 수 없었다. 덮어 주어서인지, 읽지 않아서인지, 들켰을 때 달아나지 않아서인지.\n세아가 노트를 가방에 넣는 동안, 나는 교탁 아래 떨어진 작은 종잇조각을 보았다. 내 이름이 적힌 표의 일부였다. 줍지 않으면 누군가 볼 수 있었다. 주우면 내가 숨겨 주는 것이었다.\n*나는 종이를 주웠다. 세아에게 건네지 않고, 노트 사이에 끼워 넣었다. 그 순간 내가 보호한 것은 내 안전이 아니라 세아의 비밀이었다.*\n세아는 그것을 보았다. 눈빛이 아주 잠깐 풀렸다.\n「언제 같이 밥 먹자.」 세아가 말했다. 마치 오늘 일이 없었던 것처럼. 나는 고개를 끄덕였다. 이미 공범이 된 사람처럼.",
       "choices": [],
-      "next_scene": "ch01b_arcade_invitation",
+      "next_scene": "ch01a_note_after_class_breath",
       "background": "student_council_interrogation_room",
       "character": "sea_charm_camera",
       "music": "dusk_static",
@@ -4297,7 +4344,7 @@
       "speaker": "하루",
       "text": "복도 끝까지 뛰었다. 빗소리가 창문을 타고 따라왔다.\n심장이 빠르게 뛰었는데, 그게 두려움인지 다른 것인지 알 수 없었다.\n*계단을 내려갔다. 현관까지 뛰었다. 운동화가 젖었다. 비가 왔다.*\n멈추고 나서야 내가 어디로 달려온 건지 알았다. 교문 밖이었다. 정문 기둥 옆이었다.\n처음 세아를 만난 자리였다. 비가 쏟아지던 그 자리.\n뒤를 돌아보았다. 세아는 아직 교실 문 앞에 서 있었다. 쫓아오지 않았다. 울지도 않았다. 그냥 보고 있었다. 나를.\n*이 거리에서도 세아의 눈이 어디를 보는지 알 수 있었다. 나를. 정확하게 나를.*\n빗속에 서 있는 내 신발이 차가워졌다. 나는 움직이지 못했다.",
       "choices": [],
-      "next_scene": "ch01b_arcade_invitation",
+      "next_scene": "ch01a_note_after_class_breath",
       "background": "student_council_interrogation_room",
       "character": "sea_charm_camera",
       "music": "dusk_static",
@@ -4308,6 +4355,58 @@
           "type": "character",
           "id": "sea_charm_camera",
           "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch01a_note_after_class_breath",
+      "text": "종례가 끝났는데도 교실은 쉽게 비지 않았다. 의자 끄는 소리, 우산 비닐을 접는 소리, 누군가 낮게 웃는 소리가 겹쳤다. 세아는 내 오른쪽 책상에 앉아 노트를 덮지 않았다. 「하루 군, 오늘은 천천히 가자.」 천천히라는 말이 이상하게 무거웠다. 빨리 도망치라는 뜻도, 잡겠다는 뜻도 아니었다. *나는 세아가 무서워진 순간보다 세아를 무서워하지 않으려 애쓰는 순간에 더 지쳤다.* 아이리가 복도에서 기다리고 있었다. 하지만 세아가 먼저 내 가방끈을 건네주었다. 사소한 친절이 순서를 바꾸었다.",
+      "speaker": "세아",
+      "choices": [],
+      "next_scene": "ch01a_arcade_invite_seed",
+      "background": "classroom_dusk",
+      "character": "sea_name_card",
+      "cg": null,
+      "music": null,
+      "effects": [
+        "glass_reflection"
+      ],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_wet_envelope",
+          "position": "left"
+        },
+        {
+          "type": "character",
+          "id": "sea_name_card",
+          "position": "right"
+        }
+      ]
+    },
+    {
+      "id": "ch01a_arcade_invite_seed",
+      "text": "현관까지 내려오는 동안 아무 일도 일어나지 않았다. 그래서 더 오래 걸렸다. 세아는 신발을 갈아 신으며 내 발끝을 보았다. 「오락실, 아직 있어.」 갑자기 나온 말이었지만, 세아는 오래 전부터 그 문장을 들고 있었던 사람처럼 차분했다. 「비가 오면 소리가 덜 새거든.」 나는 왜 오락실 소리가 새면 안 되는지 묻지 못했다. *위험한 말은 대개 조용한 설명 사이에 숨어 있었다. 그런데 나는 그 조용함이 싫지 않았다.* 아이리의 시선이 등 뒤에 닿았다. 세아는 우산을 펴며 내 쪽 손잡이를 조금 비워 두었다.",
+      "speaker": "세아",
+      "choices": [],
+      "next_scene": "ch01b_arcade_invitation",
+      "background": "locker_corridor",
+      "character": "sea_orchid_umbrella_handle",
+      "cg": null,
+      "music": null,
+      "effects": [
+        "red_reflection"
+      ],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_resolve",
+          "position": "left"
+        },
+        {
+          "type": "character",
+          "id": "sea_orchid_umbrella_handle",
+          "position": "right"
         }
       ]
     },
@@ -5218,7 +5317,7 @@
       "speaker": "하루",
       "text": "유카는 잠깐 침묵했다. 그리고 아이리의 이름을 보호 목록에 추가했다. 마우스를 클릭하는 소리가 작게 났다.\n화면에 아이리의 이름이 뜨는 것을 보면서, 나는 지금 한 일이 옳은지 아직 모른다는 것을 알았다. 아이리는 이것을 원했을까. 아이리는 보호받는 것을 원하는 사람이 아니었다. 오히려 자기가 먼저 알고 있어야 하는 사람이었다.\n「동의는 못 받았어.」 내가 말했다.\n「그래.」 유카는 바로 인정했다. 「그래서 보호가 아니라 감시야. 단어를 틀리면 안 돼.」\n*그 말이 차라리 나았다. 유카는 다정한 이름으로 위반을 포장하지 않았다. 하지만 포장하지 않는다고 위반이 사라지는 것도 아니었다.*\n아이리는 지금 이것을 모를 것이다. 유카의 화면에 자기 이름이 올라가 있다는 것을.\n유카는 저장 버튼을 누르기 전에 나를 보았다. 「그래도 지울래?」\n나는 지우지 못했다. 그게 내 대답이었다.",
       "choices": [],
-      "next_scene": "ch03b_shadow_underpass",
+      "next_scene": "ch03a_council_room_after_decision",
       "background": "student_council_room",
       "character": "yuka_normal",
       "music": "archive_pulse",
@@ -5237,7 +5336,7 @@
       "speaker": "하루",
       "text": "파일 한 장을 빼내는 손끝이 젖었다.\n*땀인지 빗물인지 구분이 되지 않았다. 종이는 이미 손가락 열기를 흡수했다.*\n유카는 폴더를 덮었다. 소리가 낮고 분명했다. 탁.\n그 소리 하나가 방 전체를 정지시키는 것 같았다.\n「빈 페이지가 있네.」\n유카는 말하고 나서 더 이상 묻지 않았다. 다음 페이지로 넘어갔다.\n*세아를 지키는 일이라고 믿고 싶었다. 그게 아니라면 이 행동에 이름을 붙일 수가 없었다.*\n*하지만 유카가 비어 있는 페이지를 넘길 때마다, 나는 증거를 오염시키고 있음을 알았다. 지키는 것이 아니었다. 숨기는 것이었다.*\n빗소리가 창문 안쪽으로 스며드는 것 같았다.",
       "choices": [],
-      "next_scene": "ch03b_shadow_underpass",
+      "next_scene": "ch03a_council_room_after_decision",
       "background": "student_council_room",
       "character": "yuka_normal",
       "music": "archive_pulse",
@@ -5256,7 +5355,7 @@
       "speaker": "하루",
       "text": "유카는 더 묻지 않고 사건 번호를 새로 열었다. 파일 이름 옆에 세아의 학번이 입력됐다.\n그 순간 세아는 더 이상 내가 지키고 싶은 사람이 아니라 조사해야 할 누군가가 되었다. 유카는 내 표정을 보고 말했다. 「틀린 게 아니야.」 나는 대답하지 못했다.\n*세아는 나를 좋아한다. 그것만은 확실하다고 생각했다. 그런데 지금 나는 그 좋아함을 사건 파일로 열고 있다. 유카와 함께. 세아가 모르는 사이에.*\n*세아가 나를 좋아하는 방식이 위험하다는 것과, 그 좋아함이 진짜라는 것은 동시에 사실일 수 있었다. 그게 더 어려웠다. 위험하지 않았다면 그냥 받아들이면 됐다. 진짜가 아니었다면 그냥 멀어지면 됐다.*\n유카는 다음 파일을 열었다. 나는 의자를 당겨 앉았다. 창밖의 비가 계속 내렸다.",
       "choices": [],
-      "next_scene": "ch03b_shadow_underpass",
+      "next_scene": "ch03a_council_room_after_decision",
       "background": "student_council_room",
       "character": "yuka_normal",
       "music": "archive_pulse",
@@ -5266,6 +5365,54 @@
         {
           "type": "character",
           "id": "yuka_normal",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch03a_council_room_after_decision",
+      "text": "학생회실 문을 닫자 복도 소리가 한 번에 돌아왔다. 복사기 돌아가는 소리, 멀리서 누가 부르는 소리, 빗물이 창틀을 두드리는 소리. 유카는 파일을 품에 넣고 바로 걷지 않았다. 「네가 방금 한 말은 기록에 남겨 둘게.」 칭찬도 비난도 아니었다. 그 중립이 오히려 무서웠다. *아이리에게 말했는지, 숨겼는지, 협조했는지보다 중요한 것은 내가 이제 세아를 이야기 바깥에 둘 수 없다는 사실이었다.* 유카가 복도 끝 비상등을 보았다. 「지하 통로로 가. 누가 기다리는지 확인해야 해.」 기다린다는 말이 사람보다 장소에 붙은 것처럼 들렸다.",
+      "speaker": "유카",
+      "choices": [],
+      "next_scene": "ch03a_underpass_rain_delay",
+      "background": "student_council_room",
+      "character": "yuka_normal",
+      "cg": null,
+      "music": null,
+      "effects": [
+        "cold_light"
+      ],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_normal",
+          "position": "right"
+        }
+      ]
+    },
+    {
+      "id": "ch03a_underpass_rain_delay",
+      "text": "지하 통로 입구에서 비 냄새가 위로 올라왔다. 땅 아래인데도 물웅덩이가 있었고, 발을 디딜 때마다 학교 소리가 멀어졌다. 계단 벽에는 우산 자국이 오래된 달력처럼 겹쳐 있었다. 「여기부터는 혼자 가.」 유카가 말했다. 「내가 같이 있으면 말을 안 할 거야.」 누구를 말하는지 묻지 않아도 알 것 같았다. *혼자 내려가는 것이 용기인지, 이미 늦었다는 증거인지 구분되지 않았다.* 주머니 속 녹음기가 작게 눌렸다. 재생 버튼에 손가락이 닿자, 아래쪽 어둠에서 누군가 우산을 접는 소리가 났다.",
+      "speaker": "하루",
+      "choices": [],
+      "next_scene": "ch03b_shadow_underpass",
+      "background": "underpass_rain",
+      "character": "yuka_glasses_off",
+      "cg": null,
+      "music": null,
+      "effects": [
+        "soft_black",
+        "screen_shake"
+      ],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "yuka_glasses_off",
+          "position": "right"
+        },
+        {
+          "type": "character",
+          "id": "shadow_kurogasa",
           "position": "center"
         }
       ]
@@ -6844,7 +6991,7 @@
       "speaker": "하루",
       "text": "현미경 슬라이드 위에서 섬유 샘플이 겹쳤다. 편지지와 세아 교복의 안감이 같은 것이었다.\n유카가 화면을 확대했다. 「일치해. 우연이라고 부르기엔 섬유 방향까지 같아.」\n*말이 끝난 뒤에도 확대된 조직은 화면에 남아 있었다. 천은 부드러운데, 증거가 된 순간 칼처럼 보였다. 세아가 입고 있던 것, 세아가 쓴 것, 세아가 숨긴 것이 한 장의 화면에서 겹쳤다.*\n유카는 저장 버튼 위에 손가락을 올렸다가 잠깐 멈췄다. 그 짧은 멈춤이 유카의 감정이었다.\n「저장할게.」\n나는 고개를 끄덕였다. 누군가 대신 눌러 주기를 기다리고 있었다는 사실이 부끄러웠다. 저장음이 작게 났다. 선고처럼 들리지 않게 하려는 듯, 유카는 바로 볼륨을 줄였다.",
       "choices": [],
-      "next_scene": "ch05c_old_apartment",
+      "next_scene": "ch05a_archive_elevator_up",
       "background": "student_council_room",
       "character": "yuka_glasses_off",
       "music": "archive_pulse",
@@ -6862,7 +7009,7 @@
       "speaker": "하루",
       "text": "기록을 덮자 방 안의 형광등이 편해졌다. 하지만 편해진 건 나뿐이었다.\n*마지막 페이지에는 날짜 없이 한 줄만 있었다. '하루가 모르는 게 하루를 지키는 거야.' 세아의 필체였다. 나는 그 줄을 두 번 읽고 덮었다. 두 번째부터는 글자가 아니라 세아의 목소리로 들렸다.*\n세아에게 가는 길, 빗소리가 따라왔다. 물어볼 수 있을까. 아니, 물어보면 안 되는 걸까. 대답을 듣고 싶은 마음과 대답을 듣지 않고 싶은 마음이 같은 속도로 걸었다.\n문을 두드리자 세아의 발소리가 들렸다. 조심스럽고 빠른.\n문이 열렸다. 세아는 웃고 있었다. 놀란 표정이 아니었다. 기다린 사람의 얼굴이었다.\n「읽었구나.」 세아가 말했다.\n나는 아무 말도 하지 못했다. 세아는 그것을 대답으로 받아들였다. 그리고 한 발 비켜섰다. 들어오라는 뜻이었다.",
       "choices": [],
-      "next_scene": "ch05c_old_apartment",
+      "next_scene": "ch05a_archive_elevator_up",
       "background": "student_council_room",
       "character": "yuka_glasses_off",
       "music": "archive_pulse",
@@ -6880,7 +7027,7 @@
       "speaker": "하루",
       "text": "아이리는 망설이지 않았다. 먼저 내 손목을 잡았다. 말보다 손이 빨랐다.\n「출구는 내가 볼게. 넌 뒤돌아보지 마. 뒤돌아보면 네가 사과하려고 할 거야.」\n아이리는 복도 거울을 꺾어 세웠다. 뒤쪽 모서리가 비치도록 각도를 맞췄다. 학생회실에서 가져온 호루라기를 입에 물고, 다른 손으로는 문틈에 젖은 봉투를 끼웠다.\n「세아가 오면 봉투가 먼저 떨어져. 소리가 나. 그때 뛰어.」\n*아이리는 구해지는 사람이 아니었다. 내가 너무 늦게 깨달은 사람일 뿐이었다. 위험하다는 말을 하지 않은 이유도 이제 알았다. 말하면 내가 멈출 테니까. 아이리는 내 망설임까지 계산해서 움직이고 있었다.*\n창밖에 비가 내렸다. 세아는 아직 모를 것이다. 하지만 세아가 알게 되는 건 시간문제였다. 그때 세아가 먼저 볼 얼굴은 내가 아니라, 도망칠 길을 만든 아이리일 것이다.",
       "choices": [],
-      "next_scene": "ch05c_old_apartment",
+      "next_scene": "ch05a_archive_elevator_up",
       "background": "student_council_room",
       "character": "yuka_glasses_off",
       "music": "archive_pulse",
@@ -6898,7 +7045,7 @@
       "speaker": "하루",
       "text": "그림자의 흔적 파일은 세 페이지였다. 첫 페이지는 비어 있었다. 비어 있는 페이지가 제일 먼저 나를 보았다.\n두 번째 페이지부터 이름, 날짜, 장소가 있었다. 매번 다른 이름. 다른 나이. 다른 직업. 바뀌지 않은 것은 접근 방식이었다. 세아가 닫아 둔 것을 열고, 따뜻한 상처에 손을 넣고, 누군가가 비명을 지르기 전까지 친절하게 설명하는 것.\n*그림자가 원하는 것은 세아를 무너뜨리는 게 아니었다. 무너지는 순간 방 안에서 무엇이 나오는지 확인하고 싶은 것이다. 사람을 미워하는 악의보다 오래가는 호기심. 그래서 더 더러웠다.*\n파일 마지막에는 내 이름이 없었다. 아직.\n유카가 말했다. 「비어 있는 칸이 제일 위험해.」\n나는 파일을 덮었다. 알고 싶지 않았다. 하지만 덮었다고 빈칸이 사라지지는 않았다.",
       "choices": [],
-      "next_scene": "ch05c_old_apartment",
+      "next_scene": "ch05a_archive_elevator_up",
       "background": "student_council_room",
       "character": "yuka_glasses_off",
       "music": "archive_pulse",
@@ -6908,6 +7055,58 @@
           "type": "character",
           "id": "yuka_glasses_off",
           "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch05a_archive_elevator_up",
+      "text": "기록 보관소를 나오는 엘리베이터는 너무 느렸다. 층수 표시가 하나씩 바뀔 때마다 봉투 속 종이가 조금씩 무거워지는 것 같았다. 유카는 말하지 않았다. 말하지 않는 동안에도 설명은 계속되는 사람처럼 보였다. 「지금 바로 믿지 않아도 돼.」 유카가 마침내 말했다. 「다만 모른 척하면, 세아가 대신 믿게 돼.」 *세아가 믿는 세계는 늘 따뜻했다. 문제는 그 따뜻함 안에서 내가 움직일 자리가 점점 줄어든다는 것이었다.* 엘리베이터 문이 열리자 빗소리가 다시 들렸다. 비가 없는 지하에서 나온 뒤라, 빗소리가 처음으로 안심이 아니라 호출처럼 들렸다.",
+      "speaker": "유카",
+      "choices": [],
+      "next_scene": "ch05a_apartment_key_delay",
+      "background": "letter_room",
+      "character": "yuka_archive_lantern",
+      "cg": null,
+      "music": null,
+      "effects": [
+        "glass_reflection"
+      ],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_shadow_smile",
+          "position": "left"
+        },
+        {
+          "type": "character",
+          "id": "yuka_archive_lantern",
+          "position": "right"
+        }
+      ]
+    },
+    {
+      "id": "ch05a_apartment_key_delay",
+      "text": "학교를 나서기 전에 아이리에게 메시지를 쓰려다 지웠다. 무슨 말을 해야 할지보다, 어디까지 말해도 되는지가 먼저 걸렸다. 세아에게도 연락하지 않았다. 연락하지 않았는데도 곧 알 것 같았다. 「오래 걸리면 세아가 먼저 와.」 유카가 우산을 접으며 말했다. 「그러니까 먼저 움직여.」 *도망이 아니라 확인이라고 생각하려 했다. 하지만 확인하러 가는 발걸음은 늘 도망치는 사람처럼 빨라졌다.* 오래된 아파트 열쇠가 봉투 바닥에서 소리 냈다. 작은 금속음 하나가 다음 장소를 정했다.",
+      "speaker": "하루",
+      "choices": [],
+      "next_scene": "ch05c_old_apartment",
+      "background": "rain_street",
+      "character": "airi_wet_envelope",
+      "cg": null,
+      "music": null,
+      "effects": [
+        "cold_light"
+      ],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_wet_envelope",
+          "position": "left"
+        },
+        {
+          "type": "character",
+          "id": "yuka_glasses_off",
+          "position": "right"
         }
       ]
     },
@@ -7495,7 +7694,7 @@
       "speaker": "하루",
       "text": "「기다릴게.」\n\n내 목소리가 방 안에서 울렸다. 세아는 즉시 반응하지 않았다.\n\n*세아는 천천히 고개를 들었다. 처음에는 믿지 않는 눈이었다. 이 말을 너무 원했기 때문에 들린 것인지 확인하는 눈이었다. 나는 다시 말하지 않았다. 반복하면 설득처럼 들릴 것 같아서. 세아는 그 침묵 안에서 내 말이 진짜인지를 혼자서 천천히 결정했다. 결정하는 동안 손이 무릎에서 풀렸다. 그것이 세아가 믿기 시작했다는 신호였다.*\n\n세아가 숨을 내쉬었다. 길게. 오래 참아 온 것처럼.\n「기다리는 동안 네가 밖에 있어도 돼?」 세아가 물었다.\n나는 바로 대답하지 못했다. 방 안에 남는다는 말보다 어려운 질문이었다. 기다림은 빈자리를 견디는 일이고, 세아가 가장 못 견디는 것은 빈자리였으니까. 그래도 나는 고개를 끄덕였다. 세아는 울지 않았다. 울지 않는 대신, 손바닥을 펴서 열쇠가 놓인 쪽을 한 번 보았다.",
       "choices": [],
-      "next_scene": "ch06aa_blanket_chain_inventory",
+      "next_scene": "ch06a_locked_room_afterbreath",
       "background": "locked_room",
       "character": "sea_childlike",
       "music": "locked_room",
@@ -7514,7 +7713,7 @@
       "speaker": "하루",
       "text": "「여기 있을게.」\n\n세아의 표정이 완전히 달라졌다. 행복이었다. 그런데 그 행복이 너무 완전했다.\n\n*완전하다는 것이 두려움이었다. 기쁨에는 보통 여백이 있다. 더 원하거나, 걱정하거나, 믿지 못하는 여백. 그런데 세아의 표정에는 그것이 없었다. 빈틈이 없었다. 이 말 한마디로 세아의 세계가 완성된 것처럼. 완성된 것은 더 이상 바뀌지 않는다. 나는 그 행복이 기쁘면서도, 그 행복의 무게가 두렵다는 것을 동시에 느꼈다.*\n\n세아가 내 손을 잡았다. 차갑지 않았다. 처음으로.\n「그럼 밖은 나중에 생각하자.」 세아가 말했다. 나중에. 그 단어가 이상하게 달콤했다. 당장 아프지 않아도 되는 허락처럼 들렸다. 하지만 나중에가 언제인지 묻지 않았다. 묻는 순간 이 방에도 시간이 들어올 테니까. 세아는 그걸 알고 있었다. 나도 알면서 모르는 척했다.",
       "choices": [],
-      "next_scene": "ch06aa_blanket_chain_inventory",
+      "next_scene": "ch06a_locked_room_afterbreath",
       "background": "locked_room",
       "character": "sea_childlike",
       "music": "locked_room",
@@ -7533,7 +7732,7 @@
       "speaker": "하루",
       "text": "짧은 신호를 보냈다. 아이리에게. 화면에는 전송 완료 표시가 뜨지 않았다. 전파가 약한 것이 아니라, 방 안의 시간이 바깥과 맞지 않는 것 같았다.\n세아가 내 손을 보았다. 스마트폰을 보았다. 그리고 아무 말도 하지 않았다.\n「보냈어?」 세아가 물었다.\n거짓말할 수 있었다. 하지만 거짓말은 이 방에서 너무 크게 울릴 것 같았다. 나는 고개를 끄덕였다.\n*화를 낼 거라고 생각했다. 울 거라고 생각했다. 그런데 세아는 창밖 없는 벽을 보았다. 아무것도 읽을 수 없는 얼굴이었다. 아무것도 읽을 수 없는 것이 가장 많은 것을 담고 있었다.*\n「그래도 여기서 보냈네.」 세아가 말했다. 다정하게. 그것이 벌처럼 들렸다.\n신호가 닿았는지 알 수 없었다. 다만 아이리의 이름이 방 안에 들어왔고, 세아는 그 이름까지 잠그려 하지 않았다. 아직은.",
       "choices": [],
-      "next_scene": "ch06aa_blanket_chain_inventory",
+      "next_scene": "ch06a_locked_room_afterbreath",
       "background": "locked_room",
       "character": "sea_childlike",
       "music": "locked_room",
@@ -7552,7 +7751,7 @@
       "speaker": "하루",
       "text": "창문에 손을 대자 차가운 물기가 손바닥에 묻었다. 지도는 맞았다.\n세아가 등 뒤에서 말했다. 「가면 다시 오지 않을 거야.」 막는 게 아니었다. 그냥 말하는 것처럼.\n나는 돌아보지 않았다. 창틀을 짚고 바깥 빗소리에 귀를 기울였다.\n*다시 오지 않을 거야. 협박이 아니라 예언이었다. 세아는 내가 떠난 뒤의 일을 이미 알고 있는 것처럼 말했다.*\n빗소리가 커졌다. 창밖 불빛이 비 때문에 흔들렸다. 나는 한 발을 창틀에 올렸다가, 잠깐 멈췄다.\n세아의 숨소리가 들렸다. 빠르지도 느리지도 않았다. 그냥 기다리는 숨소리.\n*그녀는 내가 어떤 선택을 해도 이미 알고 있다. 그리고 그 모든 결과를 오래전에 받아들였다.*\n그게 제일 무서웠다.",
       "choices": [],
-      "next_scene": "ch06c_red_umbrella_return",
+      "next_scene": "ch06c_escape_landing_breath",
       "background": "locked_room",
       "character": "sea_childlike",
       "music": "locked_room",
@@ -7563,6 +7762,76 @@
           "type": "character",
           "id": "sea_childlike",
           "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch06a_locked_room_afterbreath",
+      "text": "방 안의 빗소리는 바로 사라지지 않았다. 선택을 끝냈는데도 공기가 바뀌는 데에는 시간이 필요했다. 세아는 소파 팔걸이에 앉아 내 숨소리를 세는 것처럼 조용했다. 「무서웠으면 됐어.」 세아가 말했다. 「안 무서운 척하면 더 멀어지니까.」 다정하게 들리는 문장이었다. 하지만 멀어진다는 말을 세아가 먼저 꺼낸 순간, 방의 크기가 조금 줄었다. *나는 세아를 달래고 있는지, 세아가 만든 방의 규칙을 배우고 있는지 알 수 없었다.* 오르골 태엽이 멈췄다. 멈춘 뒤에야 방 안 물건들이 하나씩 눈에 들어왔다.",
+      "speaker": "세아",
+      "choices": [],
+      "next_scene": "ch06a_blanket_room_rule",
+      "background": "locked_room",
+      "character": "sea_threshold",
+      "cg": null,
+      "music": null,
+      "effects": [
+        "warm_dark",
+        "door_lock"
+      ],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_threshold",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch06a_blanket_room_rule",
+      "text": "담요 끝에는 붉은 실이 아주 작게 묶여 있었다. 매듭은 단단하지 않았고, 당기면 풀릴 것처럼 보였다. 그런데 아무도 당기지 않았다. 세아는 찻잔을 내 쪽으로 밀었다. 「여긴 갇히는 곳이 아니야. 돌아오는 걸 잊지 않는 곳이야.」 그 말을 믿고 싶었다. 믿고 싶다는 마음이 이미 절반쯤 잠금장치 같았다. *내가 방을 나가도 된다는 허락보다, 다시 돌아와야 한다는 예감이 먼저 몸에 남았다.* 문틈 아래로 바깥 복도 빛이 길게 들어왔다. 그 빛이 담요 매듭을 지나 다음 물건으로 이어졌다.",
+      "speaker": "하루",
+      "choices": [],
+      "next_scene": "ch06aa_blanket_chain_inventory",
+      "background": "locked_room",
+      "character": "sea_blanket_thread",
+      "cg": null,
+      "music": null,
+      "effects": [
+        "glass_reflection"
+      ],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "sea_blanket_thread",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch06c_escape_landing_breath",
+      "text": "문밖으로 나온 뒤에도 손목에는 세아가 잡았던 온도가 남아 있었다. 복도 공기는 차가웠고, 그 차가움이 살아 있는 사람의 편인지 알 수 없었다. 계단참에서 핸드폰이 켜졌다. 아이리의 메시지는 한 줄뿐이었다. 「멈추지 마.」 짧아서 명령처럼 보였지만, 이상하게 다정했다. *나는 도망쳤다고 말하고 싶지 않았다. 아직 세아를 버렸다고 말할 준비가 없었다. 그래서 그냥 걷는다고 생각했다.* 아래층에서 붉은 우산이 접히는 소리가 났다. 밖으로 나가면 비가 있을 것이다. 비가 있으면, 세아가 있을지도 모른다.",
+      "speaker": "하루",
+      "choices": [],
+      "next_scene": "ch06c_red_umbrella_return",
+      "background": "locked_room",
+      "character": "airi_resolve",
+      "cg": null,
+      "music": null,
+      "effects": [
+        "cold_light",
+        "screen_shake"
+      ],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_resolve",
+          "position": "left"
+        },
+        {
+          "type": "character",
+          "id": "sea_threshold",
+          "position": "right"
         }
       ]
     },
@@ -7728,7 +7997,7 @@
       "speaker": "하루",
       "text": "「세아.」\n이름을 부른 순간 세아의 눈에 물이 찼다. 천천히. 소리 없이.\n「한 번 더.」 세아가 말했다. 명령이 아니었다. 부탁도 아니었다. 오래 닫힌 문이 처음으로 바람을 들이는 소리 같았다.\n「세아.」\n*그 이름을 부르는 동안, 나는 세아를 병원 기록이나 감시 사진이나 붉은 실에서 떼어 내고 있었다. 완전히는 아니었다. 그런 것들이 사라지는 건 아니었다. 그래도 이름은 그 모든 것보다 먼저 도착했다.*\n눈물이 뺨을 타고 내렸다. 세아는 닦지 않았다. 닦으면 없어질까 봐 놔두는 것 같았다.\n「그 이름으로 있으면, 하루 군이 나를 찾아올 수 있어?」\n나는 그렇다고 말했다. 확신은 없었다. 그래도 그 순간에는 길을 잃지 않기 위해 필요한 거짓말이 아니라, 길을 만들기 위해 필요한 약속이었다.",
       "choices": [],
-      "next_scene": "ch06z_a_station_underpass",
+      "next_scene": "ch06y_after_threshold_hallway",
       "background": "threshold_door",
       "character": "sea_threshold",
       "music": "threshold_rain",
@@ -7747,7 +8016,7 @@
       "speaker": "하루",
       "text": "문 안쪽은 생각보다 따뜻했다. 그래서 더 위험했다.\n세아는 뒤에서 문을 닫았다. 잠그지는 않았다. 아직은.\n「편하지?」 세아가 물었다. 나는 고개를 끄덕이면서, 편하다는 게 맞는 말인지 생각했다.\n*따뜻함은 정직하다. 몸이 먼저 안다. 그리고 그 정직함이 가장 먼저 나를 배신한다.*\n세아의 방에는 내가 좋아하는 냄새가 났다. 내가 언제 그것을 좋아하게 됐는지는 기억나지 않았다.\n「아직은」이라는 말이 공기 안에 남아 있었다. 잠그지 않았다는 말이, 아직은 잠그지 않았다는 말이라는 것을.\n나는 알면서도 더 안으로 들어갔다.",
       "choices": [],
-      "next_scene": "ch06z_a_station_underpass",
+      "next_scene": "ch06y_after_threshold_hallway",
       "background": "threshold_door",
       "character": "sea_threshold",
       "music": "threshold_rain",
@@ -7766,7 +8035,7 @@
       "speaker": "하루",
       "text": "표식을 남기는 손끝이 떨렸다.\n*벽면은 빗물을 머금어 차가웠다. 손가락이 콘크리트 위에 닿는 순간, 표면이 살짝 파이는 느낌이 났다. 젖어서 물렁해진 것이었다.*\n나는 'ㅇ' 안에 짧은 선 하나를 그었다. 아이리만 아는 표시였다.\n안쪽에서 세아의 목소리가 들렸다.\n「하루 군, 다 됐어.」\n부드럽고 평온한 목소리였다. 들킨 게 아니었다. 아니면 세아는 처음부터 알면서도 말하지 않은 것이었다.\n*나는 어느 쪽인지 묻지 않았다. 물어볼 수 없었다.*\n벽에 쓴 글자는 이미 빗물에 번지고 있었다. 윤곽만 남기고 흐릿해지고 있었다.\n그래도 아이리는 알아볼 것이다. 그렇게 믿었다.",
       "choices": [],
-      "next_scene": "ch06z_a_station_underpass",
+      "next_scene": "ch06y_after_threshold_hallway",
       "background": "threshold_door",
       "character": "sea_threshold",
       "music": "threshold_rain",
@@ -7785,7 +8054,7 @@
       "speaker": "하루",
       "text": "유카의 기기에 파형이 남았다. 세아의 호흡 소리였다. 고르지 않고 얕고 느렸다.\n「저장했어.」 유카의 메시지가 짧게 떴다. 곧이어 두 번째 문장이 왔다. 「이름은 붙이지 않을게.」\n*증거라고 부를 수 없었다. 증거는 사건을 설명하는 것이다. 이것은 사건이 아니었다. 누군가가 숨을 쉬고 있다는, 그것뿐이었다. 살아 있다는 증거라면 증거였다. 하지만 나는 그 파형을 보면서 다른 이름을 붙이고 싶었다.*\n기록이라고도, 흔적이라고도 부르기가 싫었다. 그냥 그녀가 여기 있었다는 것. 그것으로 충분하다고 생각했다.\n유카가 이름을 붙이지 않겠다고 한 것은, 처음으로 유카가 과학보다 사람 쪽으로 한 걸음 온 표시였다.\n나는 답장을 쓰지 않았다. 세아가 내 손을 보고 있었기 때문이다.",
       "choices": [],
-      "next_scene": "ch06z_a_station_underpass",
+      "next_scene": "ch06y_after_threshold_hallway",
       "background": "threshold_door",
       "character": "sea_threshold",
       "music": "threshold_rain",
@@ -7804,7 +8073,7 @@
       "speaker": "하루",
       "text": "나는 세아가 하는 것처럼 말했다. 「들어와.」\n놀랍도록 자연스러웠다. 그게 무서웠다.\n\n*세아의 말투는 흉내 낸 것이 아니었다. 입에 밴 것이었다. 언제부터였는지 알 수 없었다. 세아의 억양, 세아의 끊음, 세아가 특정 단어 앞에서 숨을 한 번 더 쉬는 버릇까지. 나는 그것을 다 기억하고 있었다. 그리고 자연스럽게 썼다. 두려움은 닮았다는 사실이 아니었다. 닮은 것을 인식하지 못하고 있었다는 사실이었다.*\n\n빗소리가 창 너머에서 났다. 세아가 나를 보았다. 내 목소리에서 자기를 들은 것처럼 표정이 부드러워졌다.",
       "choices": [],
-      "next_scene": "ch06z_a_station_underpass",
+      "next_scene": "ch06y_after_threshold_hallway",
       "background": "threshold_door",
       "character": "sea_threshold",
       "music": "threshold_rain",
@@ -7815,6 +8084,68 @@
           "type": "character",
           "id": "sea_threshold",
           "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch06y_after_threshold_hallway",
+      "text": "문턱을 지나고 나서야 뒤돌아볼 수 있었다. 방은 그대로였지만, 안쪽에서 보던 방과 바깥에서 보는 방은 달랐다. 세아는 문가에 서서 내 표정을 먼저 확인했다. 「아직 여기 있어.」 세아가 말했다. 그 말은 자신에게 하는 확인 같기도 했다. 아이리의 표시, 유카의 녹음, 세아의 이름이 동시에 머릿속에서 부딪혔다. *나는 누구 편인지보다, 누구에게 어떤 거짓말을 했는지가 더 선명했다.* 복도 끝 비상등이 역 방향을 가리켰다. 세아는 손을 내밀지 않았다. 대신 내가 걷기 시작할 때까지 기다렸다.",
+      "speaker": "하루",
+      "choices": [],
+      "next_scene": "ch06y_station_entrance_delay",
+      "background": "threshold_door",
+      "character": "sea_threshold",
+      "cg": null,
+      "music": null,
+      "effects": [
+        "soft_black"
+      ],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_confession_note",
+          "position": "left"
+        },
+        {
+          "type": "character",
+          "id": "sea_threshold",
+          "position": "center"
+        },
+        {
+          "type": "character",
+          "id": "yuka_weather_terminal",
+          "position": "right"
+        }
+      ]
+    },
+    {
+      "id": "ch06y_station_entrance_delay",
+      "text": "역 입구의 자동문은 열렸다 닫히기를 반복했다. 사람이 지나가지 않아도 센서가 무언가를 감지하는 것처럼. 세아는 내 옆에 섰고, 아이리의 메시지는 읽지 않은 상태로 남아 있었다. 유카의 녹음 파일은 재생 대기 화면에서 멈춰 있었다. 「들어가면 소리가 커질 거야.」 세아가 말했다. 「그래도 내 목소리부터 들어.」 *부탁처럼 들렸지만, 부탁이라면 거절할 수 있어야 했다. 세아의 말은 거절하기 전에 이미 내 대답을 알고 있었다.* 자동문이 다시 열렸다. 빗소리가 역 안으로 밀려 들어왔고, 플랫폼 시계가 처음으로 보였다.",
+      "speaker": "세아",
+      "choices": [],
+      "next_scene": "ch06z_a_station_underpass",
+      "background": "weekend_station_clock",
+      "character": "sea_station_clock",
+      "cg": null,
+      "music": null,
+      "effects": [
+        "red_reflection"
+      ],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_resolve",
+          "position": "left"
+        },
+        {
+          "type": "character",
+          "id": "sea_station_clock",
+          "position": "center"
+        },
+        {
+          "type": "character",
+          "id": "yuka_weather_terminal",
+          "position": "right"
         }
       ]
     },
@@ -8183,7 +8514,7 @@
       "speaker": "하루",
       "text": "월요일이 왔다. 시계 바늘이 자정을 넘어섰다.\n세아가 무너질 거라고 생각했다. 그런데 세아는 숨을 들이켰다. 크게, 한 번. 마치 잠수하기 전처럼.\n「아프네.」 세아가 말했다. 웃지 않았다. 울지도 않았다. 「그래도 살아 있어.」\n*그 말이 거창하지 않아서 좋았다. 월요일은 구원이 아니었다. 세아를 고쳐 주지도, 나를 용감하게 만들지도 않았다. 다만 거짓말이 하루 줄었다. 주말이 끝나도 우리가 사라지지 않는다는 사실 하나가 남았다.*\n나는 세아의 손을 잡았다. 붙잡히는 손이 아니라, 같이 서기 위한 손이었다.\n분침이 움직였다. 이번에는 세아가 눈을 감지 않았다.",
       "choices": [],
-      "next_scene": "ch06g_all_routes_montage",
+      "next_scene": "ch06fa_platform_after_choice_breath",
       "background": "weekend_station_clock",
       "character": "sea_station_clock",
       "music": "weekend_station_clock",
@@ -8204,7 +8535,7 @@
       "speaker": "하루",
       "text": "시계가 멈췄다. 분침이 더 이상 움직이지 않았다.\nRainveil의 안내 방송이 중간에서 끊기고, 버스 배차 신호가 하나씩 꺼졌다. 도시는 숨을 참는 법을 아는 짐승처럼 조용해졌다.\n「됐어.」 세아가 말했다. 너무 작은 목소리라서 처음에는 빗소리인 줄 알았다.\n*내가 고른 것은 세아가 아니었다. 세아가 나를 잃지 않아도 되는 세계였다. 그 차이를 세아는 알까. 모르면 행복할까. 알면 그래도 웃을까.*\n세아는 내 손을 두 손으로 감쌌다. 고마워하는 사람처럼, 잠그는 사람처럼.\n시계가 없는 비만 계속됐다. 그 비 안에서 주말은 끝나지 않았고, 끝나지 않는 것들은 조금씩 방이 된다.",
       "choices": [],
-      "next_scene": "ch06g_all_routes_montage",
+      "next_scene": "ch06fa_platform_after_choice_breath",
       "background": "weekend_station_clock",
       "character": "sea_station_clock",
       "music": "weekend_station_clock",
@@ -8225,7 +8556,7 @@
       "speaker": "하루",
       "text": "쪽지는 빗물에 젖기 전에 바닥을 미끄러졌다.\n세아는 보았다. 쪽지를 줍지 않았다. 줍지 않는다는 선택을 했다. 나도 줍지 않았다. 그 짧은 방치가 아이리에게 보내는 가장 잔인한 신호라는 것을 알면서도.\n「아이리는 읽을 거야.」 내가 말했다.\n「그래.」 세아가 대답했다. 「그래서 더 아플 거야.」\n*아이리는 늘 사실을 끝까지 본다. 나는 그 성실함을 이용했다. 구해 달라고 부른 것이 아니라, 내가 버려 둔 것을 대신 주워 달라고 부른 것이다.*\n쪽지가 멈춘 곳에서 잉크가 번지기 시작했다. 세아는 내 얼굴을 보지 않았다. 나는 세아의 옆얼굴을 보았다. 둘 다 쪽지를 볼 용기가 없었다.",
       "choices": [],
-      "next_scene": "ch06g_all_routes_montage",
+      "next_scene": "ch06fa_platform_after_choice_breath",
       "background": "weekend_station_clock",
       "character": "sea_station_clock",
       "music": "weekend_station_clock",
@@ -8252,7 +8583,7 @@
       "speaker": "하루",
       "text": "로그를 전송했다. 유카의 기기로. 시각 스탬프와 함께.\n전송 완료 알림이 떴다. 곧바로 답장이 왔다. '받았어. 이번엔 시간이 거짓말을 못 해.'\n*변한 것은 없어 보였다. 역 시계는 그대로였고, 세아는 내 손에서 손을 빼지 않았다. 하지만 유카에게 시간이 넘어간 순간, 이 주말은 더 이상 우리 둘만의 방이 아니었다. 누군가 바깥에서 문틈의 길이를 재기 시작했다.*\n세아가 처음으로 시계를 보았다. 「유카는 늘 늦게 와.」\n「그래도 와.」 내가 말했다.\n그 대답이 누구를 위한 것인지 알 수 없었다. 유카인지, 나인지, 아직 유령이 되지 않은 세아인지.\n분침이 떨렸다. 움직인 것은 아니었다. 하지만 멈춘 것도 아니었다.",
       "choices": [],
-      "next_scene": "ch06g_all_routes_montage",
+      "next_scene": "ch06fa_platform_after_choice_breath",
       "background": "weekend_station_clock",
       "character": "sea_station_clock",
       "music": "weekend_station_clock",
@@ -8279,7 +8610,7 @@
       "speaker": "하루",
       "text": "월요일이 무슨 요일인지 잊었다. 화요일도, 수요일도.\n머릿속의 달력에서 평일이 지워졌다. 남은 것은 토요일과 일요일뿐이었다. 세아가 이해할 수 있는 시간, 내가 점점 편해지는 시간.\n「이제 안 떨어져.」 세아가 말했다.\n*그 말이 무섭지 않았다. 무섭지 않다는 사실이 마지막 경고였다. 나는 경고를 읽을 줄 알았고, 읽지 않기로 했다. 두려움이 사라진 것이 아니라 두려워하는 나를 세아에게 맡긴 것이다.*\n역 시계의 글자가 번졌다. 월요일이라는 단어가 물에 젖은 종이처럼 풀렸다.\n나는 평일을 배우는 것을 멈춘 것이 아니었다. 세아의 시간 안에서만 말하는 법을 배웠다. 그 안에서는 내 이름도 조금씩 짧아졌다.",
       "choices": [],
-      "next_scene": "ch06g_all_routes_montage",
+      "next_scene": "ch06fa_platform_after_choice_breath",
       "background": "weekend_station_clock",
       "character": "sea_station_clock",
       "music": "weekend_station_clock",
@@ -8292,6 +8623,38 @@
           "type": "character",
           "id": "sea_station_clock",
           "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "ch06fa_platform_after_choice_breath",
+      "text": "역 시계의 소리는 곧바로 멈추지 않았다. 내가 무엇을 고른 뒤에도 초침은 같은 속도로 작은 원을 그렸다. 세아는 손을 놓지 않았고, 아이리의 쪽지는 젖은 바닥 어딘가에서 아직 번지고 있었고, 유카의 기록은 보이지 않는 곳에서 저장되고 있었다. 「끝난 거 아니야.」 세아가 낮게 말했다. 이상하게 그 말이 위로처럼 들렸다. *끝났다면 내가 한 말을 견디지 않아도 될 것이다. 끝나지 않았기 때문에, 나는 내가 고른 시간을 살아야 했다.* 플랫폼 전광판이 지나온 장소들을 하나씩 띄웠다. 비가 장소마다 다른 소리로 되돌아왔다.",
+      "speaker": "세아",
+      "choices": [],
+      "next_scene": "ch06g_all_routes_montage",
+      "background": "weekend_station_clock",
+      "character": "sea_station_clock",
+      "cg": null,
+      "music": null,
+      "effects": [
+        "glass_reflection",
+        "soft_black"
+      ],
+      "visuals": [
+        {
+          "type": "character",
+          "id": "airi_resolve",
+          "position": "left"
+        },
+        {
+          "type": "character",
+          "id": "sea_station_clock",
+          "position": "center"
+        },
+        {
+          "type": "character",
+          "id": "yuka_weather_terminal",
+          "position": "right"
         }
       ]
     },
