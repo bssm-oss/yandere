@@ -15,6 +15,7 @@ APP_ICON_SOURCE="$ROOT_DIR/WeekendRain/App/AppIcon.icns"
 BUNDLE_ID="dev.weekendrain.app"
 MIN_SYSTEM_VERSION="13.0"
 PACKAGE_ZIP="$DIST_DIR/$APP_NAME-local.zip"
+PACKAGE_DMG="$DIST_DIR/$APP_NAME.dmg"
 
 cd "$ROOT_DIR"
 
@@ -83,9 +84,16 @@ case "$MODE" in
     ;;
   --package|package)
     codesign --force --deep --sign - "$APP_BUNDLE" >/dev/null 2>&1 || true
-    rm -f "$PACKAGE_ZIP"
+    rm -f "$PACKAGE_ZIP" "$PACKAGE_DMG"
     (cd "$DIST_DIR" && /usr/bin/ditto -c -k --keepParent "$APP_NAME.app" "$PACKAGE_ZIP")
+    /usr/bin/hdiutil create \
+      -volname "$APP_NAME" \
+      -srcfolder "$APP_BUNDLE" \
+      -ov \
+      -format UDZO \
+      "$PACKAGE_DMG" >/dev/null
     echo "$PACKAGE_ZIP"
+    echo "$PACKAGE_DMG"
     ;;
   *)
     echo "usage: $0 [run|--debug|--logs|--telemetry|--verify|--package]" >&2

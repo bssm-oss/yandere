@@ -4,11 +4,11 @@ import WeekendRainCore
 final class MainWindowController: NSWindowController, GameStateManagerDelegate {
     private static let preferredContentSize = NSSize(width: 960, height: 540)
     private static let minimumContentSize = NSSize(width: 720, height: 405)
-    private static let maximumContentSize = NSSize(width: 1280, height: 720)
 
     private let titleView = TitleView()
     private let sceneView = NovelSceneView()
     private var titleAnimated = false
+    private var didPlaceInitialWindow = false
     private let storyLoader = StoryLoader()
     private let saveManager = SaveManager()
     private let gameState = GameStateManager()
@@ -24,12 +24,11 @@ final class MainWindowController: NSWindowController, GameStateManagerDelegate {
         )
         window.title = "주말의 비 (Weekend Rain)"
         window.minSize = Self.minimumContentSize
-        window.maxSize = Self.maximumContentSize
         window.contentMinSize = Self.minimumContentSize
-        window.contentMaxSize = Self.maximumContentSize
+        window.collectionBehavior = [.fullScreenPrimary, .managed]
         window.isRestorable = false
         super.init(window: window)
-        window.contentView = titleView
+        installRootContentView(titleView)
         window.setContentSize(Self.preferredContentSize)
         gameState.delegate = self
         wireTitleActions()
@@ -40,9 +39,12 @@ final class MainWindowController: NSWindowController, GameStateManagerDelegate {
 
     func presentMainWindow() {
         guard let window else { return }
-        let frame = Self.initialWindowFrame()
-        window.setFrame(frame, display: true, animate: false)
-        window.setContentSize(Self.preferredContentSize)
+        if !didPlaceInitialWindow && !window.styleMask.contains(.fullScreen) {
+            let frame = Self.initialWindowFrame()
+            window.setFrame(frame, display: true, animate: false)
+            window.setContentSize(Self.preferredContentSize)
+            didPlaceInitialWindow = true
+        }
         window.makeKeyAndOrderFront(nil)
         if !titleAnimated {
             titleAnimated = true
@@ -124,9 +126,8 @@ final class MainWindowController: NSWindowController, GameStateManagerDelegate {
     }
 
     private func transitionToGame() {
-        guard let window else { return }
         sceneView.alphaValue = 0
-        window.contentView = sceneView
+        installRootContentView(sceneView)
         NSAnimationContext.runAnimationGroup { ctx in
             ctx.duration = 0.45
             ctx.timingFunction = CAMediaTimingFunction(name: .easeOut)
@@ -233,6 +234,13 @@ final class MainWindowController: NSWindowController, GameStateManagerDelegate {
         alert.informativeText = message
         alert.alertStyle = .informational
         alert.beginSheetModal(for: window)
+    }
+
+    private func installRootContentView(_ view: NSView) {
+        guard let window else { return }
+        view.frame = window.contentView?.bounds ?? NSRect(origin: .zero, size: Self.preferredContentSize)
+        view.autoresizingMask = [.width, .height]
+        window.contentView = view
     }
 
     private static func initialWindowFrame() -> NSRect {

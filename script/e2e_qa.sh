@@ -6,6 +6,7 @@ APP_NAME="WeekendRain"
 DIST_DIR="$ROOT_DIR/dist"
 APP_BUNDLE="$DIST_DIR/$APP_NAME.app"
 PACKAGE_ZIP="$DIST_DIR/$APP_NAME-local.zip"
+PACKAGE_DMG="$DIST_DIR/$APP_NAME.dmg"
 REPORT_DIR="$ROOT_DIR/tmp/e2e"
 ITERATIONS=1
 INTERVAL=30
@@ -20,7 +21,7 @@ Runs full local E2E QA:
   - Swift build
   - WeekendRainValidation route/system checks
   - app bundle launch smoke
-  - package zip creation
+  - package zip and DMG creation
   - packaged ExternalContent/resource checks
   - ad-hoc codesign verification
 USAGE
@@ -252,7 +253,9 @@ verify_assets() {
 verify_package() {
   test -d "$APP_BUNDLE"
   test -f "$PACKAGE_ZIP"
+  test -f "$PACKAGE_DMG"
   codesign --verify --deep --strict --verbose=2 "$APP_BUNDLE"
+  hdiutil verify "$PACKAGE_DMG" >/dev/null
   local package_manifest="$REPORT_DIR/package-contents.txt"
   zipinfo -1 "$PACKAGE_ZIP" > "$package_manifest"
   /usr/bin/grep -q 'WeekendRain.app/Contents/Resources/AppIcon.icns' "$package_manifest"

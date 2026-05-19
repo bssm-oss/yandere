@@ -35,3 +35,25 @@ swift run WeekendRainValidation
 ```
 
 The Codex app Run action is wired to `./script/build_and_run.sh`.
+
+## Install From GitHub Release
+
+1. Open the latest release on GitHub and download `WeekendRain.dmg`.
+2. Open the DMG, then copy `WeekendRain.app` into `/Applications`.
+3. Launch `WeekendRain` from Applications. If macOS blocks the first launch
+   because this community build is ad-hoc signed, right-click the app and choose
+   `Open` once.
+
+The release DMG includes the story JSON and all external image assets under
+`WeekendRain.app/Contents/Resources/ExternalContent`, so the visual novel runs
+without a separate asset download.
+
+## Local Packaging
+
+```bash
+./script/build_and_run.sh --package
+```
+
+The packaging command creates both `dist/WeekendRain-local.zip` and
+`dist/WeekendRain.dmg`. Use the DMG for GitHub Releases and the ZIP only as a
+local fallback artifact.
