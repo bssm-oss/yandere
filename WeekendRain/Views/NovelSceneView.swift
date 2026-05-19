@@ -76,11 +76,22 @@ private final class SceneImageView: NSImageView {
     }
 }
 
+private final class PassthroughSceneEffectView: NSView {
+    override func hitTest(_ point: NSPoint) -> NSView? {
+        nil
+    }
+}
+
 private struct SpritePlacement {
     let height: CGFloat
     let centerX: CGFloat
     let bottom: CGFloat
     let maxWidth: CGFloat
+}
+
+private struct SceneEffectStyle {
+    let color: NSColor
+    let alpha: CGFloat
 }
 
 open class NovelSceneView: NSView {
@@ -101,6 +112,7 @@ open class NovelSceneView: NSView {
     private let characterStageView = NSView()
     private var characterImageViews: [SceneVisualPosition: SceneImageView] = [:]
     private let characterPositions: [SceneVisualPosition] = [.left, .center, .right]
+    private let sceneEffectOverlay = PassthroughSceneEffectView()
 
     // HUD (top)
     private let titleLabel = NSTextField(labelWithString: "주말의 비")
@@ -136,6 +148,7 @@ open class NovelSceneView: NSView {
     private var baseSpritePlacements: [SceneVisualPosition: SpritePlacement] = [:]
     private var currentCharacterIDs: [SceneVisualPosition: String] = [:]
     private var lastBackgroundID: String?
+    private var lastEffectSignature: String?
 
     open override var acceptsFirstResponder: Bool { true }
 
@@ -160,9 +173,12 @@ open class NovelSceneView: NSView {
         currentScene = scene
         currentPhase = phase
         currentChoiceCount = choices.count
-        speakerLabel.stringValue = scene.speaker
+        let displaySpeaker = scene.speaker.isEmpty ? "하루" : scene.speaker
+        speakerLabel.stringValue = displaySpeaker
+        updateSpeakerChrome(for: displaySpeaker)
         statLabel.stringValue = ""
         applyVisuals(for: scene, stats: stats, assets: assets, contentBaseURL: contentBaseURL)
+        applySceneEffects(for: scene)
         YandereLevelController.shared.update(stats: stats, sceneView: self, rainView: rainView)
 
         switch phase {
@@ -236,6 +252,13 @@ open class NovelSceneView: NSView {
 
         rainView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(rainView)
+
+        sceneEffectOverlay.wantsLayer = true
+        sceneEffectOverlay.layer?.backgroundColor = NSColor.clear.cgColor
+        sceneEffectOverlay.alphaValue = 0
+        sceneEffectOverlay.isHidden = true
+        sceneEffectOverlay.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(sceneEffectOverlay)
 
         // ── HUD (top) ────────────────────────────────────────────────
         titleLabel.font = NSFont.systemFont(ofSize: 12, weight: .medium)
@@ -434,6 +457,11 @@ open class NovelSceneView: NSView {
             rainView.trailingAnchor.constraint(equalTo: trailingAnchor),
             rainView.topAnchor.constraint(equalTo: topAnchor),
             rainView.bottomAnchor.constraint(equalTo: bottomAnchor),
+
+            sceneEffectOverlay.leadingAnchor.constraint(equalTo: leadingAnchor),
+            sceneEffectOverlay.trailingAnchor.constraint(equalTo: trailingAnchor),
+            sceneEffectOverlay.topAnchor.constraint(equalTo: topAnchor),
+            sceneEffectOverlay.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             // HUD
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
@@ -915,6 +943,139 @@ open class NovelSceneView: NSView {
             return 0.50
         case .right:
             return 0.70
+        }
+    }
+
+    // MARK: - Scene effects
+
+    private func applySceneEffects(for scene: SceneNode) {
+        let effects = Set(scene.effects)
+        setAmbientTint(ambientEffectStyle(for: effects))
+
+        let signature = "\(scene.id)|\(scene.effects.joined(separator: "|"))"
+        guard signature != lastEffectSignature else { return }
+        lastEffectSignature = signature
+
+        if effects.contains("screen_shake") || effects.contains("siren") || effects.contains("door_lock") {
+            runSceneShake(strength: effects.contains("siren") ? 15 : 10)
+        }
+
+        if effects.contains("decision_moment") || effects.contains("door_lock") {
+            runDialoguePulse()
+        }
+
+        if effects.contains("red_reflection") || effects.contains("siren") || effects.contains("neon_warp") {
+            runEffectFlash(color: ambientEffectStyle(for: effects)?.color ?? .systemRed)
+        }
+    }
+
+    private func ambientEffectStyle(for effects: Set<String>) -> SceneEffectStyle? {
+        if effects.contains("blackout") {
+            return SceneEffectStyle(color: .black, alpha: 0.34)
+        }
+        if effects.contains("soft_black") {
+            return SceneEffectStyle(color: .black, alpha: 0.20)
+        }
+        if effects.contains("siren") || effects.contains("door_lock") {
+            return SceneEffectStyle(color: NSColor(calibratedRed: 0.70, green: 0.03, blue: 0.06, alpha: 1), alpha: 0.22)
+        }
+        if effects.contains("red_reflection") {
+            return SceneEffectStyle(color: NSColor(calibratedRed: 0.72, green: 0.05, blue: 0.08, alpha: 1), alpha: 0.15)
+        }
+        if effects.contains("cold_light") {
+            return SceneEffectStyle(color: NSColor(calibratedRed: 0.22, green: 0.54, blue: 0.76, alpha: 1), alpha: 0.13)
+        }
+        if effects.contains("warm_dark") {
+            return SceneEffectStyle(color: NSColor(calibratedRed: 0.55, green: 0.20, blue: 0.10, alpha: 1), alpha: 0.12)
+        }
+        if effects.contains("glass_reflection") {
+            return SceneEffectStyle(color: .white, alpha: 0.08)
+        }
+        if effects.contains("neon_warp") {
+            return SceneEffectStyle(color: NSColor(calibratedRed: 0.30, green: 0.10, blue: 0.65, alpha: 1), alpha: 0.14)
+        }
+        if effects.contains("rainbow") {
+            return SceneEffectStyle(color: NSColor(calibratedRed: 0.24, green: 0.42, blue: 0.86, alpha: 1), alpha: 0.08)
+        }
+        if effects.contains("rain_stop") {
+            return SceneEffectStyle(color: .black, alpha: 0.10)
+        }
+        return nil
+    }
+
+    private func setAmbientTint(_ style: SceneEffectStyle?) {
+        guard let style else {
+            NSAnimationContext.runAnimationGroup({ context in
+                context.duration = 0.18
+                sceneEffectOverlay.animator().alphaValue = 0
+            }) { [weak self] in
+                self?.sceneEffectOverlay.isHidden = true
+            }
+            return
+        }
+
+        sceneEffectOverlay.isHidden = false
+        sceneEffectOverlay.layer?.backgroundColor = style.color.cgColor
+        NSAnimationContext.runAnimationGroup { context in
+            context.duration = 0.24
+            sceneEffectOverlay.animator().alphaValue = style.alpha
+        }
+    }
+
+    private func runSceneShake(strength: CGFloat) {
+        let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        animation.values = [0, -strength, strength * 0.75, -strength * 0.55, strength * 0.36, 0]
+        animation.keyTimes = [0, 0.18, 0.36, 0.58, 0.78, 1]
+        animation.duration = 0.34
+        animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
+
+        for layer in [backgroundLayerView.layer, cgImageView.layer, characterStageView.layer, rainView.layer].compactMap({ $0 }) {
+            layer.add(animation.copy() as! CAAnimation, forKey: "sceneShake")
+        }
+    }
+
+    private func runDialoguePulse() {
+        let animation = CAKeyframeAnimation(keyPath: "transform.scale")
+        animation.values = [1.0, 1.012, 0.998, 1.0]
+        animation.keyTimes = [0, 0.38, 0.72, 1]
+        animation.duration = 0.36
+        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        dialogueEffect.layer?.add(animation, forKey: "dialoguePulse")
+    }
+
+    private func runEffectFlash(color: NSColor) {
+        sceneEffectOverlay.isHidden = false
+        sceneEffectOverlay.layer?.backgroundColor = color.cgColor
+        let animation = CAKeyframeAnimation(keyPath: "opacity")
+        animation.values = [sceneEffectOverlay.alphaValue, 0.42, sceneEffectOverlay.alphaValue]
+        animation.keyTimes = [0, 0.32, 1]
+        animation.duration = 0.30
+        animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
+        sceneEffectOverlay.layer?.add(animation, forKey: "effectFlash")
+    }
+
+    private func updateSpeakerChrome(for speaker: String) {
+        let accent = speakerAccentColor(for: speaker)
+        speakerAccentBar.layer?.backgroundColor = accent.cgColor
+        speakerLabel.textColor = speaker == "하루"
+            ? NSColor.white.withAlphaComponent(0.72)
+            : NSColor.white.withAlphaComponent(0.96)
+    }
+
+    private func speakerAccentColor(for speaker: String) -> NSColor {
+        switch speaker {
+        case "세아":
+            return NSColor(calibratedRed: 0.88, green: 0.08, blue: 0.12, alpha: 0.90)
+        case "아이리":
+            return NSColor(calibratedRed: 0.96, green: 0.54, blue: 0.14, alpha: 0.88)
+        case "유카":
+            return NSColor(calibratedRed: 0.16, green: 0.58, blue: 0.82, alpha: 0.88)
+        case "그림자":
+            return NSColor(calibratedRed: 0.48, green: 0.24, blue: 0.72, alpha: 0.88)
+        case "시스템":
+            return NSColor.white.withAlphaComponent(0.55)
+        default:
+            return NSColor.systemRed.withAlphaComponent(0.72)
         }
     }
 

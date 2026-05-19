@@ -168,15 +168,21 @@ func runValidation() throws {
     try check(package.sceneIndex[package.metadata.finalScene] != nil, "Missing final scene")
     try check(package.endingIndex[package.metadata.defaultEnding] != nil, "Missing default ending rule")
     try check(package.statBounds.initial == GameStats.defaults, "Unexpected initial stats")
-    try check(package.scenes.count >= 106, "Expanded story should include at least 106 scenes including endings")
+    try check(package.scenes.count >= 198, "Market-ready story should include at least 198 scenes including endings")
     try check(package.assets.backgrounds.count >= 96, "Expected expanded background set")
     try check(package.assets.characters.count >= 74, "Expected expanded character image set")
-    try check(package.assets.cg.count >= 106, "Expected expanded CG image set")
+    try check(package.assets.cg.count >= 110, "Expected expanded CG image set")
 
     let sceneTextLengths = package.scenes.map { $0.text.count }
     let averageSceneTextLength = Double(sceneTextLengths.reduce(0, +)) / Double(max(sceneTextLengths.count, 1))
     try check((sceneTextLengths.min() ?? 0) >= 200, "Scene text is too short for VN pacing (min 200 chars required)")
     try check(averageSceneTextLength >= 240, "Average scene text is too short for VN pacing (240 chars required)")
+    try check(
+        package.scenes.allSatisfy { !$0.speaker.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty },
+        "All staged scenes should have an explicit speaker label"
+    )
+    let multiVisualSceneCount = package.scenes.filter { $0.visuals.count >= 2 }.count
+    try check(multiVisualSceneCount >= 12, "Expected more multi-character staging scenes")
     let choiceTextLengths = package.scenes.flatMap { $0.choices.map { $0.text.count } }
     try check((choiceTextLengths.max() ?? 0) <= 18, "Choice labels should be short action verbs")
 
@@ -320,6 +326,22 @@ func runValidation() throws {
         "ch06f_weekend_station_clock",
         expected: [("airi_resolve", .left), ("sea_station_clock", .center), ("yuka_weather_terminal", .right)]
     )
+    try checkSceneVisuals(
+        "ch01z_c_airi_stares",
+        expected: [("airi_wet_envelope", .left), ("sea_tender_close", .right)]
+    )
+    try checkSceneVisuals(
+        "ch02z_f_service_stairwell_call",
+        expected: [("airi_resolve", .left), ("yuka_glasses_off", .right)]
+    )
+    try checkSceneVisuals(
+        "ch06d_b_crosswalk_airi_yuka_sea",
+        expected: [("airi_resolve", .left), ("sea_crosswalk", .center), ("yuka_glasses_off", .right)]
+    )
+    try checkSceneVisuals(
+        "ch06zz_b_three_signals_on_platform",
+        expected: [("airi_resolve", .left), ("sea_station_clock", .center), ("yuka_weather_terminal", .right)]
+    )
 
     for assetID in [
         "sea_wall_mural",
@@ -432,7 +454,11 @@ func runValidation() throws {
         "cg_tatami_red_stitch",
         "cg_blanket_chain_knot",
         "cg_condensation_window_map",
-        "cg_music_box_red_key"
+        "cg_music_box_red_key",
+        "cg_generated_rooftop_thread_confession",
+        "cg_generated_archive_envelopes",
+        "cg_generated_locked_room_threshold",
+        "cg_generated_station_clock_choice"
     ] {
         guard let asset = package.assets.cg[assetID] else {
             throw ValidationFailure.failed("Missing generated CG metadata: \(assetID)")
@@ -541,6 +567,7 @@ func runValidation() throws {
         "station_clock_start_monday"
     ], package: package)
     try check(trueTerminal.sceneID == "ending_true", "True route should reach ending_true, got \(trueTerminal.sceneID)")
+    try check(trueTerminal.backlogIDs.contains("ch06zz_b_three_signals_on_platform"), "True route should pass final signal bridge")
     try check(trueTerminal.backlogIDs.contains("ch06g_all_routes_montage"), "True route should pass final montage bridge")
     try check(trueTerminal.backlogIDs.contains("ch06h_final_evidence_board"), "True route should pass final evidence board")
 
@@ -624,6 +651,7 @@ func runValidation() throws {
         "station_clock_send_yuka_time"
     ], package: package)
     try check(ghostTerminal.sceneID == "ending_ghost", "Ghost route should reach ending_ghost")
+    try check(ghostTerminal.backlogIDs.contains("ch06d_b_crosswalk_airi_yuka_sea"), "Ghost route should pass final crosswalk bridge")
 
     let abyssRoute = try endingID(for: [
         "prologue_accept",
